@@ -6,6 +6,8 @@
 
 The visual language treats the internet as a night sky: a business is a point of light, a website is the instrument that finds it. Belarus is drawn as a constellation, and its traditional rushnyk ornament is rebuilt on a pixel grid. The result is a nocturnal observatory, not a generic SaaS page.
 
+![Digital Belarus landing page](docs/qa/screenshots/desktop-hero.jpg)
+
 ### Technologies
 
 Development: Visual Studio Code, Artificial intelligence assistance  

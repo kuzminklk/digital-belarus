@@ -10,7 +10,7 @@ Belarusian small and medium businesses need a credible, fast and honest web pres
 
 ## Behaviour
 
-1. `/` redirects to `/ru` (default locale). Every page is available under `/ru`, `/be` and `/en`.
+1. `/` redirects to the visitor's preferred locale (falling back to `/ru`). Every page is available under `/ru`, `/be` and `/en`.
 2. The page is one vertical narrative: hero → keyword marquee → approach → services → process → cases → pricing → calculator → reasons → studio → FAQ → contact.
 3. The sticky header exposes the logo, section navigation, RU/BE/EN switcher, primary CTA and a mobile menu. It gains a translucent background and a red scroll-progress line after scrolling.
 4. The hero presents the offer, availability status, two CTAs, three proof points and the interactive Belarus constellation map.
