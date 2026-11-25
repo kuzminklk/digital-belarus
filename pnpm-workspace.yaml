@@ -1,0 +1,6 @@
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+
+minimumReleaseAgeExclude:
+  - next-intl@4.16.2

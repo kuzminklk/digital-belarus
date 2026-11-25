@@ -1,0 +1,200 @@
+.approach {
+	scroll-margin-top: calc(var(--header-h) + 1rem);
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid var(--line);
+	background:
+		radial-gradient(70% 55% at 100% 0%, rgb(226 69 58 / 5%), transparent 60%), var(--ink-950);
+}
+
+.ghost {
+	position: absolute;
+	top: calc(var(--section-y) * -0.12);
+	right: calc(var(--gutter) * 0.25);
+	color: var(--paper);
+	font-family: var(--font-display);
+	font-size: clamp(9rem, 24vw, 22rem);
+	font-style: italic;
+	line-height: 0.8;
+	opacity: 0.035;
+	pointer-events: none;
+	user-select: none;
+}
+
+.inner {
+	position: relative;
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+	gap: clamp(2rem, 5vw, 5.5rem);
+	align-items: start;
+}
+
+.quote {
+	position: relative;
+	display: grid;
+	gap: clamp(1.25rem, 2.4vw, 1.9rem);
+	padding-top: clamp(1.25rem, 2.4vw, 1.9rem);
+	border-top: 1px solid var(--line-strong);
+}
+
+.quoteLabel {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	color: var(--muted);
+}
+
+.quoteTick {
+	display: block;
+	width: 7px;
+	height: 7px;
+	border: 1px solid var(--red);
+	transform: rotate(45deg);
+}
+
+.quoteText {
+	position: relative;
+	padding-left: clamp(1rem, 2.6vw, 2.75rem);
+	color: var(--paper-warm);
+	font-family: var(--font-display);
+	font-size: clamp(1.6rem, 2.9vw, 2.75rem);
+	font-style: italic;
+	font-weight: 300;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+.quoteMark {
+	position: absolute;
+	top: -0.42em;
+	left: -0.24em;
+	color: var(--red);
+	font-family: var(--font-display);
+	font-size: 2.2em;
+	font-style: normal;
+	line-height: 1;
+	opacity: 0.9;
+	pointer-events: none;
+}
+
+.quoteFoot {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding-left: clamp(1rem, 2.6vw, 2.75rem);
+	color: var(--muted);
+}
+
+.quoteFootRule {
+	width: clamp(2rem, 6vw, 4.5rem);
+	height: 1px;
+	background: var(--line-strong);
+}
+
+.quoteFootLabel {
+	font-size: 0.55rem;
+	opacity: 0.75;
+}
+
+.principles {
+	display: grid;
+	border-top: 1px solid var(--line);
+}
+
+.principles li {
+	border-bottom: 1px solid var(--line);
+}
+
+.principle {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: clamp(1rem, 2.2vw, 2rem);
+	padding-block: clamp(1.4rem, 2.6vw, 2rem);
+	transition: background-color var(--dur) var(--ease-out);
+}
+
+.principle:hover {
+	background: linear-gradient(90deg, rgb(236 233 223 / 3%), transparent 70%);
+}
+
+.num {
+	padding-top: 0.5rem;
+	color: var(--red-bright);
+	letter-spacing: 0.18em;
+}
+
+.principleBody {
+	max-width: 46ch;
+}
+
+.principleTitle {
+	font-size: var(--fs-h3);
+}
+
+.principleText {
+	margin-top: 0.45rem;
+	color: var(--muted);
+	font-size: var(--fs-small);
+	line-height: 1.65;
+}
+
+.corner {
+	position: absolute;
+	right: -1px;
+	bottom: -1px;
+	width: 7px;
+	height: 7px;
+	border-width: 0 1px 1px 0;
+	border-color: var(--line-strong);
+	border-style: solid;
+	pointer-events: none;
+}
+
+.ornament {
+	margin-top: clamp(2.5rem, 5vw, 4.5rem);
+	padding-top: clamp(1.1rem, 2vw, 1.75rem);
+	border-top: 1px solid var(--line-faint);
+	opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+	.layout {
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(2rem, 6vw, 3rem);
+	}
+
+	.quoteText {
+		max-width: 26ch;
+	}
+
+	.ghost {
+		display: none;
+	}
+}
+
+@media (max-width: 420px) {
+	.quoteText {
+		max-width: none;
+		font-size: 1.5rem;
+	}
+
+	.principle {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.35rem;
+	}
+
+	.num {
+		padding-top: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.principle {
+		transition: none;
+	}
+}

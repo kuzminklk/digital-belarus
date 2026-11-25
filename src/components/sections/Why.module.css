@@ -1,0 +1,129 @@
+.why {
+	scroll-margin-top: calc(var(--header-h) + 1rem);
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid var(--line);
+	background:
+		radial-gradient(50% 60% at 100% 100%, rgb(226 69 58 / 4%), transparent 55%), var(--ink-950);
+}
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: clamp(2rem, 5vw, 5rem);
+	border-top: 1px solid var(--line);
+}
+
+.item {
+	border-bottom: 1px solid var(--line);
+}
+
+.row {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	gap: clamp(0.9rem, 1.8vw, 1.5rem);
+	align-items: start;
+	padding-block: clamp(1.3rem, 2.4vw, 1.9rem);
+	transition:
+		padding-left var(--dur) var(--ease-out),
+		background-color var(--dur) var(--ease-out);
+}
+
+.row::before {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 1px;
+	background: var(--red);
+	content: '';
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.row:hover {
+	padding-left: 0.75rem;
+	background: linear-gradient(90deg, rgb(236 233 223 / 3%), transparent 70%);
+}
+
+.row:hover::before {
+	transform: scaleY(1);
+}
+
+.num {
+	padding-top: 0.45rem;
+	color: var(--muted);
+	font-size: 0.6rem;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.row:hover .num {
+	color: var(--red-bright);
+}
+
+.body {
+	max-width: 42ch;
+}
+
+.title {
+	font-size: var(--fs-h3);
+	font-weight: 500;
+	line-height: 1.05;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.row:hover .title {
+	color: var(--paper-warm);
+}
+
+.text {
+	margin-top: 0.5rem;
+	color: var(--muted);
+	font-size: var(--fs-small);
+	line-height: 1.6;
+}
+
+.mark {
+	width: 7px;
+	height: 7px;
+	margin-top: 0.55rem;
+	border: 1px solid var(--line-strong);
+	transform: rotate(45deg);
+	transition: border-color var(--dur) var(--ease-out);
+}
+
+.row:hover .mark {
+	border-color: var(--red);
+}
+
+@media (max-width: 900px) {
+	.list {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.row:hover {
+		padding-left: 0;
+	}
+}
+
+@media (max-width: 420px) {
+	.row {
+		grid-template-columns: auto minmax(0, 1fr);
+	}
+
+	.mark {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.row,
+	.row::before,
+	.title,
+	.num,
+	.mark {
+		transition: none;
+	}
+}

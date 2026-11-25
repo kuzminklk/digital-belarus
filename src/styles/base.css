@@ -1,0 +1,285 @@
+/* Base layer — reset, document defaults, typography and shared layout utilities. */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	color-scheme: dark;
+	scroll-behavior: smooth;
+	scrollbar-color: var(--ink-600) var(--ink-1000);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	min-height: 100dvh;
+	background: var(--ink-950);
+	color: var(--paper);
+	font-family: var(--font-sans);
+	font-size: var(--fs-body);
+	font-weight: 400;
+	line-height: 1.65;
+	letter-spacing: 0.005em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	overflow-x: clip;
+}
+
+body::selection,
+::selection {
+	background: var(--red);
+	color: var(--paper-warm);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 0.95;
+	letter-spacing: -0.025em;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	background: none;
+	border: 0;
+}
+
+img,
+picture,
+svg,
+canvas {
+	display: block;
+	max-width: 100%;
+}
+
+ul,
+ol {
+	padding: 0;
+	list-style: none;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--line);
+}
+
+:focus-visible {
+	outline: 1px solid var(--red-bright);
+	outline-offset: 4px;
+	border-radius: 1px;
+}
+
+::placeholder {
+	color: var(--muted);
+	opacity: 1;
+}
+
+/* Shared layout ------------------------------------------------------------ */
+
+.container {
+	width: 100%;
+	max-width: var(--container);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.container-narrow {
+	width: 100%;
+	max-width: var(--container-narrow);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.section {
+	position: relative;
+	padding-block: var(--section-y);
+}
+
+.section--tight {
+	padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.rule {
+	width: 100%;
+	height: 1px;
+	background: var(--line);
+}
+
+/* Typography utilities ----------------------------------------------------- */
+
+.mono {
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.display {
+	font-family: var(--font-display);
+	font-size: var(--fs-display);
+	font-weight: 400;
+	line-height: 0.86;
+	letter-spacing: -0.045em;
+}
+
+.display em,
+.display-italic {
+	font-style: italic;
+	font-weight: 300;
+}
+
+.lead {
+	max-width: 40ch;
+	color: var(--paper-dim);
+	font-size: var(--fs-lead);
+	line-height: 1.55;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+.serif {
+	font-family: var(--font-display);
+}
+
+.accent {
+	color: var(--red-bright);
+}
+
+.aurora {
+	color: var(--aurora);
+}
+
+/* Helpers ------------------------------------------------------------------ */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: calc(var(--z-header) + 10);
+	padding: 0.75rem 1rem;
+	background: var(--paper);
+	color: var(--ink-950);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	transform: translateY(-160%);
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+	transform: translateY(0);
+	outline-offset: 2px;
+}
+
+/* Decorative full-page film grain. Built from an inline SVG noise filter so it
+   costs no extra network request. */
+.grain {
+	position: fixed;
+	inset: -50%;
+	z-index: var(--z-overlay);
+	pointer-events: none;
+	opacity: 0.035;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	animation: grain-shift 8s steps(6) infinite;
+	will-change: transform;
+}
+
+@keyframes grain-shift {
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	20% {
+		transform: translate(-2%, 1%);
+	}
+	40% {
+		transform: translate(1%, -2%);
+	}
+	60% {
+		transform: translate(-1%, 2%);
+	}
+	80% {
+		transform: translate(2%, 1%);
+	}
+}
+
+/* Shared entrance animation driven by components/Reveal. */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(28px);
+	transition:
+		opacity 900ms var(--ease-out),
+		transform 900ms var(--ease-out);
+	transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal='visible'] {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.grain {
+		animation: none;
+	}
+
+	[data-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}

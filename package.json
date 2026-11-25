@@ -1,0 +1,35 @@
+{
+	"name": "digital-belarus",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Digital Belarus — trilingual website of a digital services studio for business in Belarus.",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"check:i18n": "node scripts/check-i18n.mjs",
+		"test": "vitest run",
+		"check": "pnpm typecheck && pnpm lint && pnpm check:i18n && pnpm test"
+	},
+	"dependencies": {
+		"next": "16.4.6",
+		"next-intl": "4.16.2",
+		"react": "19.3.1",
+		"react-dom": "19.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "^24.10.0",
+		"@types/react": "^19.2.0",
+		"@types/react-dom": "^19.2.0",
+		"eslint": "^9.39.0",
+		"eslint-config-next": "16.4.6",
+		"prettier": "^3.6.0",
+		"typescript": "^5.9.0",
+		"vitest": "^4.0.0"
+	},
+	"packageManager": "pnpm@11.2.2"
+}

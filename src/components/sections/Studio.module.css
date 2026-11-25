@@ -1,0 +1,250 @@
+.studio {
+	position: relative;
+	background:
+		radial-gradient(80% 60% at 100% 10%, rgb(226 69 58 / 6%), transparent 60%), var(--ink-950);
+	overflow: hidden;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+	gap: clamp(2rem, 5vw, 5rem);
+	align-items: stretch;
+}
+
+.portraitCard {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--line);
+	background: var(--ink-900);
+}
+
+.portraitFrame {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	background: var(--ink-800);
+}
+
+.portrait {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 28%;
+	filter: grayscale(1) contrast(1.06) brightness(0.82);
+	transition:
+		filter 900ms var(--ease-out),
+		transform 1200ms var(--ease-out);
+}
+
+.portraitFrame:hover .portrait {
+	filter: grayscale(0.25) contrast(1.02) brightness(0.92);
+	transform: scale(1.025);
+}
+
+.duotone {
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(180deg, rgb(3 5 7 / 10%) 0%, rgb(3 5 7 / 55%) 100%),
+		radial-gradient(circle at 50% 30%, rgb(226 69 58 / 22%), transparent 60%);
+	mix-blend-mode: multiply;
+	pointer-events: none;
+}
+
+.scanline {
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		0deg,
+		rgb(3 5 7 / 16%) 0,
+		rgb(3 5 7 / 16%) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.frameCorner {
+	position: absolute;
+	width: 1.1rem;
+	height: 1.1rem;
+	border-color: var(--paper);
+	border-style: solid;
+	opacity: 0.55;
+}
+
+.frameCorner[data-corner='tl'] {
+	top: 0.75rem;
+	left: 0.75rem;
+	border-width: 1px 0 0 1px;
+}
+
+.frameCorner[data-corner='tr'] {
+	top: 0.75rem;
+	right: 0.75rem;
+	border-width: 1px 1px 0 0;
+}
+
+.frameCorner[data-corner='bl'] {
+	bottom: 0.75rem;
+	left: 0.75rem;
+	border-width: 0 0 1px 1px;
+}
+
+.frameCorner[data-corner='br'] {
+	right: 0.75rem;
+	bottom: 0.75rem;
+	border-width: 0 1px 1px 0;
+}
+
+.portraitLabel {
+	position: absolute;
+	right: 0.9rem;
+	bottom: 0.8rem;
+	color: rgb(236 233 223 / 55%);
+	font-family: var(--font-mono);
+	font-size: 0.5rem;
+	letter-spacing: 0.16em;
+}
+
+.identity {
+	display: grid;
+	gap: 0.7rem;
+	padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.role {
+	color: var(--red-bright);
+}
+
+.name {
+	font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+}
+
+.bio {
+	color: var(--muted);
+	font-size: var(--fs-small);
+	line-height: 1.6;
+}
+
+.links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 0.4rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--line-faint);
+}
+
+.links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	color: var(--paper-dim);
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.links a:hover {
+	color: var(--paper-warm);
+}
+
+.details {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.5rem, 3vw, 2.5rem);
+	padding-top: 0.5rem;
+}
+
+.watermark {
+	align-self: flex-end;
+	opacity: 0.18;
+}
+
+.body2 {
+	max-width: 46ch;
+	color: var(--paper-dim);
+	font-size: var(--fs-lead);
+	line-height: 1.6;
+}
+
+.facts {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0;
+	border-top: 1px solid var(--line);
+	border-left: 1px solid var(--line);
+}
+
+.fact {
+	display: grid;
+	gap: 0.4rem;
+	padding: 1.1rem 1.25rem;
+	border-right: 1px solid var(--line);
+	border-bottom: 1px solid var(--line);
+}
+
+.fact dt {
+	color: var(--muted);
+	font-size: 0.6rem;
+}
+
+.fact dd {
+	color: var(--paper);
+	font-size: var(--fs-small);
+	line-height: 1.4;
+}
+
+.manifesto {
+	display: flex;
+	gap: clamp(1rem, 2vw, 1.75rem);
+	margin-top: auto;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--line);
+}
+
+.manifestoIndex {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.12em;
+	padding-top: 0.6rem;
+}
+
+.manifestoText {
+	position: relative;
+	max-width: 40ch;
+	color: var(--paper-dim);
+	font-family: var(--font-display);
+	font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+	line-height: 1.28;
+}
+
+.manifestoQuote {
+	position: absolute;
+	top: -0.35em;
+	left: -0.55em;
+	color: var(--red);
+	font-size: 2.4em;
+	line-height: 1;
+}
+
+@media (max-width: 900px) {
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.portraitFrame {
+		aspect-ratio: 5 / 4;
+	}
+
+	.watermark {
+		display: none;
+	}
+}

@@ -1,0 +1,618 @@
+{
+	"meta": {
+		"siteName": "Digital Belarus",
+		"title": "Digital Belarus — websites, Telegram bots and AI for business",
+		"description": "An independent studio in Minsk: turnkey websites, Telegram bots, AI assistants and automation for Belarusian business. Fixed quote, launch in as little as a week, a month of edits after handover.",
+		"ogAlt": "Digital Belarus — a night observatory for digital products",
+		"keywords": "websites in Belarus, Telegram bots, AI for business, website development Minsk, business automation"
+	},
+	"common": {
+		"brand": "Digital Belarus",
+		"brandLatin": "Digital Belarus",
+		"brandShort": "DB",
+		"tagline": "Websites · bots · AI",
+		"ctaDiscuss": "Discuss a project",
+		"ctaServices": "Explore services",
+		"ctaWork": "See our work",
+		"ctaEstimate": "Estimate the cost",
+		"ctaContact": "Message us on Telegram",
+		"ctaBackHome": "Back to home",
+		"telegram": "@kuzminklk",
+		"telegramUrl": "https://t.me/kuzminklk",
+		"githubUrl": "https://github.com/kuzminklk",
+		"personalUrl": "https://kuzminklk.vercel.app",
+		"minsk": "Minsk, Belarus",
+		"workingHours": "Mon–Fri · 9:00–20:00",
+		"responseTime": "We reply within the hour",
+		"currency": "BYN",
+		"from": "from",
+		"monthShort": "mo.",
+		"weekShort": "wk.",
+		"learnMore": "Learn more",
+		"close": "Close",
+		"order": "Choose",
+		"optional": "optional",
+		"available": "Online",
+		"timeInMinsk": "Time in Minsk",
+		"copied": "Copied",
+		"error": "Something went wrong. Please try again.",
+		"external": "Opens in a new tab",
+		"and": "and",
+		"loading": "Loading"
+	},
+	"nav": {
+		"services": "Services",
+		"approach": "Approach",
+		"cases": "Work",
+		"process": "Process",
+		"pricing": "Pricing",
+		"studio": "Studio",
+		"faq": "FAQ",
+		"contact": "Contact"
+	},
+	"a11y": {
+		"skipToContent": "Skip to content",
+		"mainNav": "Main navigation",
+		"footerNav": "Footer navigation",
+		"languageSwitcher": "Site language",
+		"openMenu": "Open menu",
+		"closeMenu": "Close menu",
+		"caseDialog": "Project details",
+		"calcGroup": "Estimate options",
+		"toTop": "Back to top",
+		"decorative": "Decorative image",
+		"currentPage": "Current page",
+		"notFound": "Page not found"
+	},
+	"hero": {
+		"eyebrow": "Digital systems studio · Minsk",
+		"titleLine1": "The digital",
+		"titleAccent": "outline",
+		"titleLine2": "of your business",
+		"description": "Websites, Telegram bots and AI workflows that bring in clients, take enquiries and give your team its hours back. No agency mark-ups, no surprises in the quote.",
+		"primaryCta": "Discuss a project",
+		"secondaryCta": "Explore services",
+		"status": "Open for new projects",
+		"coordinates": "53.9006° N · 27.5590° E",
+		"scroll": "Enter the orbit",
+		"mapCaption": "The Belarus constellation. Our point of origin — Minsk.",
+		"metrics": [
+			{"value": "1 week", "label": "to first version"},
+			{"value": "30 days", "label": "of edits after handover"},
+			{"value": "100%", "label": "fixed quote"}
+		]
+	},
+	"marquee": {
+		"items": [
+			"Turnkey websites",
+			"Telegram bots",
+			"AI assistants",
+			"Automation",
+			"CRM integrations",
+			"Analytics",
+			"Design systems",
+			"Support"
+		]
+	},
+	"approach": {
+		"index": "01",
+		"label": "Approach",
+		"title": "We don’t paint pretty pictures. We build",
+		"titleAccent": "tools",
+		"body": "A beautiful website with no job to do is just a postcard. So we start with the question “what should change in the business?” and only then choose the form, the stack and the flows.",
+		"principles": [
+			{
+				"title": "Problem first",
+				"text": "We ask about your clients, the flow of enquiries and the bottleneck. Design and technology follow — they’re never the starting point."
+			},
+			{
+				"title": "Transparent",
+				"text": "A fixed quote, a demo every week, and you hold the access and source code from day one."
+			},
+			{
+				"title": "Built to last",
+				"text": "We hand over the project with documentation and a month of edits. You’re never left alone with a black box."
+			}
+		],
+		"quote": "A good digital tool never shouts about itself. It simply works — and you can see it in the enquiries."
+	},
+	"services": {
+		"index": "02",
+		"label": "Services",
+		"title": "From idea to a working",
+		"titleAccent": "tool",
+		"intro": "Six directions, each solving a different business problem: telling people who you are, taking enquiries, answering clients and lifting routine off your team. You can start with just one.",
+		"note": "Prices are starting points. We fix the final quote after a short brief and never change it mid-project.",
+		"allLink": "All plans and the calculator",
+		"popular": "Most popular",
+		"items": [
+			{
+				"id": "websites",
+				"icon": "site",
+				"title": "Turnkey websites",
+				"description": "A landing page, corporate website or online shop: structure, design, front-end build, copy and launch on your domain.",
+				"price": "from 1,500 BYN",
+				"term": "1–4 weeks",
+				"tags": ["Next.js", "Design", "SEO"]
+			},
+			{
+				"id": "bots",
+				"icon": "bot",
+				"title": "Telegram bots",
+				"description": "Booking, enquiries, a catalogue, payments and an admin panel. Your client gets things done in the messenger without waiting for a manager.",
+				"price": "from 2,000 BYN",
+				"term": "1–2 weeks",
+				"tags": ["Telegram", "Viber", "Mini Apps"]
+			},
+			{
+				"id": "ai",
+				"icon": "ai",
+				"title": "AI assistants",
+				"description": "A chat assistant trained on your services and documents: it answers clients around the clock and hands complex questions to a human.",
+				"price": "from 2,500 BYN",
+				"term": "2–3 weeks",
+				"tags": ["LLM", "RAG", "Flows"]
+			},
+			{
+				"id": "automation",
+				"icon": "automation",
+				"title": "Automation and CRM",
+				"description": "Enquiries land in your CRM on their own, reminders go out to clients and reports build themselves — no spreadsheets, no manual grind.",
+				"price": "from 1,800 BYN",
+				"term": "1–2 weeks",
+				"tags": ["Integrations", "CRM", "Webhooks"]
+			},
+			{
+				"id": "commerce",
+				"icon": "cart",
+				"title": "Online shops",
+				"description": "Catalogue, cart, payments, delivery and product management — a storefront that sells while you’re busy.",
+				"price": "from 6,000 BYN",
+				"term": "4–6 weeks",
+				"tags": ["E-commerce", "Payments", "Catalogue"]
+			},
+			{
+				"id": "analytics",
+				"icon": "analytics",
+				"title": "Analytics and dashboards",
+				"description": "Clear numbers instead of guesswork: where enquiries come from, what works, what a client costs and where money leaks.",
+				"price": "from 1,500 BYN",
+				"term": "1–2 weeks",
+				"tags": ["Metrica", "Dashboard", "Reports"]
+			}
+		]
+	},
+	"process": {
+		"index": "03",
+		"label": "Process",
+		"title": "Four steps — and everything in plain sight",
+		"intro": "No forty-page specifications, no middlemen. You talk directly to the people who do the work.",
+		"steps": [
+			{
+				"num": "01",
+				"title": "Brief",
+				"description": "A 30-minute conversation or a few messages. We get to grips with the business, the audience and the job — no twelve-page questionnaires.",
+				"duration": "1–2 days"
+			},
+			{
+				"num": "02",
+				"title": "Quote and prototype",
+				"description": "We send a fixed quote, a timeline and a rough structural prototype. You decide without hurry and without obligation.",
+				"duration": "2–4 days"
+			},
+			{
+				"num": "03",
+				"title": "Design and build",
+				"description": "We demo every week and sign off the design before development, so the project never heads off “the wrong way”.",
+				"duration": "1–4 weeks"
+			},
+			{
+				"num": "04",
+				"title": "Launch and support",
+				"description": "Domain, hosting, access and documentation are yours. A month of edits and refinements after handover is on us.",
+				"duration": "1–30 days"
+			}
+		]
+	},
+	"cases": {
+		"index": "04",
+		"label": "Work",
+		"title": "Selected",
+		"titleAccent": "work",
+		"intro": "Live projects and concepts, put together to show how we think: interface, code and measurable value.",
+		"viewCase": "View case study",
+		"live": "Live project",
+		"concept": "Concept",
+		"close": "Close",
+		"challenge": "Challenge",
+		"solution": "Solution",
+		"stack": "Stack",
+		"result": "Result",
+		"visit": "Open project",
+		"note": "Concepts were created to showcase design and are not commercial studio projects. Live projects can be opened via the link.",
+		"items": [
+			{
+				"name": "Yasna",
+				"category": "Website · Culture",
+				"year": "2025",
+				"kind": "live",
+				"liveUrl": "https://github.com/kuzminklk/fairy-tail",
+				"summary": "A cinematic photo story: seventeen photographs, ten chapters and a build with zero dependencies.",
+				"challenge": "Tell a photo story as a single journey rather than a gallery with buttons — and keep it fast, readable and accessible on a phone.",
+				"solution": "Photographs are pinned to the stage, chapters switch on scroll, and images load in stages: preview first, then full resolution. Without JavaScript the page remains readable.",
+				"stack": ["HTML", "CSS", "JavaScript", "Python"],
+				"result": "Seventeen full-screen photographs, ten chapters, LQIP placeholders and staged loading. A live project on GitHub.",
+				"metric": "17 photos · 10 chapters"
+			},
+			{
+				"name": "Central Park",
+				"category": "Website · Café",
+				"year": "2025",
+				"kind": "live",
+				"liveUrl": "https://central-park-volkovysk.vercel.app/",
+				"summary": "A website for a park café in Vawkavysk: the atmosphere of the place, the menu and a short route to a visit.",
+				"challenge": "A small café needed a clear shopfront online — one you’re not embarrassed to share on Instagram or put behind a QR code.",
+				"solution": "A single-page site with a sense of place, a menu, a gallery and contact details. Lightweight static code with no unnecessary dependencies.",
+				"stack": ["HTML", "CSS", "JavaScript"],
+				"result": "A live site that loads fast, works on a phone and needs no maintenance.",
+				"metric": "1 page · 0 dependencies"
+			},
+			{
+				"name": "Spadchyna",
+				"category": "Concept · E-commerce",
+				"year": "2026",
+				"kind": "concept",
+				"liveUrl": "",
+				"summary": "A shop for Belarusian ceramics: a catalogue, the makers’ stories and ordering through Telegram.",
+				"challenge": "Present handmade goods as valuable objects rather than marketplace listings — and simplify ordering to two steps.",
+				"solution": "A dark gallery-style storefront, large photographs, filters by maker and ordering via Telegram. The graphics are built on pixel embroidery.",
+				"stack": ["Next.js", "TypeScript", "Telegram"],
+				"result": "Concept: a catalogue, product page, cart and an ordering flow in the messenger.",
+				"metric": "4 flows · 2 steps"
+			},
+			{
+				"name": "PraBot",
+				"category": "Concept · AI bot",
+				"year": "2026",
+				"kind": "concept",
+				"liveUrl": "",
+				"summary": "An AI administrator for a service studio: it answers questions about services, calculates a quote and books a call.",
+				"challenge": "The studio was losing enquiries at night and at weekends, while the administrator burned hours on repetitive questions.",
+				"solution": "A Telegram bot with a knowledge base, price calculation and hand-off of hot leads to a human. It books calls and reminds clients about meetings.",
+				"stack": ["Telegram Mini App", "LLM", "RAG"],
+				"result": "Concept: dialogue, quote calculation, booking and notifications in the admin chat.",
+				"metric": "24/7 · 3 flows"
+			}
+		]
+	},
+	"pricing": {
+		"index": "05",
+		"label": "Pricing",
+		"title": "Transparent, with no",
+		"titleAccent": "surprises",
+		"intro": "Prices in Belarusian roubles. Every plan includes a month of edits after handover. We fix the final quote before we start.",
+		"popular": "Most chosen",
+		"currency": "BYN",
+		"choose": "Choose a plan",
+		"note": "Ongoing support after launch is optional, from 150 BYN a month. Additional work is quoted separately and in advance.",
+		"tiers": [
+			{
+				"id": "start",
+				"name": "Start",
+				"price": "2,500",
+				"pricePrefix": "",
+				"term": "1–2 weeks",
+				"description": "Get one product live fast: a landing page or an enquiry bot.",
+				"popular": false,
+				"features": [
+					"A landing page of up to six sections, or a Telegram bot",
+					"Original design in the studio’s style",
+					"Domain and hosting for a year",
+					"A month of edits and refinements",
+					"Documentation and handover of access"
+				],
+				"cta": "Choose Start"
+			},
+			{
+				"id": "business",
+				"name": "Business",
+				"price": "7,900",
+				"pricePrefix": "",
+				"term": "3–5 weeks",
+				"description": "A website, a bot and one AI capability tailored to your business.",
+				"popular": true,
+				"features": [
+					"Corporate website or online shop",
+					"Telegram bot connected to your CRM",
+					"AI assistant or automated reviews",
+					"Analytics and goals",
+					"A month of edits and refinements"
+				],
+				"cta": "Choose Business"
+			},
+			{
+				"id": "turnkey",
+				"name": "Turnkey",
+				"price": "15,000",
+				"pricePrefix": "from",
+				"term": "from 6 weeks",
+				"description": "A complex project with several systems and its own infrastructure.",
+				"popular": false,
+				"features": [
+					"A web application and a client portal",
+					"Several bots and AI flows",
+					"Integrations and process automation",
+					"Team training",
+					"Support by arrangement"
+				],
+				"cta": "Discuss a project"
+			}
+		],
+		"calculator": {
+			"index": "05.1",
+			"label": "Calculator",
+			"title": "Get a sense of the",
+			"titleAccent": "numbers",
+			"intro": "Pick what you need and see an indicative budget and timeline. This is not an offer: we’ll send an exact quote after a short brief.",
+			"typesLabel": "What you need",
+			"optionsLabel": "Extras",
+			"supportLabel": "Support after launch",
+			"resultTitle": "Preliminary estimate",
+			"totalLabel": "Total",
+			"termLabel": "Timeline",
+			"fromLabel": "from",
+			"currency": "BYN",
+			"term": "{days, plural, one {# day} other {# days}}",
+			"disclaimer": "An indication, not an offer. We’ll fix the exact quote after the brief.",
+			"cta": "Get an exact quote",
+			"reset": "Reset",
+			"selected": "Selected",
+			"types": [
+				{"id": "landing", "label": "Landing page", "price": 1500, "days": 10},
+				{"id": "corporate", "label": "Corporate website", "price": 3500, "days": 25},
+				{"id": "shop", "label": "Online shop", "price": 6000, "days": 40},
+				{"id": "bot", "label": "Telegram bot", "price": 2000, "days": 10},
+				{"id": "ai", "label": "AI assistant", "price": 2500, "days": 14},
+				{"id": "automation", "label": "Automation", "price": 1800, "days": 10}
+			],
+			"options": [
+				{"id": "design", "label": "Original design", "price": 800, "days": 5},
+				{"id": "copy", "label": "Turnkey copy", "price": 500, "days": 3},
+				{"id": "lang", "label": "Second language", "price": 400, "days": 2},
+				{"id": "crm", "label": "CRM integration", "price": 600, "days": 3},
+				{"id": "analytics", "label": "Analytics and goals", "price": 400, "days": 2}
+			],
+			"supportOptions": [
+				{"id": "none", "label": "No support", "price": 0, "days": 0},
+				{"id": "3m", "label": "3 months", "price": 700, "days": 0},
+				{"id": "12m", "label": "12 months", "price": 2200, "days": 0}
+			]
+		}
+	},
+	"why": {
+		"index": "06",
+		"label": "Why us",
+		"title": "Six reasons to work",
+		"titleAccent": "directly",
+		"items": [
+			{
+				"num": "01",
+				"title": "Prices without agency mark-up",
+				"text": "No sales department, no big office. You pay for the work, not for the sign above the door."
+			},
+			{
+				"num": "02",
+				"title": "Launch in as little as a week",
+				"text": "A landing page or a bot takes one to two weeks. We don’t stretch timelines with endless sign-offs."
+			},
+			{
+				"num": "03",
+				"title": "The quote doesn’t grow mid-project",
+				"text": "We calculate before we start and fix the figure in the contract. New work is quoted separately and in advance."
+			},
+			{
+				"num": "04",
+				"title": "Everything stays yours",
+				"text": "Domain, hosting, code and access are in your name from day one. No black boxes."
+			},
+			{
+				"num": "05",
+				"title": "Talk to the developer",
+				"text": "No middlemen and no forty-page specifications. A direct conversation with the person doing the work."
+			},
+			{
+				"num": "06",
+				"title": "We understand Belarus",
+				"text": "Prices in BYN, payment under contract, Telegram and Viber, local domains and the quirks of the market."
+			}
+		]
+	},
+	"studio": {
+		"index": "07",
+		"label": "Studio",
+		"title": "A small studio with a large",
+		"titleAccent": "toolkit",
+		"body1": "Digital Belarus is an independent studio in Minsk. We build websites, bots and AI workflows for businesses that care less about “being online” and more about bringing in clients.",
+		"body2": "We work as a small core team and bring in proven specialists for each job: designers, copywriters, developers. You always know who is accountable for your project.",
+		"founderName": "Daniil Kuzmin",
+		"founderRole": "Founder · developer and designer",
+		"founderBio": "I design and build digital products: from design system to back end and deployment. I work with clients directly, without middlemen.",
+		"portraitAlt": "Daniil Kuzmin, founder of the Digital Belarus studio",
+		"wave": "Hover or tap to say hello",
+		"facts": [
+			{"label": "Base", "value": "Minsk, Belarus"},
+			{"label": "Format", "value": "remote, across Belarus"},
+			{"label": "Languages", "value": "RU · BE · EN"},
+			{"label": "Payment", "value": "under contract, BYN"}
+		],
+		"links": {
+			"telegram": "Telegram",
+			"github": "GitHub",
+			"personal": "Personal site"
+		}
+	},
+	"faq": {
+		"index": "08",
+		"label": "FAQ",
+		"title": "Short and",
+		"titleAccent": "to the point",
+		"more": "Can’t find your question?",
+		"moreLink": "Ask us directly",
+		"items": [
+			{
+				"question": "What does a website for my business cost?",
+				"answer": "It depends on scope: the number of pages, the design and the integrations. See the plans and the calculator for an indication. Write a couple of lines about the job — we’ll send an exact quote within a day, free and with no obligation."
+			},
+			{
+				"question": "Who writes the copy and chooses the photos?",
+				"answer": "By default you supply the copy and we edit and assemble it. Copywriting and image selection can be handled by us — that’s a separate line in the quote."
+			},
+			{
+				"question": "What’s included in the month of edits?",
+				"answer": "Copy and image changes, small refinements, bug fixes, help with publishing. New sections and redesigns are quoted separately."
+			},
+			{
+				"question": "What does “AI for business” actually mean?",
+				"answer": "We set up workflows where a neural network takes on repetitive tasks: answering clients from your knowledge base, drafting replies and posts, sorting reviews. We don’t “do AI for the sake of AI”."
+			},
+			{
+				"question": "Do you work under contract? How does payment work?",
+				"answer": "Yes, under contract. Standard terms are 30% up front and 70% after handover; larger projects are split into stages. Payment is in Belarusian roubles."
+			},
+			{
+				"question": "What if I don’t like the result?",
+				"answer": "We demo every week and sign off the design before development, so the project never heads off “the wrong way”. If we realise at the start that we’re not aligned on the vision, we’ll say so honestly before any money changes hands."
+			},
+			{
+				"question": "What happens if you stop responding?",
+				"answer": "All access, the domain, hosting and source code are in your name. The site runs independently of the studio, and full documentation is handed over at delivery."
+			},
+			{
+				"question": "How much of my time will this take?",
+				"answer": "One conversation at the start (30–40 minutes) and a couple of short sign-offs. Everything else is our job."
+			},
+			{
+				"question": "Which languages can the site be in?",
+				"answer": "Russian, Belarusian and English — with switching and a shared codebase. We can write the copy ourselves or translate yours."
+			}
+		]
+	},
+	"contact": {
+		"index": "09",
+		"label": "Contact",
+		"title": "Write to us — let’s talk",
+		"titleAccent": "today",
+		"intro": "We’ll send the quote tomorrow. We reply within the hour during business hours — no newsletters, no pushy calls.",
+		"note": "No obligation: first we get to grips with the job and give you a range, then you decide.",
+		"form": {
+			"nameLabel": "Name",
+			"namePlaceholder": "What should we call you",
+			"contactLabel": "Contact details",
+			"contactPlaceholder": "Telegram, phone or e-mail",
+			"serviceLabel": "What you need",
+			"servicePlaceholder": "Choose a service",
+			"serviceOptions": [
+				"Website",
+				"Telegram bot",
+				"AI assistant",
+				"Automation",
+				"Online shop",
+				"Not sure yet"
+			],
+			"budgetLabel": "Budget",
+			"budgetPlaceholder": "Choose a range",
+			"budgetOptions": [
+				"up to 3,000 BYN",
+				"3,000 — 7,000 BYN",
+				"7,000 — 15,000 BYN",
+				"over 15,000 BYN",
+				"not sure yet"
+			],
+			"messageLabel": "About the project",
+			"messagePlaceholder": "A couple of lines about the business and the job — that’s plenty",
+			"consent": "I consent to the processing of my data so the studio can reply to my enquiry, and I accept the privacy policy.",
+			"consentLink": "privacy policy",
+			"submit": "Send via Telegram",
+			"requestTitle": "Enquiry from the Digital Belarus website",
+			"submitting": "Preparing the message…",
+			"successTitle": "Your enquiry is ready",
+			"successNote": "The text has been copied — paste it into the chat that opened. If Telegram didn’t open, message us directly: @kuzminklk.",
+			"errorName": "Please tell us what to call you.",
+			"errorContact": "Please leave a Telegram handle, phone number or e-mail.",
+			"errorConsent": "We need your consent to process your data.",
+			"errorGeneric": "We couldn’t prepare the message. Please message us on Telegram directly.",
+			"fallback": "Open Telegram without the form",
+			"copyHint": "Enquiry text copied to the clipboard",
+			"successNoteFallback": "We couldn’t copy the text automatically — just message us on Telegram, we’re around.",
+			"sendAnother": "Send another"
+		},
+		"channels": {
+			"telegramLabel": "Telegram",
+			"telegramValue": "@kuzminklk",
+			"githubLabel": "GitHub",
+			"githubValue": "kuzminklk",
+			"locationLabel": "Location",
+			"locationValue": "Minsk, Belarus · remote",
+			"hoursLabel": "Hours",
+			"hoursValue": "Mon–Fri · 9:00–20:00",
+			"responseLabel": "Response",
+			"responseValue": "within the hour"
+		},
+		"status": "Open for new projects"
+	},
+	"footer": {
+		"tagline": "A digital observatory for Belarusian business.",
+		"description": "Websites, Telegram bots and AI workflows for companies that are growing.",
+		"navLabel": "Navigation",
+		"servicesLabel": "Services",
+		"contactsLabel": "Contact",
+		"legalLabel": "Legal",
+		"privacyLink": "Privacy policy",
+		"rights": "© {year} Digital Belarus. All rights reserved.",
+		"credit": "Design and development by the Digital Belarus studio",
+		"backToTop": "Back to top",
+		"languageLabel": "Language",
+		"location": "Minsk, Belarus",
+		"status": "Open for projects",
+		"contract": "We work under contract"
+	},
+	"privacy": {
+		"title": "Privacy policy",
+		"metaDescription": "How Digital Belarus handles visitors’ data: no analytics cookies and no sharing with third parties.",
+		"updated": "Updated 26 November 2026",
+		"intro": "In short: we don’t set analytics cookies, we don’t sell data, and we use the information from the form only to reply to your enquiry.",
+		"back": "Back to home",
+		"sections": [
+			{
+				"title": "What data we collect",
+				"body": "Only what you enter in the form: name, contact details, a description of the job and your budget. The form doesn’t send data to a server: the enquiry text is composed in the browser, copied to the clipboard and opened in Telegram — you confirm the send."
+			},
+			{
+				"title": "Why we collect it",
+				"body": "To reply to your enquiry, prepare a quote and discuss the project. We don’t use your data for marketing without separate consent."
+			},
+			{
+				"title": "Cookies and analytics",
+				"body": "The site doesn’t use analytics or advertising cookies. Your chosen language is stored in the page address, not in a cookie."
+			},
+			{
+				"title": "Sharing with third parties",
+				"body": "We don’t share data with third parties except where required by law. Conversations on Telegram are governed by Telegram’s own policy."
+			},
+			{
+				"title": "Your rights",
+				"body": "You can ask us to delete the conversation and related data by messaging us on Telegram. We’ll delete it within a reasonable period."
+			},
+			{
+				"title": "Contact",
+				"body": "For data protection questions, message us on Telegram: @kuzminklk."
+			}
+		]
+	},
+	"notFound": {
+		"code": "404",
+		"title": "Signal lost",
+		"description": "This page wasn’t found, or it has drifted into another galaxy. Head back home — everything there is on its proper orbit.",
+		"cta": "Back to home"
+	}
+}

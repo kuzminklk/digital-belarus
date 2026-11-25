@@ -1,0 +1,149 @@
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: clamp(1.35rem, 3vw, 2.5rem);
+	background: linear-gradient(150deg, rgb(226 69 58 / 5%), transparent 32%), var(--ink-900);
+}
+
+.panelHead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-bottom: 1.1rem;
+	border-bottom: 1px solid var(--line);
+}
+
+.fields {
+	display: grid;
+	gap: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.row {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.consentRow {
+	display: grid;
+	gap: 0.5rem;
+	padding-top: 0.35rem;
+}
+
+.privacyLink {
+	justify-self: start;
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.privacyLink:hover {
+	color: var(--paper);
+}
+
+.submitRow {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+	padding-top: 0.5rem;
+}
+
+.privacyHint {
+	max-width: 24ch;
+	color: var(--muted);
+	font-size: 0.7rem;
+	line-height: 1.45;
+}
+
+/* Success state ----------------------------------------------------------- */
+
+.success {
+	align-items: flex-start;
+	justify-content: center;
+	min-height: 30rem;
+	gap: 1.25rem;
+	background:
+		radial-gradient(80% 60% at 50% 0%, rgb(143 227 176 / 8%), transparent 70%), var(--ink-900);
+}
+
+.successMark {
+	position: relative;
+	width: 4rem;
+	height: 4rem;
+	margin-block: 0.5rem;
+}
+
+.successMark span {
+	position: absolute;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 1px solid var(--aurora);
+}
+
+.successMark span:nth-child(1) {
+	top: 0;
+	left: 0;
+}
+
+.successMark span:nth-child(2) {
+	top: 0;
+	right: 0;
+	border-color: var(--line-strong);
+}
+
+.successMark span:nth-child(3) {
+	bottom: 0;
+	left: 0;
+	border-color: var(--line-strong);
+}
+
+.successMark span:nth-child(4) {
+	right: 0;
+	bottom: 0;
+	background: var(--red);
+	border-color: var(--red);
+}
+
+.successTitle {
+	font-size: clamp(2rem, 3.2vw, 2.8rem);
+}
+
+.successNote {
+	max-width: 40ch;
+	color: var(--muted-strong);
+	font-size: var(--fs-small);
+	line-height: 1.6;
+}
+
+.again {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.again:hover {
+	color: var(--paper);
+}
+
+@media (max-width: 640px) {
+	.row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.panelHead {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+}

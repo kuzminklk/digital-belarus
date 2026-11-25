@@ -1,0 +1,148 @@
+.contact {
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid var(--line);
+	background:
+		radial-gradient(90% 70% at 0% 100%, rgb(226 69 58 / 7%), transparent 55%), var(--ink-900);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+	gap: clamp(2rem, 5vw, 4.5rem);
+	align-items: start;
+}
+
+.side {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.channels {
+	display: grid;
+	border-top: 1px solid var(--line);
+}
+
+.channels li {
+	border-bottom: 1px solid var(--line);
+}
+
+.channel {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding-block: 1rem;
+	transition:
+		padding-left var(--dur) var(--ease-out),
+		color var(--dur) var(--ease-out);
+}
+
+a.channel:hover {
+	padding-left: 0.5rem;
+}
+
+.channelIcon {
+	display: grid;
+	place-items: center;
+	width: 2.1rem;
+	height: 2.1rem;
+	border: 1px solid var(--line);
+	color: var(--red-bright);
+}
+
+.channelBody {
+	display: grid;
+	gap: 0.15rem;
+	flex: 1;
+}
+
+.channelLabel {
+	color: var(--muted);
+}
+
+.channelValue {
+	color: var(--paper);
+	font-size: var(--fs-small);
+	line-height: 1.4;
+}
+
+.channelArrow {
+	color: var(--muted);
+}
+
+a.channel:hover .channelArrow {
+	color: var(--paper);
+}
+
+.statusCard {
+	display: grid;
+	gap: 1.1rem;
+	padding: 1.25rem;
+	border: 1px solid var(--line);
+	background: var(--ink-950);
+}
+
+.statusRow {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.statusText {
+	color: var(--aurora);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.statusMeta {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	color: var(--muted);
+	font-size: var(--fs-small);
+}
+
+.clockRow {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--line-faint);
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.1em;
+}
+
+.clockLabel {
+	display: grid;
+	gap: 0.2rem;
+}
+
+.clockCoordinates {
+	color: var(--muted);
+	font-size: 0.55rem;
+}
+
+.clockRow > span:last-child {
+	color: var(--paper);
+	font-size: 1rem;
+}
+
+.note {
+	max-width: 34ch;
+	color: var(--muted);
+	font-size: var(--fs-small);
+	line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

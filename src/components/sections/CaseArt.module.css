@@ -1,0 +1,56 @@
+.svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.stars {
+	color: var(--paper);
+}
+
+.star {
+	fill: currentColor;
+	opacity: 0.32;
+}
+
+.starBright {
+	fill: var(--paper-warm);
+	opacity: 0.7;
+}
+
+.stroke {
+	stroke: var(--line-strong);
+	stroke-width: 1;
+}
+
+.strokeFaint {
+	stroke: var(--line-faint);
+	stroke-width: 1;
+}
+
+.strokeRed {
+	stroke: var(--red);
+	stroke-width: 1;
+}
+
+.faint {
+	opacity: 0.55;
+}
+
+.fillRed {
+	fill: var(--red);
+}
+
+.fillAurora {
+	fill: var(--aurora);
+}
+
+.fillPaper {
+	fill: var(--paper);
+	opacity: 0.65;
+}
+
+.fillPaperDim {
+	fill: var(--paper-dim);
+	opacity: 0.7;
+}

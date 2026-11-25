@@ -1,0 +1,279 @@
+/* Shared component primitives. Section-specific styling lives in CSS Modules. */
+
+/* Buttons ------------------------------------------------------------------ */
+
+.btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+	min-height: 3.25rem;
+	padding: 0.85rem 1.35rem;
+	border: 1px solid transparent;
+	border-radius: 1px;
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	transition:
+		background-color var(--dur) var(--ease-out),
+		border-color var(--dur) var(--ease-out),
+		color var(--dur) var(--ease-out),
+		transform var(--dur) var(--ease-out);
+}
+
+.btn svg {
+	flex: none;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.btn:hover svg {
+	transform: translate(2px, -2px);
+}
+
+.btn--primary {
+	background: var(--red);
+	color: var(--ink-950);
+}
+
+.btn--primary:hover {
+	background: var(--red-bright);
+}
+
+.btn--ghost {
+	border-color: var(--line-strong);
+	color: var(--paper);
+}
+
+.btn--ghost:hover {
+	border-color: var(--paper);
+	background: rgb(236 233 223 / 6%);
+}
+
+.btn--small {
+	min-height: 2.5rem;
+	padding: 0.55rem 0.9rem;
+	font-size: 0.625rem;
+}
+
+/* Text link with a drawn underline. */
+.link-underline {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding-bottom: 0.2rem;
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--paper);
+}
+
+.link-underline::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	background: currentColor;
+	content: '';
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Tags, chips, micro labels ------------------------------------------------ */
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.28rem 0.5rem;
+	border: 1px solid var(--line);
+	border-radius: 1px;
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	line-height: 1.2;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.status-dot {
+	position: relative;
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--aurora);
+	box-shadow: 0 0 0 0 rgb(143 227 176 / 45%);
+	animation: status-pulse 2.6s var(--ease-in-out) infinite;
+}
+
+@keyframes status-pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgb(143 227 176 / 35%);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgb(143 227 176 / 0%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.status-dot {
+		animation: none;
+	}
+}
+
+/* Surfaces ----------------------------------------------------------------- */
+
+.panel {
+	position: relative;
+	border: 1px solid var(--line);
+	background: linear-gradient(160deg, rgb(236 233 223 / 3%), transparent 45%), var(--ink-900);
+}
+
+.panel::before,
+.panel::after {
+	position: absolute;
+	width: 7px;
+	height: 7px;
+	border-color: var(--line-strong);
+	border-style: solid;
+	content: '';
+	pointer-events: none;
+}
+
+.panel::before {
+	top: -1px;
+	left: -1px;
+	border-width: 1px 0 0 1px;
+}
+
+.panel::after {
+	right: -1px;
+	bottom: -1px;
+	border-width: 0 1px 1px 0;
+}
+
+/* Floating labels / instrument read-outs ----------------------------------- */
+
+.coordinate {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+.hairline {
+	border-top: 1px solid var(--line);
+}
+
+/* Generic form controls ---------------------------------------------------- */
+
+.field {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.field label,
+.field-label {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.input,
+.textarea,
+.select {
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.75rem 0;
+	border: 0;
+	border-bottom: 1px solid var(--line-strong);
+	border-radius: 0;
+	background: transparent;
+	color: var(--paper);
+	font-family: var(--font-sans);
+	font-size: 1rem;
+	outline: none;
+	transition: border-color var(--dur) var(--ease-out);
+}
+
+.textarea {
+	min-height: 7rem;
+	resize: vertical;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+	border-color: var(--red-bright);
+}
+
+.select {
+	appearance: none;
+	cursor: pointer;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238d9aa5'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 0.2rem center;
+}
+
+.select option {
+	background: var(--ink-900);
+	color: var(--paper);
+}
+
+.checkbox {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.7rem;
+	color: var(--muted);
+	font-size: var(--fs-small);
+	line-height: 1.5;
+	cursor: pointer;
+}
+
+.checkbox input {
+	flex: none;
+	width: 1rem;
+	height: 1rem;
+	margin-top: 0.15rem;
+	appearance: none;
+	border: 1px solid var(--line-strong);
+	background: transparent;
+	cursor: pointer;
+}
+
+.checkbox input:checked {
+	border-color: var(--red);
+	background: var(--red);
+	box-shadow: inset 0 0 0 3px var(--ink-900);
+}
+
+.error {
+	color: var(--red-bright);
+	font-size: var(--fs-small);
+}
+
+/* Inputs on a dark surface need a visible autofill state. */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	-webkit-text-fill-color: var(--paper);
+	box-shadow: 0 0 0 1000px var(--ink-900) inset;
+}

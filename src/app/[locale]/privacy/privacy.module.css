@@ -1,0 +1,121 @@
+.page {
+	position: relative;
+	min-height: 80svh;
+	padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 5rem));
+	padding-bottom: clamp(4rem, 8vw, 7rem);
+	background:
+		radial-gradient(70% 50% at 50% 0%, rgb(226 69 58 / 6%), transparent 65%), var(--ink-950);
+}
+
+.ornament {
+	position: absolute;
+	top: var(--header-h);
+	right: 0;
+	left: 0;
+	opacity: 0.5;
+}
+
+.inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	align-self: flex-start;
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.back:hover {
+	color: var(--paper);
+}
+
+.backIcon {
+	transform: rotate(-135deg);
+}
+
+.header {
+	display: grid;
+	gap: 1.1rem;
+	max-width: 62ch;
+}
+
+.title {
+	font-size: var(--fs-h1);
+	line-height: 0.96;
+}
+
+.updated {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.intro {
+	color: var(--paper-dim);
+	font-size: var(--fs-lead);
+	line-height: 1.55;
+}
+
+.sections {
+	display: grid;
+	border-top: 1px solid var(--line);
+}
+
+.section {
+	display: grid;
+	grid-template-columns: 3.5rem minmax(0, 1fr);
+	gap: clamp(1rem, 3vw, 2.5rem);
+	padding-block: clamp(1.5rem, 3vw, 2.25rem);
+	border-bottom: 1px solid var(--line);
+}
+
+.index {
+	color: var(--red-bright);
+	font-family: var(--font-mono);
+	font-size: var(--fs-mono);
+	letter-spacing: 0.1em;
+	padding-top: 0.3rem;
+}
+
+.sectionTitle {
+	margin-bottom: 0.6rem;
+	color: var(--paper);
+	font-family: var(--font-display);
+	font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.sectionBody {
+	max-width: 68ch;
+	color: var(--muted-strong);
+	font-size: var(--fs-body);
+	line-height: 1.7;
+}
+
+.footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.25rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+	.section {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.5rem;
+	}
+}
