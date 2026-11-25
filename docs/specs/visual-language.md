@@ -1,39 +1,35 @@
 # Visual language
 
-Status: implemented
+Status: implemented (v2 — warm two-tone)
 Owner: designer
-Related: [design/visual-language.md](../design/visual-language.md) | [design/ornament.md](../design/ornament.md) | [design/typography.md](../design/typography.md) | [decision 0004](../decisions/0004-pixel-ornament-system.md)
+Related: [design/visual-language.md](../design/visual-language.md) | [design/typography.md](../design/typography.md) | [design/ornament.md](../design/ornament.md) | [design/image-credits.md](../design/image-credits.md) | [decision 0008](../decisions/0008-warm-two-tone-pixel-serif-redesign.md)
 
 ## Problem
 
-The studio must look like a precise, premium Belarusian product studio — not a template, not a Russified SaaS landing and not "space clip-art".
+The first version read as a competent but familiar dark SaaS page: cold blue-black surfaces, three typefaces fighting for hierarchy, signal red and aurora green accents, generic cards and stock-like gradients. It did not carry the archival, observatory atmosphere of the reference and did not feel like one designed object.
 
 ## Behaviour
 
-1. The art direction is a nocturnal observatory: the internet as a night sky, a business as a point of light, Belarus as a constellation.
-2. Surfaces are near-black (`--ink-*`), type is warm paper (`--paper`), signal red (`--red`) marks actions and live accents, aurora green (`--aurora`) marks system/available states, gold is rare.
-3. Display typography is Cormorant Garamond; body is Manrope; technical labels are uppercase, letterspaced JetBrains Mono. All include Cyrillic and Belarusian glyphs.
-4. The identity system includes: a pixel mark, rushnyk ornament strips, a 16×16 pixel icon set, a constellation map of Belarus with Minsk as the reference point, and instrument-style HUD labels.
-5. Ornament is built on integer pixel grids with `crispEdges`; no anti-aliased curves, no drop shadows inside motifs.
-6. Corners stay sharp (0–2 px). Borders are 1 px hairlines. Layouts use a 12-column grid, generous vertical rhythm and deliberate asymmetry.
-7. Motion is slow and mechanical: reveals, orbit rotation, twinkle, marquee, line draws. No bounce, spring, blur or cursor hijacking. Everything respects `prefers-reduced-motion`.
-8. The hero map is the single signature visual; other sections use restrained abstract art rather than photography.
+1. **Two inks only.** Warm near-black `#12100d` and archival cream `#ebe2d1`. No red, green, gold, blue or grey-blue; imagery is also strictly two-tone.
+2. **Printed surfaces.** Entire sections alternate ink and cream (`.on-paper`). The header and footer remain ink. Inversion, not hue, carries emphasis.
+3. **Pixel-serif display.** Hero lines, section headings, the privacy title and the footer wordmark are generated pixel-serif masks: Cormorant Garamond rasterised small, thresholded and nearest-neighbour upscaled. They inherit currentColor through CSS masks and always expose real text to assistive tech.
+4. **Handjet interface/body.** Navigation, labels, buttons, prices, paragraphs and technical read-outs use Handjet, a variable pixel mono with Cyrillic and Belarusian coverage. Uppercase for labels; sentence case for paragraphs.
+5. **Dithered imagery.** Hero, portrait, cases and the archival atlas are 1-bit Floyd–Steinberg dithered and nearest-neighbour upscaled, so individual square pixels are visible. Sources and licences are documented.
+6. **Editorial layout.** Hairline rules, numbered rows, generous empty ink, full-bleed image bands, ink panels inside cream sections and cream cards inside ink sections. No rounded cards, no glows, no gradients, no soft shadows.
+7. **Identity.** Cream square stamp with a black pixel rushnyk star. Thin embroidered rushnyk rules are used sparingly as dividers.
+8. **Motion.** Slow reveal fades, small underline draws and the scroll cue. Everything respects `prefers-reduced-motion`.
 
 ## Acceptance criteria
 
-- [x] All colours, fonts, spacing and durations come from tokens.
-- [x] Ornament components are decorative and crisp at 1×/1.5×/2×.
-- [x] The page still reads well with images/fonts blocked (system serif fallback).
-- [x] Reduced motion freezes all decorative animation.
-- [x] No stock photos, icon libraries or CSS frameworks.
-- [x] The mark, ornament, icons, map and OG image feel like one system.
+- [x] No colour outside the two-tone palette in UI or imagery.
+- [x] Display headings are pixel-serif masks; body/UI is Handjet; no smooth display font is used.
+- [x] Sections alternate ink and cream; header/footer stay ink.
+- [x] Mark, rules, icons, imagery and type feel like one system at 390/768/1440 px in all locales.
+- [x] Pixel art stays crisp (masks are thresholded; imagery is nearest-neighbour).
+- [x] Reduced motion yields a static readable page.
 
 ## Out of scope
 
-- Light theme.
-- Illustrated characters or 3D.
-- Per-client brand theming.
-
-## Verification
-
-Visual QA in `docs/qa`, screenshots at 360/768/1440 px in all locales.
+- Light mode or theme switching.
+- More than two colours.
+- Stock photography, 3D, illustration styles other than 1-bit pixel art.

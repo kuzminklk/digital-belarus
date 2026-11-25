@@ -4,7 +4,7 @@
 
 «Цифровая Беларусь» is the website of an independent digital studio in Minsk. It sells websites, Telegram bots, AI assistants and automation to Belarusian businesses: a single, fast landing page in Russian, Belarusian and English with a transparent pricing calculator and a brief that is handed off to Telegram.
 
-The visual language treats the internet as a night sky: a business is a point of light, a website is the instrument that finds it. Belarus is drawn as a constellation, and its traditional rushnyk ornament is rebuilt on a pixel grid. The result is a nocturnal observatory, not a generic SaaS page.
+The visual language is a warm two-colour observatory: near-black ink and archival cream paper, a pixel-serif display face generated from Cormorant Garamond, a pixel mono (Handjet) for the interface and body, and 1-bit dithered imagery (NASA lunar photography, archival star charts, Belarusian craft, a pixel-art bot interface). Sections alternate full ink and full cream surfaces; there is no accent hue anywhere. Belarus is still present through the pixel rushnyk mark, ornament rules and the Minsk/53.9006°N read-outs.
 
 ![Digital Belarus landing page](docs/qa/screenshots/desktop-hero.jpg)
 
@@ -14,10 +14,10 @@ Development: Visual Studio Code, Artificial intelligence assistance
 Framework: Next.js 16 (App Router), React 19, TypeScript (strict)  
 Internationalisation: next-intl 4 — Russian (`ru`), Belarusian (`be`), English (`en`)  
 Styling: hand-written CSS Modules, CSS custom properties, design tokens  
-Graphics: inline SVG, deterministic SVG/canvas-free star map, pixel-art ornament components  
-Typography: Cormorant Garamond, Manrope, JetBrains Mono (self-hosted WOFF2, Cyrillic + Belarusian subsets)  
+Design system: custom pixel-serif masks (generated from Cormorant Garamond), Handjet pixel mono, pixel mark and rushnyk rules, 1-bit dithered imagery  
+Graphics: inline SVG, generated pixel assets, archival public-domain photography  
 Formatting and checks: Prettier, ESLint, TypeScript, Vitest, custom i18n parity script  
-Deployment: Vercel (static rendering, no runtime dependencies)  
+Deployment: Vercel (fully static pre-rendering, no runtime dependencies)  
 Version control: Git, GitHub
 
 ### Documentation
@@ -25,29 +25,32 @@ Version control: Git, GitHub
 - [AGENTS.md](AGENTS.md) — project guide for artificial-intelligence agents
 - [docs/specs](docs/specs) — feature specifications and acceptance criteria
 - [docs/decisions](docs/decisions) — architecture decision records
-- [docs/design](docs/design) — visual language, ornament and typography
+- [docs/design](docs/design) — visual language, pixel type, ornament, image credits
 - [docs/content](docs/content) — translation policy and glossary
+- [docs/qa](docs/qa) — verification reports and production screenshots
 - [docs/ops](docs/ops) — deployment and operations
 
 ## State
 
 ### Path
 
-Developed with DeepSeek Harness and an Agent Team (lead, designer, frontend, content, deployment).
+Built with DeepSeek Harness and an Agent Team (lead, designer, frontend, content, deployment).
 
 1. Defined the studio positioning, services, packages, cases and FAQ based on the "website, bots and AI for local business" model
-2. Built the observatory identity: pixel rushnyk mark, ornament strips, custom icon set and a Belarus constellation star map
-3. Implemented the trilingual landing page, pricing calculator, case dialogs and Telegram brief handoff
-4. Added SEO (per-locale metadata, hreflang, sitemap, OG images), accessibility and reduced-motion support
-5. Documented the architecture, design system, content policy and deployment
-6. Published the repository on GitHub and launched production on Vercel with automatic deploys from `main`
+2. Built the first observatory identity and launched the trilingual site
+3. **v2 redesign:** moved from the cold serif/red/green system to a strict warm two-tone world — generated pixel-serif headings, Handjet pixel body, dithered 1-bit imagery, cream/ink editorial sections, no accent hues
+4. Implemented the trilingual landing page, pricing calculator, case dialogs and Telegram brief handoff
+5. Added SEO (per-locale metadata, hreflang, sitemap, OG images), accessibility and reduced-motion support
+6. Documented the architecture, design system, content policy and deployment
+7. Published the repository on GitHub and launched production on Vercel with automatic deploys from `main`
 
 ### To-dos
 
 - Add real client testimonials and replace the two concept cases when commercial projects are available
+- Replace the concept imagery with real client photography when it exists
 - Add automated visual regression and Lighthouse checks to CI
 - Wire the brief form to a serverless Telegram delivery endpoint (optional; the current flow uses a safe client-side handoff)
-- Consider a custom domain and a small performance pass on the below-the-fold client islands (Lighthouse performance 85–87 locally, accessibility/SEO 100)
+- Consider a custom domain
 
 ## Usage
 
@@ -81,6 +84,17 @@ pnpm check        # typecheck + lint + locale parity + unit tests
 pnpm format       # write Prettier formatting
 ```
 
+### Regenerate art
+
+```bash
+python3 scripts/generate-pixel-type.py   # pixel-serif heading masks (requires Cormorant TTF, downloaded on first run)
+python3 scripts/generate-pixel-images.py # dithered hero, portrait, case and atlas imagery
+python3 scripts/generate-og.py           # per-locale Open Graph images
+python3 scripts/generate-brand-assets.py # favicon and app icons
+```
+
+Run `generate-pixel-type.py` after changing any display heading copy; it reads `messages/*.json` and writes `public/type/**` plus `src/content/pixel-type.json`.
+
 ### Visit
 
 Production: [https://digital-belarus.vercel.app](https://digital-belarus.vercel.app)
@@ -97,39 +111,34 @@ git clone https://github.com/kuzminklk/digital-belarus
 
 ```text
 messages/            ru.json (source), be.json, en.json — every user-facing string
-public/              fonts, brand assets, founder portrait, OG images
-scripts/             check-i18n.mjs and asset generation helpers
+public/
+  fonts/             Handjet WOFF2 subsets
+  type/              generated pixel-serif masks per locale
+  pixel/             dithered 1-bit imagery (hero, portrait, cases, atlas)
+  og/                per-locale Open Graph images
+  brand/             mark source
+scripts/             i18n check, pixel type generator, image/OG/icon generators
 src/app/[locale]/    locale layout, landing page, privacy policy, 404
 src/components/
-  brand/             pixel mark, rushnyk ornament, icons, constellation map
+  brand/             pixel mark, pixel type, rushnyk, icons
   layout/            header, footer, grain
   sections/          hero and all content sections
-  ui/                section heading, reveal, marquee, arrows
-src/content/         language-independent data (Belarus outline)
+  ui/                section heading, reveal, arrows
+src/content/         language-independent data (Belarus outline, type manifest)
 src/i18n/            routing, request config, navigation helpers
 src/lib/             site constants, SEO helpers, pricing calculator logic
 src/styles/          fonts, design tokens, base layer, shared primitives
 tests/               unit tests for pure logic
-docs/                specs, decisions, design, content, ops
+docs/                specs, decisions, design, content, qa, ops
 ```
 
 ## Content & language policy
 
 The user-facing content is Russian, Belarusian and English; code, comments and documentation are English. Russian is the primary catalogue and the source for translations. The brand is «Цифровая Беларусь» in Russian, «Цыфровая Беларусь» in Belarusian and "Digital Belarus" in English. See [docs/content](docs/content) and [docs/decisions/0003-message-catalogs-as-content.md](docs/decisions/0003-message-catalogs-as-content.md).
 
-## Deployment
-
-| Item        | Value                                                                      |
-| ----------- | -------------------------------------------------------------------------- |
-| Production  | https://digital-belarus.vercel.app                                         |
-| Team alias  | https://digital-belarus-kuzminklk-projects.vercel.app                      |
-| Hosting     | Vercel, Next.js framework preset, root `./`                                |
-| Git         | `kuzminklk/digital-belarus`, production branch `main`, auto-deploy on push |
-| Environment | none required; canonical URL comes from `VERCEL_PROJECT_PRODUCTION_URL`    |
-
 ## Credits
 
-Design direction inspired by the [NOCTRA Observatory website concept](https://www.behance.net/gallery/248063485/NOCTRA-Observatory-Website-Design-UXUI); content structure inspired by [Volga Digital](https://volga-digital.ru/). Belarus border data: Natural Earth (public domain). Typefaces: Google Fonts, SIL Open Font License. Founder portrait: the founder's GitHub avatar.
+Design direction inspired by the [NOCTRA Observatory website concept](https://www.behance.net/gallery/248063485/NOCTRA-Observatory-Website-Design-UXUI); content structure inspired by [Volga Digital](https://volga-digital.ru/). Imagery: NASA Apollo 17 (public domain), Cellarius _Atlas Coelestis_ (CC0/BL), CC0 and CC BY-SA 4.0 sources documented in [docs/design/image-credits.md](docs/design/image-credits.md). Typefaces: Cormorant Garamond and Handjet, SIL Open Font License. Founder portrait: the founder's GitHub avatar.
 
 ## License
 

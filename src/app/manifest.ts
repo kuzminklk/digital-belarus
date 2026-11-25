@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
 			'Websites, Telegram bots and AI for business in Belarus — a digital studio from Minsk.',
 		start_url: '/ru',
 		display: 'standalone',
-		background_color: '#05080b',
-		theme_color: '#05080b',
+		background_color: '#12100d',
+		theme_color: '#12100d',
 		lang: 'ru',
 		icons: [
 			{src: '/icon.png', sizes: '512x512', type: 'image/png'},

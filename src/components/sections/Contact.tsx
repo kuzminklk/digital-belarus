@@ -55,6 +55,7 @@ export default async function Contact() {
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.contact"
 					intro={t('intro')}
 				/>
 

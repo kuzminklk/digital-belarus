@@ -1,9 +1,9 @@
 import type {Metadata} from 'next';
-import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {getLocale, getTranslations, setRequestLocale} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import {pageMetadata} from '@/lib/seo';
-import Rushnyk from '@/components/brand/Rushnyk';
+import PixelType from '@/components/brand/PixelType';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import styles from './privacy.module.css';
 
@@ -30,13 +30,10 @@ export default async function PrivacyPage({params}: PrivacyPageProps) {
 	const t = await getTranslations('privacy');
 	const common = await getTranslations('common');
 	const sections = t.raw('sections') as PrivacySection[];
+	const currentLocale = await getLocale();
 
 	return (
-		<article className={styles.page}>
-			<div className={styles.ornament} aria-hidden="true">
-				<Rushnyk variant="wave" tone="muted" height={18} animated={false} />
-			</div>
-
+		<article className={`on-paper ${styles.page}`}>
 			<div className={`container-narrow ${styles.inner}`}>
 				<Link href="/" className={styles.back}>
 					<ArrowIcon size={12} className={styles.backIcon} />
@@ -44,8 +41,15 @@ export default async function PrivacyPage({params}: PrivacyPageProps) {
 				</Link>
 
 				<header className={styles.header}>
-					<p className="mono muted">{common('brandLatin')} / LEGAL</p>
-					<h1 className={styles.title}>{t('title')}</h1>
+					<p className="mono">{common('brandLatin')} / LEGAL</p>
+					<h1 className={styles.title}>
+						<PixelType
+							locale={currentLocale}
+							name="page.privacy"
+							text={t('title')}
+							maxWidth={900}
+						/>
+					</h1>
 					<p className={styles.updated}>{t('updated')}</p>
 					<p className={styles.intro}>{t('intro')}</p>
 				</header>
@@ -65,7 +69,7 @@ export default async function PrivacyPage({params}: PrivacyPageProps) {
 				</div>
 
 				<footer className={styles.footer}>
-					<p className="mono muted">
+					<p className="mono">
 						{common('brand')} · {common('minsk')}
 					</p>
 					<Link href="/" className="link-underline">

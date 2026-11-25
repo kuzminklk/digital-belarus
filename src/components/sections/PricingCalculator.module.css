@@ -1,122 +1,54 @@
 .calculator {
 	scroll-margin-top: calc(var(--header-h) + 1rem);
-	position: relative;
-	overflow: hidden;
 	border-top: 1px solid var(--line);
-	background:
-		radial-gradient(55% 45% at 0% 100%, rgb(143 227 176 / 4%), transparent 60%), var(--ink-900);
 }
 
 .layout {
 	display: grid;
-	grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
-	gap: clamp(1.75rem, 4vw, 4rem);
+	grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.72fr);
+	gap: clamp(2rem, 4vw, 4.5rem);
 	align-items: start;
 }
 
 .form {
 	display: grid;
-	gap: clamp(1.6rem, 3vw, 2.5rem);
+	gap: clamp(1.5rem, 3vw, 2.5rem);
 	min-width: 0;
 }
 
 .group {
-	display: grid;
-	gap: 0.85rem;
 	margin: 0;
-	padding: 0;
+	padding: clamp(1.25rem, 2.4vw, 2rem) 0 0;
 	border: 0;
+	border-top: 1px solid var(--line);
+	min-width: 0;
+}
+
+.group:first-of-type {
+	padding-top: 0;
+	border-top: 0;
 }
 
 .legend {
 	display: flex;
-	align-items: center;
-	gap: 0.65rem;
+	align-items: baseline;
+	gap: 0.75rem;
 	padding: 0;
-	color: var(--paper-dim);
+	margin-bottom: 0.75rem;
 }
 
 .legendIndex {
-	color: var(--red-bright);
-	letter-spacing: 0.18em;
+	color: var(--muted);
+	font-size: 0.68rem;
 }
 
-.types,
-.options {
-	display: grid;
-	gap: 1px;
-	border: 1px solid var(--line);
-	background: var(--line);
-}
-
-.types {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.options {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.types > :last-child:nth-child(odd),
-.options > :last-child:nth-child(odd) {
-	grid-column: 1 / -1;
-}
-
-.support {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1px;
-	border: 1px solid var(--line);
-	background: var(--line);
-}
-
-.typeRow,
-.optionRow,
-.supportRow {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
-	gap: 0.75rem;
-	min-width: 0;
-	padding: 0.85rem 0.95rem;
-	background: var(--ink-950);
-	cursor: pointer;
-	transition: background-color var(--dur) var(--ease-out);
-}
-
-.typeRow {
-	min-height: 4.5rem;
-}
-
-.typeRow:hover,
-.optionRow:hover,
-.supportRow:hover {
-	background: var(--ink-900);
-}
-
-.typeRow[data-active='true'],
-.optionRow[data-active='true'],
-.supportRow[data-active='true'] {
-	background: var(--ink-850);
-}
-
-.typeRow[data-active='true']::before,
-.optionRow[data-active='true']::before,
-.supportRow[data-active='true']::before {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	width: 2px;
-	background: var(--red);
-	content: '';
-}
-
-.typeRow:focus-within,
-.optionRow:focus-within,
-.supportRow:focus-within {
-	outline: 1px solid var(--red-bright);
-	outline-offset: -1px;
+.legendLabel {
+	color: var(--paper);
+	font-family: var(--font-pixel);
+	font-size: 0.85rem;
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
 }
 
 .control {
@@ -128,69 +60,176 @@
 }
 
 .mark {
-	position: relative;
-	display: grid;
-	flex: none;
-	place-items: center;
-	width: 0.85rem;
-	height: 0.85rem;
-	margin-top: 0.2rem;
+	align-self: center;
+	width: 0.7rem;
+	height: 0.7rem;
 	border: 1px solid var(--line-strong);
-	transition: border-color var(--dur) var(--ease-out);
+	transition:
+		background-color var(--dur) var(--ease-out),
+		border-color var(--dur) var(--ease-out);
 }
 
-.mark::after {
-	width: 5px;
-	height: 5px;
-	background: var(--red-bright);
-	content: '';
-	transform: rotate(45deg) scale(0);
-	transition: transform var(--dur) var(--ease-out);
+.typeRow,
+.optionRow,
+.supportRow {
+	cursor: pointer;
 }
 
-[data-active='true'] .mark {
-	border-color: var(--red);
+.typeRow:focus-within,
+.optionRow:focus-within,
+.supportRow:focus-within {
+	outline: 1px solid currentColor;
+	outline-offset: -1px;
 }
 
-[data-active='true'] .mark::after {
-	transform: rotate(45deg) scale(1);
+/* Types — full-width rows with big prices. */
+.typeList {
+	border-top: 1px solid var(--line-faint);
 }
 
-.rowBody {
+.typeRow {
 	display: grid;
-	gap: 0.2rem;
-	min-width: 0;
-	flex: 1;
+	grid-template-columns: 1rem minmax(0, 1fr) auto;
+	align-items: baseline;
+	gap: 0.9rem;
+	padding-block: 0.85rem;
+	border-bottom: 1px solid var(--line-faint);
+	transition: color var(--dur) var(--ease-out);
 }
 
-.rowLabel {
+.typeRow:hover {
+	color: var(--paper-warm);
+}
+
+.typeLabel {
+	color: var(--paper-dim);
+	font-size: var(--fs-body);
+	line-height: 1.35;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.typeRow[data-active='true'] .typeLabel {
 	color: var(--paper);
+}
+
+.typePrice {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.3rem;
+	color: var(--paper-dim);
+	font-family: var(--font-pixel);
+	font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+	font-weight: 400;
+	line-height: 1.1;
+	white-space: nowrap;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.typeRow[data-active='true'] .typePrice {
+	color: var(--paper);
+}
+
+.unit {
+	color: var(--muted);
+	font-size: 0.62em;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+/* Options — two hairline columns. */
+.optionList {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: clamp(1.25rem, 2.5vw, 2.5rem);
+	border-top: 1px solid var(--line-faint);
+}
+
+.optionRow {
+	display: grid;
+	grid-template-columns: 1rem minmax(0, 1fr);
+	align-items: start;
+	gap: 0.75rem;
+	padding-block: 0.7rem;
+	border-bottom: 1px solid var(--line-faint);
+}
+
+.optionBody,
+.supportBody {
+	display: grid;
+	gap: 0.15rem;
+	min-width: 0;
+}
+
+.optionLabel {
+	color: var(--paper-dim);
+	font-size: var(--fs-small);
+	line-height: 1.4;
+	transition: color var(--dur) var(--ease-out);
+}
+
+.optionRow[data-active='true'] .optionLabel {
+	color: var(--paper);
+}
+
+.optionPrice {
+	color: var(--muted);
+	font-family: var(--font-pixel);
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+}
+
+/* Support — three short columns. */
+.supportList {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	column-gap: clamp(1rem, 2vw, 2rem);
+	border-top: 1px solid var(--line-faint);
+}
+
+.supportRow {
+	display: grid;
+	grid-template-columns: 1rem minmax(0, 1fr);
+	align-items: start;
+	gap: 0.65rem;
+	padding-block: 0.85rem;
+	border-bottom: 1px solid var(--line-faint);
+}
+
+.supportLabel {
+	color: var(--paper-dim);
 	font-size: var(--fs-small);
 	line-height: 1.35;
+	transition: color var(--dur) var(--ease-out);
 }
 
-.rowPrice {
+.supportRow[data-active='true'] .supportLabel {
+	color: var(--paper);
+}
+
+.supportPrice {
 	color: var(--muted);
-	font-family: var(--font-mono);
-	font-size: 0.6rem;
-	letter-spacing: 0.05em;
+	font-family: var(--font-pixel);
+	font-size: 0.78rem;
+	letter-spacing: 0.04em;
 }
 
-.supportRow .rowBody {
-	gap: 0.3rem;
+/* Selected marks — square, 1-bit. */
+.typeRow[data-active='true'] .mark,
+.optionRow[data-active='true'] .mark,
+.supportRow[data-active='true'] .mark {
+	border-color: var(--paper);
+	background: var(--paper);
+	box-shadow: inset 0 0 0 2px var(--ink-950);
 }
 
-.supportRow .rowLabel {
-	font-size: 0.8125rem;
-}
-
+/* Result — cream estimate sheet. */
 .result {
 	position: sticky;
 	top: calc(var(--header-h) + 1.5rem);
 	display: grid;
-	gap: 1rem;
-	padding: clamp(1.2rem, 2.2vw, 1.9rem);
-	background: var(--ink-950);
+	gap: 0.9rem;
+	padding: clamp(1.25rem, 2.2vw, 1.9rem);
+	border: 1px solid var(--line-strong);
 }
 
 .resultHead {
@@ -200,91 +239,74 @@
 	gap: 1rem;
 }
 
-.resultKicker {
+.kicker {
 	color: var(--muted);
-	font-size: 0.575rem;
+	font-size: 0.66rem;
 }
 
-.resultStatus {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.45rem;
-	color: var(--aurora);
-	font-family: var(--font-mono);
-	font-size: 0.55rem;
-	letter-spacing: 0.12em;
-}
-
-.resultDot {
+.statusMark {
 	width: 5px;
 	height: 5px;
-	border-radius: 50%;
-	background: var(--aurora);
-	animation: pulse 2.8s var(--ease-in-out) infinite;
-}
-
-@keyframes pulse {
-	0%,
-	100% {
-		opacity: 0.45;
-	}
-	50% {
-		opacity: 1;
-	}
+	background: currentColor;
 }
 
 .resultTitle {
-	font-size: clamp(1.35rem, 2.1vw, 1.75rem);
-	line-height: 1;
+	font-family: var(--font-pixel);
+	font-size: clamp(1.3rem, 2vw, 1.7rem);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	line-height: 1.05;
+	text-transform: uppercase;
 }
 
 .live {
 	display: grid;
-	gap: 0.75rem;
-	padding-block: clamp(0.85rem, 1.6vw, 1.15rem);
+	gap: 0.65rem;
+	padding-block: 0.9rem;
 	border-block: 1px solid var(--line);
 }
 
 .totalRow {
 	display: grid;
-	gap: 0.25rem;
+	gap: 0.2rem;
 }
 
 .totalLabel {
 	color: var(--muted);
-	font-size: 0.575rem;
+	font-size: 0.62rem;
 }
 
 .total {
 	display: flex;
 	align-items: baseline;
 	flex-wrap: wrap;
-	gap: 0.35rem;
-	color: var(--paper-warm);
+	gap: 0.3rem;
 }
 
 .totalPrefix {
 	color: var(--muted);
-	font-family: var(--font-mono);
-	font-size: 0.6875rem;
-	letter-spacing: 0.06em;
+	font-family: var(--font-pixel);
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
 
 .totalAmount {
-	font-family: var(--font-display);
-	font-size: clamp(2.4rem, 3.6vw, 3.35rem);
-	font-weight: 400;
+	color: inherit;
+	font-family: var(--font-pixel);
+	font-size: clamp(2.6rem, 4vw, 3.5rem);
+	font-weight: 300;
 	line-height: 0.9;
-	letter-spacing: -0.03em;
+	letter-spacing: -0.02em;
 	font-variant-numeric: tabular-nums;
 }
 
 .totalCurrency {
-	color: var(--paper-dim);
-	font-family: var(--font-mono);
-	font-size: 0.6875rem;
+	color: var(--muted);
+	font-family: var(--font-pixel);
+	font-size: 0.8rem;
 	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
 .termRow {
@@ -295,75 +317,62 @@
 }
 
 .termValue {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.4rem;
-	color: var(--paper);
-	font-family: var(--font-mono);
-	font-size: 0.75rem;
-	letter-spacing: 0.04em;
-}
-
-.termIcon {
-	color: var(--red-bright);
+	color: inherit;
+	font-family: var(--font-pixel);
+	font-size: 0.95rem;
+	line-height: 1.3;
 }
 
 .selection {
 	display: grid;
-	gap: 0.5rem;
+	gap: 0.4rem;
 }
 
 .selectionLabel {
 	color: var(--muted);
-	font-size: 0.575rem;
+	font-size: 0.62rem;
 }
 
 .selectionList {
 	display: grid;
-	gap: 0.3rem;
-	color: var(--paper-dim);
-	font-size: 0.8125rem;
-	line-height: 1.4;
+	gap: 0.22rem;
 }
 
 .selectionList li {
 	display: flex;
-	align-items: flex-start;
-	gap: 0.55rem;
+	gap: 0.5rem;
+	color: var(--muted-strong);
+	font-size: 0.85rem;
+	line-height: 1.4;
 }
 
 .selectionList li::before {
-	flex: none;
-	width: 4px;
-	height: 4px;
-	margin-top: 0.55em;
-	border: 1px solid var(--red);
-	content: '';
-	transform: rotate(45deg);
+	color: var(--muted);
+	content: '—';
 }
 
 .disclaimer {
 	color: var(--muted);
 	font-size: 0.75rem;
-	line-height: 1.55;
+	line-height: 1.5;
 }
 
 .actions {
 	display: grid;
-	gap: 0.75rem;
+	gap: 0.7rem;
 }
 
-.actions .btn {
+.resultCta {
 	width: 100%;
 }
 
 .reset {
 	justify-self: center;
-	padding: 0.35rem 0;
+	padding: 0.3rem 0;
 	border-bottom: 1px solid transparent;
 	color: var(--muted);
-	font-family: var(--font-mono);
-	font-size: 0.625rem;
+	font-family: var(--font-pixel);
+	font-size: 0.7rem;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	transition:
@@ -372,8 +381,8 @@
 }
 
 .reset:hover {
-	border-bottom-color: var(--line-strong);
-	color: var(--paper);
+	border-bottom-color: currentColor;
+	color: inherit;
 }
 
 @media (max-width: 1080px) {
@@ -387,42 +396,26 @@
 }
 
 @media (max-width: 640px) {
-	.types,
-	.options,
-	.support {
+	.optionList,
+	.supportList {
 		grid-template-columns: minmax(0, 1fr);
-	}
-
-	.types > :last-child:nth-child(odd),
-	.options > :last-child:nth-child(odd) {
-		grid-column: auto;
-	}
-
-	.typeRow,
-	.optionRow,
-	.supportRow {
-		min-height: 0;
 	}
 
 	.termRow {
 		align-items: flex-start;
 		flex-direction: column;
-		gap: 0.35rem;
+		gap: 0.3rem;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.typeRow,
-	.optionRow,
-	.supportRow,
 	.mark,
-	.mark::after,
+	.typeRow,
+	.typeLabel,
+	.typePrice,
+	.optionLabel,
+	.supportLabel,
 	.reset {
 		transition: none;
-	}
-
-	.resultDot {
-		animation: none;
-		opacity: 1;
 	}
 }

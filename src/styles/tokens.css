@@ -1,60 +1,62 @@
-/* Design tokens — Digital Belarus.
-   The visual language is a nocturnal observatory: near-black skies, warm paper
-   type, a signal-red accent and a cold aurora green. All colour, type, spacing
-   and motion decisions should reference these tokens. */
+/* Design tokens — Digital Belarus v2.
+   A strict two-tone, warm monochrome observatory: near-black ink and archival
+   cream paper. There are no accent hues; hierarchy is carried by scale, case,
+   texture and pixel-art typography. */
 
 :root {
-	/* Surfaces */
-	--ink-1000: #030507;
-	--ink-950: #05080b;
-	--ink-900: #070b10;
-	--ink-850: #0a0f15;
-	--ink-800: #0d141b;
-	--ink-750: #111a22;
-	--ink-700: #15212b;
-	--ink-600: #1c2b36;
+	/* Warm ink surfaces */
+	--ink-1000: #0a0806;
+	--ink-950: #12100d;
+	--ink-900: #171410;
+	--ink-850: #1c1813;
+	--ink-800: #231e18;
+	--ink-750: #2a241d;
+	--ink-700: #322b22;
+	--ink-600: #3d3529;
 
-	/* Type */
-	--paper: #ece9df;
-	--paper-warm: #f5f1e6;
-	--paper-dim: #c7c3b7;
-	--muted: #8d9aa5;
-	--muted-strong: #b6c0c8;
+	/* Archival paper */
+	--paper: #ebe2d1;
+	--paper-warm: #f7f0e0;
+	--paper-dim: #cfc3ae;
+	--muted: #9d907b;
+	--muted-strong: #b9ac95;
 
-	/* Lines */
-	--line: rgb(236 233 223 / 12%);
-	--line-strong: rgb(236 233 223 / 26%);
-	--line-faint: rgb(236 233 223 / 7%);
+	/* Hairlines */
+	--line: rgb(235 226 209 / 15%);
+	--line-strong: rgb(235 226 209 / 32%);
+	--line-faint: rgb(235 226 209 / 8%);
 
-	/* Accents */
-	--red: #e2453a;
-	--red-bright: #ff6a58;
-	--red-deep: #a52620;
-	--aurora: #8fe3b0;
-	--teal: #6fd8c4;
-	--gold: #c9a86a;
-	--signal: var(--red);
+	/* Legacy aliases — v2 is monochrome. Old components that still mention
+	   accents resolve to paper until their sections are restyled. */
+	--red: var(--paper);
+	--red-bright: var(--paper);
+	--red-deep: var(--paper-dim);
+	--aurora: var(--paper-dim);
+	--teal: var(--paper-dim);
+	--gold: var(--paper-dim);
+	--signal: var(--paper);
 
 	/* Typography */
-	--font-display: 'Cormorant Garamond', 'Times New Roman', serif;
-	--font-sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+	--font-pixel: 'Handjet', 'Courier New', monospace;
+	--font-sans: var(--font-pixel);
+	--font-display: var(--font-pixel);
+	--font-mono: var(--font-pixel);
 
-	--fs-display: clamp(3.4rem, 11.5vw, 10.5rem);
-	--fs-h1: clamp(2.8rem, 7.5vw, 6.5rem);
-	--fs-h2: clamp(2.1rem, 5vw, 4.25rem);
-	--fs-h3: clamp(1.35rem, 2.2vw, 1.85rem);
-	--fs-lead: clamp(1.05rem, 1.45vw, 1.35rem);
-	--fs-body: clamp(0.975rem, 1.05vw, 1.0625rem);
-	--fs-small: 0.875rem;
-	--fs-micro: 0.6875rem;
-	--fs-mono: clamp(0.66rem, 0.8vw, 0.75rem);
+	--fs-display: clamp(3.5rem, 10vw, 9rem);
+	--fs-h1: clamp(2.6rem, 6.5vw, 5.5rem);
+	--fs-h2: clamp(2rem, 4.2vw, 3.5rem);
+	--fs-h3: clamp(1.5rem, 2.4vw, 2rem);
+	--fs-lead: clamp(1.2rem, 1.7vw, 1.5rem);
+	--fs-body: clamp(1.05rem, 1.2vw, 1.2rem);
+	--fs-small: 1rem;
+	--fs-micro: 0.85rem;
+	--fs-mono: 0.8rem;
 
 	/* Layout */
 	--container: 1480px;
 	--container-narrow: 1080px;
 	--gutter: clamp(1.25rem, 3.6vw, 4rem);
-	--section-y: clamp(5rem, 9vw, 9.5rem);
+	--section-y: clamp(5rem, 9.5vw, 10rem);
 	--header-h: 4.5rem;
 
 	/* Motion */
@@ -64,10 +66,8 @@
 	--dur: 420ms;
 	--dur-slow: 900ms;
 
-	/* Effects */
-	--glow-red: 0 0 0 1px rgb(226 69 58 / 35%), 0 0 48px -12px rgb(226 69 58 / 45%);
-	--glow-aurora: 0 0 60px -20px rgb(143 227 176 / 35%);
-	--shadow-panel: 0 24px 80px -40px rgb(0 0 0 / 90%);
+	/* Effects — v2 deliberately has no glow. */
+	--shadow-panel: 0 24px 80px -50px rgb(0 0 0 / 90%);
 
 	/* Z-index */
 	--z-base: 0;

@@ -21,81 +21,74 @@ export default async function Pricing() {
 	const tiers = t.raw('tiers') as Tier[];
 
 	return (
-		<section id="pricing" className={`section ${styles.pricing}`} aria-label={t('label')}>
+		<section
+			id="pricing"
+			className={`section on-paper ${styles.pricing}`}
+			aria-label={t('label')}
+		>
 			<div className="container">
 				<SectionHeading
 					index={t('index')}
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.pricing"
 					intro={t('intro')}
 				/>
 
 				<ul className={styles.grid}>
 					{tiers.map((tier, index) => (
 						<li
-							className={styles.cell}
+							className={styles.tier}
 							key={tier.id}
-							data-popular={tier.popular ? 'true' : 'false'}
+							data-featured={tier.popular ? 'true' : 'false'}
 						>
-							<Reveal className={styles.reveal} delay={index * 110}>
+							<Reveal className={styles.reveal} delay={index * 80}>
 								<article
 									className={styles.card}
 									aria-labelledby={`tier-${tier.id}-name`}
 								>
-									<div className={styles.badgeRow}>
+									<div className={styles.head}>
+										<span className={`mono ${styles.index}`} aria-hidden="true">
+											TH / 0{index + 1}
+										</span>
 										{tier.popular ? (
-											<span className={`mono ${styles.badge}`}>
-												<span
-													className={styles.badgeDot}
-													aria-hidden="true"
-												/>
-												{t('popular')}
-											</span>
+											<span className="tag">{t('popular')}</span>
 										) : null}
 									</div>
 
-									<header className={styles.head}>
-										<p className={`mono ${styles.index}`} aria-hidden="true">
-											TH / 0{index + 1}
-										</p>
-										<h3 id={`tier-${tier.id}-name`} className={styles.name}>
-											{tier.name}
-										</h3>
-										<p className={styles.description}>{tier.description}</p>
-									</header>
+									<h3 id={`tier-${tier.id}-name`} className={styles.name}>
+										{tier.name}
+									</h3>
+									<p className={styles.description}>{tier.description}</p>
 
-									<div className={styles.priceRow}>
-										<p className={styles.price}>
-											{tier.pricePrefix ? (
-												<span className={styles.prefix}>
-													{tier.pricePrefix}
-												</span>
-											) : null}
-											<span className={styles.amount}>{tier.price}</span>
-											<span className={styles.currency}>{t('currency')}</span>
-										</p>
-										<p className={styles.term}>
-											<span className={`mono ${styles.termLabel}`}>TERM</span>
-											<span>{tier.term}</span>
-										</p>
-									</div>
+									<p className={styles.price}>
+										{tier.pricePrefix ? (
+											<span className={styles.prefix}>
+												{tier.pricePrefix}
+											</span>
+										) : null}
+										<span className={styles.amount}>{tier.price}</span>
+										<span className={styles.currency}>{t('currency')}</span>
+									</p>
+									<p className={styles.term}>
+										<span className={`mono ${styles.termLabel}`}>TERM</span>
+										<span>{tier.term}</span>
+									</p>
 
 									<ul className={styles.features}>
 										{tier.features.map((feature) => (
 											<li key={feature}>
-												<span className={styles.tick} aria-hidden="true" />
+												<span
+													className={styles.featureMark}
+													aria-hidden="true"
+												/>
 												<span>{feature}</span>
 											</li>
 										))}
 									</ul>
 
-									<a
-										href="#contact"
-										className={`${
-											tier.popular ? 'btn btn--primary' : 'btn btn--ghost'
-										} ${styles.cta}`}
-									>
+									<a href="#contact" className={styles.cta}>
 										{tier.cta}
 										<ArrowIcon size={13} />
 									</a>
@@ -106,10 +99,7 @@ export default async function Pricing() {
 				</ul>
 
 				<Reveal>
-					<p className={styles.note}>
-						<span className={styles.noteTick} aria-hidden="true" />
-						{t('note')}
-					</p>
+					<p className={styles.note}>{t('note')}</p>
 				</Reveal>
 			</div>
 		</section>

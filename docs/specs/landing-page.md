@@ -11,15 +11,15 @@ Belarusian small and medium businesses need a credible, fast and honest web pres
 ## Behaviour
 
 1. `/` redirects to the visitor's preferred locale (falling back to `/ru`). Every page is available under `/ru`, `/be` and `/en`.
-2. The page is one vertical narrative: hero → keyword marquee → approach → services → process → cases → pricing → calculator → reasons → studio → FAQ → contact.
+2. The page is one vertical narrative: hero → approach (cream) → services → process → cases → pricing (cream) → calculator → reasons → studio (cream) → FAQ → contact → footer. Each section alternates ink and cream surfaces.
 3. The sticky header exposes the logo, section navigation, RU/BE/EN switcher, primary CTA and a mobile menu. It gains a translucent background and a red scroll-progress line after scrolling.
-4. The hero presents the offer, availability status, two CTAs, three proof points and the interactive Belarus constellation map.
-5. Service cards link to the pricing/calculator and each card carries its own anchor id (`#websites`, `#bots`, `#ai`, `#automation`, `#commerce`, `#analytics`).
-6. Case cards open an accessible native dialog with the challenge, solution, stack and result; live projects link out, concept projects are explicitly labelled.
-7. Pricing shows three tiers in BYN with a "popular" marker and a month of post-launch edits.
+4. The hero presents the offer, availability status, two CTAs, three proof points, a generated pixel-serif title and a full-width 1-bit dithered lunar band with instrument HUD and caption.
+5. Services are an indexed editorial list (not cards) with hairline rules, pixel icons, prices and anchor ids (`#websites`, `#bots`, `#ai`, `#automation`, `#commerce`, `#analytics`).
+6. Cases are image-led panels backed by dithered imagery; opening one shows an accessible native dialog with the challenge, solution, stack and result. Live projects link out, concept projects are explicitly labelled.
+7. Pricing is a cream three-column table with an inverted ink middle tier, BYN prices and a month of post-launch edits.
 8. The calculator updates price and duration live from a pure function; it is an orientational range, not an offer.
 9. FAQ uses native `<details>` and links to the contact section.
-10. Contact provides channels, a live Minsk clock, availability and the brief form. The brief is built in the browser, copied to the clipboard and handed to Telegram.
+10. Contact provides channels, a live Minsk clock and availability on ink, with the brief form on a cream card. The brief is built in the browser, copied to the clipboard and handed to Telegram.
 11. The footer repeats navigation, services, contacts, language switching, legal link and returns to the top.
 12. A 404 page and a localized privacy page exist in all locales.
 
@@ -30,6 +30,7 @@ All strings are in `messages/{ru,be,en}.json`. Complex arrays (`hero.metrics`, `
 ## Acceptance criteria
 
 - [x] All three locales render every section with no missing keys.
+- [x] Two-tone palette only; no accent hue anywhere.
 - [x] Language switching preserves the current path.
 - [x] The layout is usable from 360 px to 1920 px with no horizontal scroll.
 - [x] Each section is reachable from the header and footer navigation.
@@ -45,4 +46,4 @@ All strings are in `messages/{ru,be,en}.json`. Complex arrays (`hero.metrics`, `
 
 ## Verification
 
-`pnpm build`, `pnpm check`, manual keyboard pass, Lighthouse and visual QA in `docs/qa`.
+`pnpm build`, `pnpm check`, `pnpm check:i18n`, manual keyboard pass, axe-core and Lighthouse, visual QA in `docs/qa`.

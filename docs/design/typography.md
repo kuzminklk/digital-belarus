@@ -1,208 +1,222 @@
 # Typography
 
-Status: implemented
+Status: implemented (v2 — pixel type)
 Owner: designer
 Related: [visual language](visual-language.md) | [ornament](ornament.md) | [tokens](../../src/styles/tokens.css) | [fonts.css](../../src/styles/fonts.css)
 
-The type system is the quiet half of the "observatory" idea: a romantic serif for
-the sky, a neutral sans for explanations, and a monospaced voice for instrument
-read-outs. Three families, sixteen vendored files, zero network requests.
+The v2 type system has exactly two voices, and both are pixel-native:
+
+1. **Handjet** — the living UI/body voice. A variable pixel mono, vendored as
+   woff2 and used for every piece of running text, label, button and form.
+2. **Pixel-serif masks** — the display voice. Cormorant Garamond is rendered at a
+   tiny logical size, thresholded to hard pixels, upscaled and served as an
+   alpha PNG mask; it is _never_ shipped as a smooth web font.
+
+The v1 Manrope/JetBrains Mono stack is retired. No smooth serif, sans or mono is
+rendered as UI text.
 
 ## Families
 
-| Role      | Family                 | Variable axes          | Usage                                                           | Never                                        |
-| --------- | ---------------------- | ---------------------- | --------------------------------------------------------------- | -------------------------------------------- |
-| Display   | **Cormorant Garamond** | `wght 300–700`, italic | `h1`–`h6`, `.display`, emphasis words                           | body copy, labels, UI controls               |
-| Body      | **Manrope**            | `wght 400–800`         | paragraphs, intros, buttons, forms, navigation                  | display headlines, coordinates               |
-| Technical | **JetBrains Mono**     | `wght 400–700`         | eyebrows, indices, tags, HUD labels, coordinates, button labels | sentences, paragraphs, long Cyrillic strings |
+| Role               | Family                                   | Style                                   | Usage                                                                          |
+| ------------------ | ---------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------ |
+| UI / body / labels | **Handjet**                              | variable `wght 100–900`, normal         | paragraphs, navigation, buttons, forms, tags, rules labels, all interface copy |
+| Display            | **Cormorant Garamond** (build-time only) | variable `wght 300–700`, roman + italic | pixel-serif heading masks, OG headline                                         |
 
-Why these three:
-
-- Cormorant's high contrast and narrow apertures give the hero its editorial,
-  telescope-lens character. Italic is the "human" accent: one italic word per
-  heading, never a whole line.
-- Manrope is Cyrillic-native, has a calm, slightly technical skeleton and works
-  at 14–18 px on dark backgrounds. It keeps long Russian/Belarusian sentences
-  readable without competing with the display face.
-- JetBrains Mono is the instrument voice: uppercase, letterspaced, numeric.
-  It makes coordinates, figure numbers and section indices read as calibrations
-  rather than decoration.
+Handjet’s pixel elements are part of the design: letters are built from square
+strokes, so body text already carries the pixel-art texture at normal sizes.
+Cormorant contributes only its serif skeleton, which the mask pipeline turns into
+square pixels.
 
 ## Licences
 
-All three families are licensed under the **SIL Open Font License, Version 1.1**
-(OFL). The woff2 files are vendored in [`public/fonts`](../../public/fonts), and
-the OFL permits bundling and redistribution with the site. Keep the copyright
-notice and licence with the files when updating them; do not sell the fonts on
-their own.
+Both families are licensed under the **SIL Open Font License, Version 1.1**.
 
-| Family             | Upstream / copyright                                                                                                                        |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cormorant Garamond | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant), Copyright 2015 The Cormorant Project Authors (Christian Thalmann)  |
-| Manrope            | [sharanda/manrope](https://github.com/sharanda/manrope), Copyright 2018 The Manrope Project Authors (Mikhail Sharanda)                      |
-| JetBrains Mono     | [JetBrains/JetBrainsMono](https://github.com/JetBrains/JetBrainsMono), Copyright 2020 The JetBrains Mono Project Authors (JetBrains s.r.o.) |
+| Family             | Upstream                                                                | Notes                                                                                       |
+| ------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Handjet            | [Google Fonts — Handjet](https://fonts.google.com/specimen/Handjet)     | vendored woff2 in `public/fonts`, served to the browser                                     |
+| Cormorant Garamond | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant) | build-time only, cached in `.cache/`, used by `generate-pixel-type.py` and `generate-og.py` |
 
-Attribution inside the site UI is not required by the OFL. The licence headers
-above are the attribution record. Some upstream releases reserve font names
-(RFN); if we ever modify or subset the binaries, rename the derived family
-according to the upstream `OFL.txt`, because the reserved-name rule applies to
-modified versions, not to verbatim redistribution.
+Keep the OFL notices with any redistributed font files. If the Handjet or
+Cormorant binaries are ever modified or subset again, follow the upstream
+`OFL.txt` (including any reserved-name rules). Attribution is not required in
+the UI.
 
-## Files and subsets
+## Handjet: files, subsets, coverage
 
-Every family is split by subset. The file-name convention is
-`family-style-subset-weights.woff2`; `@font-face` declarations live in
-[`src/styles/fonts.css`](../../src/styles/fonts.css) with explicit
-`unicode-range` so a browser downloads only the slices it needs.
+Handjet is self-hosted in four subset files with explicit `unicode-range` in
+[`src/styles/fonts.css`](../../src/styles/fonts.css):
 
-| Family / style            | Weight range | cyrillic-ext | cyrillic | latin-ext | latin |
-| ------------------------- | ------------ | ------------ | -------- | --------- | ----- |
-| Cormorant Garamond normal | 300–700      | ✓            | ✓        | ✓         | ✓     |
-| Cormorant Garamond italic | 300–700      | ✓            | ✓        | ✓         | ✓     |
-| Manrope normal            | 400–800      | ✓            | ✓        | ✓         | ✓     |
-| JetBrains Mono normal     | 400–700      | ✓            | ✓        | ✓         | ✓     |
+| File                                        | Unicode range                                                           | Used for                          |
+| ------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------- |
+| `handjet-normal-cyrillic-100-900.woff2`     | U+0301, U+0400–045F, U+0490–0491, U+04B0–04B1, U+2116                   | Russian and Belarusian text       |
+| `handjet-normal-cyrillic-ext-100-900.woff2` | U+0460–052F, U+1C80–1C8A, U+20B4, U+2DE0–2DFF, U+A640–A69F, U+FE2E–FE2F | extended Cyrillic                 |
+| `handjet-normal-latin-100-900.woff2`        | U+0000–00FF, … U+2000–206F, …                                           | Latin text, numerals, punctuation |
+| `handjet-normal-latin-ext-100-900.woff2`    | U+0100–02BA, …                                                          | extended Latin                    |
 
-Total payload is ~400 KB of woff2 across all sixteen files, but a page never
-downloads all of them. `font-display: swap` is set on every face, so text is
-readable with fallbacks before the webfont arrives.
+- `font-weight: 100 900` is a variable axis; the site uses ~400–600. Prefer the
+  axis to faux bold.
+- The four top-of-fold files (`cyrillic` + `latin`) are preloaded in the locale
+  layout; the two extended subsets load on demand. Do not preload all four.
+- **Belarusian coverage:** `ў` U+045E, `і` U+0456 and `ё` U+0451 are inside the
+  `cyrillic` range, so `be` uses the same files as `ru`. The curly apostrophe
+  `’` U+2019 is served by the `latin` general-punctuation range.
+- Do not use Ukrainian-only letter styling for Belarusian. Do not use Latin
+  transliteration (Łacinka) in copy.
 
-### Belarusian and Russian coverage
+### Using Handjet well
 
-The site ships in `ru`, `be` and `en`. The relevant characters are all inside
-the `cyrillic` subset (`U+0301, U+0400–045F, U+0490–0491, U+04B0–04B1, U+2116`):
+- Body: `--fs-body` (1.05–1.2 rem), weight 400–450, line-height 1.55, tracking
+  ≈ 0.01em. Handjet is narrow; do not letterspace running text.
+- Labels and instrument read-outs: uppercase, weight 450–550, tracking
+  0.08–0.14em, `--fs-mono`/`--fs-micro`.
+- Buttons: uppercase, `0.875rem` (small `0.78rem`), tracking 0.1em.
+- Minimum practical size: about 0.8 rem for labels, 0.95–1 rem for body. Handjet
+  is legible smaller than a normal mono, but pixel elements should never collapse.
+- Do not use letter-spacing on lowercase Cyrillic; uppercase tracking above
+  0.18em starts to break word shapes.
+- Numerals, coordinates and dates are Latin digits in Handjet, e.g.
+  `53.9006° N · 27.5590° E`. This is a deliberate instrument convention in every
+  locale.
+- The variable axes `ELGR` (Element Grid 1–2) and `ELSH` (Element Shape 0–16)
+  exist but should stay at defaults: the vendored woff2 is already the chosen
+  pixel construction.
 
-| Character        | Code point | Locale                               | Subset                      |
-| ---------------- | ---------- | ------------------------------------ | --------------------------- |
-| `ў` (short u)    | U+045E     | be                                   | cyrillic                    |
-| `і` (dotted i)   | U+0456     | be                                   | cyrillic                    |
-| `ё`              | U+0451     | ru, be                               | cyrillic                    |
-| `’` (apostrophe) | U+2019     | ru, be (e.g. _аб’ява_, _зьвярнуцца_) | latin (general punctuation) |
-| `№`              | U+2116     | ru                                   | cyrillic                    |
+## Pixel-serif display masks
 
-Notes:
+Headings are not web text in the current font: they are generated raster masks
+plus hidden real text.
 
-- Belarusian is **not** Ukrainian: do not style `і`, `ў` or apostrophes as
-  Ukrainian-only glyphs. The same Cyrillic subset serves both `ru` and `be`;
-  no additional font files are needed for Belarusian.
-- The curly apostrophe `’` and typographic quotes `«»`/`“”` live in the
-  `latin` general-punctuation range. The browser resolves them from the same
-  family via another unicode-range slice, so they render in the correct face —
-  verify visually when introducing new punctuation.
-- Do not use Latin transliteration (Łacinka) in copy; Latin strings on the page
-  are brand names and decorative instrument labels only.
-- Uppercase Cyrillic labels are allowed in JetBrains Mono only (short labels,
-  tracking ≤ 0.18em). Avoid all-caps Cyrillic in Cormorant and Manrope: the
-  Cyrillic capitals are visually wide and the reader loses word shape.
+### How a mask is made
+
+`scripts/generate-pixel-type.py`:
+
+1. Resolves the heading string(s) from `messages/{locale}.json`, including the
+   italic accent run (e.g. `hero.titleAccent`).
+2. Renders Cormorant at a small logical font size derived from
+   `height / block / cap-ratio`, wraps to the configured width, and advances
+   roman/italic runs on the same baseline.
+3. Crops to the ink bounding box, thresholds at `> 100`, and upscales each pixel
+   by `block` with nearest-neighbour.
+4. Saves a transparent one-bit alpha PNG in `public/type/{locale}/{name}.png`
+   and records `src`, `width`, `height`, `cssWidth` in
+   [`src/content/pixel-type.json`](../../src/content/pixel-type.json).
+
+The current display set:
+
+| Manifest key                    | Height    | Block | Notes                                                  |
+| ------------------------------- | --------- | ----- | ------------------------------------------------------ |
+| `header.brand`                  | 16        | 2     | tiny pixel wordmark in the navigation                  |
+| `hero.line1` / `hero.line2`     | 118 / 104 | 5     | two-line hero statement, one roman + one italic accent |
+| `section.*`                     | 36–40     | 3     | all section statements, up to 2 lines                  |
+| `footer.brand`                  | 98        | 7     | oversized footer wordmark                              |
+| `page.privacy`, `page.notFound` | 48 / 60   | 3 / 4 | inner pages                                            |
+
+### Rendering the mask
+
+[`src/components/brand/PixelType.tsx`](../../src/components/brand/PixelType.tsx):
+
+```tsx
+<PixelType locale={locale} name="section.services" text={t('services.title')} />
+```
+
+- Renders `.sr-only` real text for assistive technology and search engines.
+- Renders an `aria-hidden` `<span>` whose `background-image` is the PNG mask,
+  painted with `currentColor` (so it is cream on ink and ink on `.on-paper`
+  sections without a second asset).
+- Falls back to plain Handjet text if a manifest entry is missing.
+- `maxWidth` caps the rendered width; aspect-ratio comes from the manifest.
+
+Rules: never render body copy as masks; never use masks for text that must be
+selected, translated at runtime or read by a crawler without the sr-only copy.
+Do not recolour the mask with a filter — the `currentColor` mask handles ink and
+cream.
+
+### Regenerating after copy changes
+
+Display headings are baked per locale. If a title string changes:
+
+```bash
+python3 scripts/generate-pixel-type.py
+```
+
+Commit the regenerated `public/type/**` and `src/content/pixel-type.json` with
+the copy change. If a new heading is added, add its manifest spec (height, block,
+max width, runs) in the script and rerun it.
 
 ## Scale
 
-The scale lives in [`tokens.css`](../../src/styles/tokens.css) and is fluid between
-mobile and desktop. Components must use the token, never a local `font-size`.
+All sizes come from [`tokens.css`](../../src/styles/tokens.css); components never
+hard-code a font size.
 
-| Token          | Value (clamp)                        | Role                        | Weight / line-height / tracking                     |
-| -------------- | ------------------------------------ | --------------------------- | --------------------------------------------------- |
-| `--fs-display` | `clamp(3.4rem, 11.5vw, 10.5rem)`     | hero display, `.display`    | Cormorant 400 (italic accent 300) / 0.86 / −0.045em |
-| `--fs-h1`      | `clamp(2.8rem, 7.5vw, 6.5rem)`       | page `h1`                   | Cormorant 400 / 0.95 / −0.025em                     |
-| `--fs-h2`      | `clamp(2.1rem, 5vw, 4.25rem)`        | section statements          | Cormorant 400 / 0.95 / −0.025em                     |
-| `--fs-h3`      | `clamp(1.35rem, 2.2vw, 1.85rem)`     | card and feature titles     | Cormorant 400 / ~1.05 / −0.015em                    |
-| `--fs-lead`    | `clamp(1.05rem, 1.45vw, 1.35rem)`    | hero copy, section intros   | Manrope 400 / 1.55 / 0.005em                        |
-| `--fs-body`    | `clamp(0.975rem, 1.05vw, 1.0625rem)` | body copy                   | Manrope 400 / 1.65 / 0.005em                        |
-| `--fs-small`   | `0.875rem`                           | metadata, captions          | Manrope 400 / 1.5                                   |
-| `--fs-micro`   | `0.6875rem`                          | tags, chips, tiny labels    | JetBrains Mono 500 / uppercase / 0.08–0.14em        |
-| `--fs-mono`    | `clamp(0.66rem, 0.8vw, 0.75rem)`     | `.mono` labels, coordinates | JetBrains Mono 400–600 / 1.5 / 0.14em               |
+| Token          | Value                           | Role                      |
+| -------------- | ------------------------------- | ------------------------- |
+| `--fs-display` | `clamp(3.5rem, 10vw, 9rem)`     | display masks in the hero |
+| `--fs-h1`      | `clamp(2.6rem, 6.5vw, 5.5rem)`  | page `h1` fallback        |
+| `--fs-h2`      | `clamp(2rem, 4.2vw, 3.5rem)`    | section `h2` fallback     |
+| `--fs-h3`      | `clamp(1.5rem, 2.4vw, 2rem)`    | card and feature titles   |
+| `--fs-lead`    | `clamp(1.2rem, 1.7vw, 1.5rem)`  | hero copy, section intros |
+| `--fs-body`    | `clamp(1.05rem, 1.2vw, 1.2rem)` | body copy                 |
+| `--fs-small`   | `1rem`                          | captions, metadata        |
+| `--fs-micro`   | `0.85rem`                       | tags, tiny labels         |
+| `--fs-mono`    | `0.8rem`                        | `.mono` instrument labels |
 
-Shared utilities in [`base.css`](../../src/styles/base.css) map to the scale:
-`.display`, `h1`–`h6`, `.lead`, `.mono`, `.serif`, `.accent`, `.aurora`,
-`.muted`. Components should compose these instead of re-declaring size rules.
+Shared utilities: `.mono` (uppercase Handjet, 0.8rem, 450, tracking 0.12em),
+`.display`, `.lead`, `.serif`/`.display-italic` (legacy names that now resolve to
+Handjet — do not build new work on them). Headings default to Handjet 500 with
+line-height 1.02; pixel-serif masks replace them only where the display
+treatment is desired.
 
-Cormorant weights below 400 are for italic accents only. Never fake bold or
-italic: use the variable axis or the italic file.
+## Locale notes
 
-## Pairing and rhythm
-
-A typical section masthead, as rendered by `SectionHeading`:
-
-1. **Mono eyebrow**: `01 — УСЛУГИ` — index, 1 px rule, uppercase label, `--fs-mono`.
-2. **Serif statement**: `--fs-h2`, one phrase set in italic with `.accent`
-   colour; at most one italic fragment.
-3. **Intro paragraph**: `.lead`, `--paper-dim`, max width ~40 ch.
-
-Body text is `--fs-body`/1.65 with `text-wrap: pretty`; headings use
-`text-wrap: balance`. Paragraphs cap at 60–72 characters (`max-width: 40ch` for
-leads, `~65ch` for body columns). Instrument labels sit in uppercase mono with
-`0.12–0.18em` tracking; never track body copy.
-
-## Locale behaviour
-
-- `ru`, `be`, `en` share the same scale. Belarusian and Russian words are on
-  average 10–20% longer than English; layout must survive without hard-coded
-  widths. Test the longest strings in `be` first.
-- No auto-hyphenation is enabled. If a long word wraps badly, fix the layout,
-  not the copy.
-- Numerals, dates and coordinates stay Latin/mono in every locale (e.g.
-  `53.9006° N · 27.5590° E`); this is an intentional instrument convention.
-- Quotes and dashes follow locale typography: `«…»` and `—` in ru/be, `“…”` and
-  `—` in en. Do not use straight quotes in display copy.
+- `ru`, `be`, `en` share the same type scale and Handjet files.
+- Every display mask is generated per locale because the heading copy is baked
+  into pixels; adding a language or changing a title requires regenerating masks.
+- Belarusian/Russian words are longer than English: `maxWidth` in the mask
+  manifest and layout wrapping must survive the longest `be` string first.
+- Quotation marks follow the locale: `«…»` for ru/be, `“…”` for en; the dash is
+  `—` in display copy. All are covered by Handjet/Cormorant subsets.
+- No auto-hyphenation. Fix layout, not copy.
 
 ## Fallbacks and robustness
 
-Fallback stacks live in tokens:
-
-| Role      | Stack                                                     |
-| --------- | --------------------------------------------------------- |
-| Display   | `'Cormorant Garamond', 'Times New Roman', serif`          |
-| Body      | `'Manrope', 'Segoe UI', system-ui, sans-serif`            |
-| Technical | `'JetBrains Mono', 'SFMono-Regular', Consolas, monospace` |
-
-The page must remain readable with webfonts blocked or slow: the layout uses
-line-heights and box heights that tolerate metrics swap, and the fallback serif
-is chosen deliberately so the display voice survives without the original.
-Test with DevTools "Block remote fonts" and with `font-display` forced to
-`optional` before shipping.
-
-## Loading and preload
-
-- No `next/font`, no CSS frameworks: `@font-face` is hand-written and vendored.
-- The locale layout preloads four files — Cormorant normal cyrillic + latin and
-  Manrope normal cyrillic + latin — because they are guaranteed to be used above
-  the fold in all three locales. Italic and JetBrains Mono load on demand.
-- Do not preload every subset or every family; that would compete with the hero.
-- Adding a family or weight means: vendor the woff2, add `@font-face` with the
-  correct `unicode-range`, update this document and, if it is above the fold,
-  the preload list.
+- `--font-pixel: 'Handjet', 'Courier New', monospace` — if Handjet fails, the
+  page stays readable in a monospace fallback; masks are images and still render
+  (with sr-only text).
+- Handjet uses `font-display: swap`; keep the preload list to the two cyrillic +
+  latin files.
+- `PixelType` falls back to real text if the manifest entry or PNG is missing;
+  this fallback must be styled to remain legible in a mask slot.
+- Text must survive 200% zoom. Mask headings scale as images with their aspect
+  ratio; never set them as background of fixed-height containers without
+  responsive `max-width`.
 
 ## Accessibility
 
-- Body text stays at or above `--fs-body`; the smallest interface text is
-  `0.625–0.6875rem` (10–11 px) mono uppercase used for non-essential labels.
-  Never put essential copy at `.micro` size.
-- SVG instrument labels use viewBox units; nothing below **9 px** in the
-  640-unit map coordinate system.
-- Contrast: use `--paper` / `--paper-dim` for text, `--muted` for secondary
-  labels (6.98:1 on `--ink-950`), and never `--red` for long text (4.92:1, which
-  passes AA only at normal/large sizes and is reserved for short accents).
-  See the palette table in [visual-language.md](visual-language.md).
-- Text must survive 200% zoom and system-font substitution; avoid text baked
-  into SVG. The star map's labels are decorative and hidden from assistive
-  technology — the readable caption lives in HTML next to it.
-- Do not use `text-align: justify` with Cyrillic; the gaps are too irregular.
+- Pixel-serif masks ship with `.sr-only` real text in the accessibility tree;
+  headings remain semantic (`h1`, `h2`, …). Never use an aria-hidden mask as the
+  only copy.
+- Body text is real text in Handjet and remains selectable, translatable and
+  zoomable.
+- Contrast: paper on ink 14.77:1, ink on paper 14.77:1; secondary pairs pass AA
+  (see [visual-language.md](visual-language.md)).
+- Minimum sizes: `--fs-body` for reading text, ≈0.8 rem for uppercase labels.
+  Do not set essential copy in `.micro`.
+- Focus style is a 1 px currentColor outline; typography never removes it.
 
 ## Do / Don't
 
 **Do**
 
-- Use `.display` for the hero, `SectionHeading` for sections, `.mono` for labels.
-- Keep one italic accent per heading and set it in `--red-bright`.
-- Use `--fs-mono` with uppercase for anything that behaves like an instrument.
-- Let Cormorant breathe: generous line-height around large type, and avoid
-  adding letter-spacing to the display face.
+- Use Handjet for everything that is running text; let the pixel elements show.
+- Use `PixelType` for large statements; provide the real `text` prop.
+- Keep uppercase labels short and tracked 0.08–0.14em.
+- Regenerate masks when copy changes, in the same commit.
 
 **Don't**
 
-- Don't use Cormorant for paragraphs or Manrope for coordinates.
-- Don't mix two accent colours in one heading.
-- Don't hard-code `font-size` in `rem` inside a section module; add or reuse a
-  token instead.
-- Don't lowercase mono labels that read as coordinates, figure numbers or status.
-- Don't introduce a fourth family without updating tokens, this document and the
-  preload list.
+- Don't render a smooth serif/sans headline anymore.
+- Don't use Cormorant as a web font or in body copy; it is build-time only.
+- Don't letterspace lowercase Cyrillic or use all-caps for paragraphs.
+- Don't recolour masks with filters or mix them with accent colours.
+- Don't add a fourth family or a new weight without updating tokens, the
+  preload list and this document.

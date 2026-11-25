@@ -50,7 +50,7 @@ The three files are **structurally identical** and must stay that way:
 
 - identical key paths, in the same nesting; no extra or missing keys;
 - identical array lengths and order (services, cases, tiers, calculator types/options/jurisdictions,
-  FAQ items, principles, steps, metrics, marquee items, form option lists, privacy sections);
+  FAQ items, principles, steps, hero metrics, form option lists, privacy sections);
 - identical values for language-independent data:
     - `id`, `icon`, `kind`, `year`, `index`, `num`, `code`;
     - `liveUrl`, `telegram`, `telegramUrl`, `githubUrl`, `personalUrl`, `coordinates`;

@@ -3,7 +3,7 @@ import {Link} from '@/i18n/navigation';
 import {localeNames, routing, type Locale} from '@/i18n/routing';
 import {mainNav, site} from '@/lib/site';
 import PixelMark from '@/components/brand/PixelMark';
-import Rushnyk from '@/components/brand/Rushnyk';
+import PixelType from '@/components/brand/PixelType';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import styles from './Footer.module.css';
 
@@ -18,21 +18,18 @@ export default async function Footer() {
 
 	return (
 		<footer className={styles.footer}>
-			<div className={styles.ornament}>
-				<Rushnyk variant="border" tone="muted" height={22} animated={false} />
-			</div>
-
 			<div className={`container ${styles.container}`}>
 				<div className={styles.top}>
 					<div className={styles.brandBlock}>
 						<Link href="/" className={styles.brand}>
-							<PixelMark size={40} tone="red" />
-							<span className={styles.brandText}>
-								<span className={styles.brandName}>{t('common.brand')}</span>
-								<span className={styles.brandMeta}>
-									{t('common.brandLatin')} · {t('common.minsk')}
-								</span>
-							</span>
+							<PixelMark size={40} tone="paper" />
+							<PixelType
+								locale={locale}
+								name="header.brand"
+								text={t('common.brand')}
+								maxWidth={240}
+								className={styles.brandType}
+							/>
 						</Link>
 						<p className={styles.tagline}>{t('footer.tagline')}</p>
 						<p className={styles.description}>{t('footer.description')}</p>
@@ -108,23 +105,37 @@ export default async function Footer() {
 					</div>
 				</div>
 
-				<div className={styles.wordmarkWrap} aria-hidden="true">
-					<span className={styles.wordmark}>{t('common.brandLatin')}</span>
-					<span className={styles.wordmarkStar}>
-						<span />
-						<span />
+				<p className={styles.imageCredits}>
+					<span>
+						IMAGERY — NASA / APOLLO 17 (PUBLIC DOMAIN) · A. CELLARIUS / BRITISH LIBRARY
+						(PUBLIC DOMAIN) · T. MARKINA / WIKIMEDIA COMMONS, CC BY-SA 4.0; DITHERED
+						ADAPTATION BY DIGITAL BELARUS, CC BY-SA 4.0 · PORTRAIT: D. KUZMIN
 					</span>
+					<a
+						href="https://commons.wikimedia.org/wiki/File:2024.11.03_Ceramic_Wisents_from_Ivianiec_Valo%C5%BEyn_District_Minsk_Region_1970s_Museum_Belarusian_Folk_Art.jpg"
+						target="_blank"
+						rel="noreferrer"
+					>
+						[ SOURCE ]
+					</a>
+				</p>
+
+				<div className={styles.wordmark}>
+					<PixelType
+						locale={locale}
+						name="footer.brand"
+						text={t('common.brand')}
+						maxWidth={1600}
+					/>
 				</div>
 
 				<div className={styles.bottom}>
 					<p>{t('footer.rights', {year})}</p>
 					<p className={styles.credit}>{t('footer.credit')}</p>
-					<div className={styles.bottomActions}>
-						<a href="#top" className={styles.toTop}>
-							{t('footer.backToTop')}
-							<ArrowIcon size={12} className={styles.toTopIcon} />
-						</a>
-					</div>
+					<a href="#top" className={styles.toTop}>
+						{t('footer.backToTop')}
+						<ArrowIcon size={12} className={styles.toTopIcon} />
+					</a>
 				</div>
 			</div>
 		</footer>

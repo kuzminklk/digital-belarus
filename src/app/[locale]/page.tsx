@@ -3,7 +3,6 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Locale} from '@/i18n/routing';
 import {pageMetadata} from '@/lib/seo';
 import Hero from '@/components/sections/Hero';
-import Marquee from '@/components/ui/Marquee';
 import Approach from '@/components/sections/Approach';
 import Services from '@/components/sections/Services';
 import Process from '@/components/sections/Process';
@@ -33,13 +32,10 @@ export async function generateMetadata({params}: HomePageProps): Promise<Metadat
 export default async function HomePage({params}: HomePageProps) {
 	const {locale} = await params;
 	setRequestLocale(locale);
-	const t = await getTranslations('marquee');
-	const marqueeItems = t.raw('items') as string[];
 
 	return (
 		<>
 			<Hero />
-			<Marquee items={marqueeItems} />
 			<Approach />
 			<Services />
 			<Process />

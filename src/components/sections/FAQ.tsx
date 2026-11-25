@@ -21,20 +21,24 @@ export default async function FAQ() {
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.faq"
 					align="start"
 				/>
 
 				<ol className={styles.items}>
 					{items.map((item, index) => (
 						<li key={item.question}>
-							<Reveal delay={Math.min(index * 50, 250)}>
+							<Reveal delay={Math.min(index * 40, 200)}>
 								<details className={styles.item}>
 									<summary className={styles.question}>
 										<span className={`mono ${styles.num}`} aria-hidden="true">
 											{String(index + 1).padStart(2, '0')}
 										</span>
 										<span className={styles.questionText}>{item.question}</span>
-										<span className={styles.icon} aria-hidden="true" />
+										<span className={styles.icon} aria-hidden="true">
+											<span className={styles.iconPlus}>+</span>
+											<span className={styles.iconMinus}>−</span>
+										</span>
 									</summary>
 									<div className={styles.answer}>
 										<p>{item.answer}</p>
@@ -50,7 +54,7 @@ export default async function FAQ() {
 						<p className={styles.moreText}>{t('more')}</p>
 						<a href="#contact" className="link-underline">
 							{t('moreLink')}
-							<ArrowIcon size={13} />
+							<ArrowIcon size={12} />
 						</a>
 					</div>
 				</Reveal>

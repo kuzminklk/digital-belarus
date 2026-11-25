@@ -111,7 +111,7 @@ export default function ContactForm() {
 
 	if (state === 'success') {
 		return (
-			<div className={`panel ${styles.panel} ${styles.success}`} role="status">
+			<div className={`on-paper panel ${styles.panel} ${styles.success}`} role="status">
 				<p className="mono muted">BRIEF / SENT</p>
 				<div className={styles.successMark} aria-hidden="true">
 					<span />
@@ -148,7 +148,7 @@ export default function ContactForm() {
 	}
 
 	return (
-		<form className={`panel ${styles.panel}`} onSubmit={handleSubmit} noValidate>
+		<form className={`on-paper panel ${styles.panel}`} onSubmit={handleSubmit} noValidate>
 			<div className={styles.panelHead}>
 				<p className="mono muted">BRIEF / 01</p>
 				<p className="mono muted">

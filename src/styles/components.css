@@ -1,4 +1,4 @@
-/* Shared component primitives. Section-specific styling lives in CSS Modules. */
+/* Shared component primitives — v2 warm monochrome. */
 
 /* Buttons ------------------------------------------------------------------ */
 
@@ -7,23 +7,22 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 0.8rem;
-	min-height: 3.25rem;
-	padding: 0.85rem 1.35rem;
+	gap: 0.65rem;
+	min-height: 3.1rem;
+	padding: 0.8rem 1.3rem;
 	border: 1px solid transparent;
-	border-radius: 1px;
-	font-family: var(--font-mono);
-	font-size: var(--fs-mono);
+	border-radius: 0;
+	font-family: var(--font-pixel);
+	font-size: 0.875rem;
 	font-weight: 500;
 	line-height: 1;
-	letter-spacing: 0.12em;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	white-space: nowrap;
 	transition:
 		background-color var(--dur) var(--ease-out),
 		border-color var(--dur) var(--ease-out),
-		color var(--dur) var(--ease-out),
-		transform var(--dur) var(--ease-out);
+		color var(--dur) var(--ease-out);
 }
 
 .btn svg {
@@ -36,12 +35,14 @@
 }
 
 .btn--primary {
-	background: var(--red);
+	background: var(--paper);
+	border-color: var(--paper);
 	color: var(--ink-950);
 }
 
 .btn--primary:hover {
-	background: var(--red-bright);
+	background: transparent;
+	color: var(--paper);
 }
 
 .btn--ghost {
@@ -51,13 +52,35 @@
 
 .btn--ghost:hover {
 	border-color: var(--paper);
-	background: rgb(236 233 223 / 6%);
+	background: var(--paper);
+	color: var(--ink-950);
 }
 
 .btn--small {
 	min-height: 2.5rem;
 	padding: 0.55rem 0.9rem;
-	font-size: 0.625rem;
+	font-size: 0.78rem;
+}
+
+.on-paper .btn--primary {
+	background: var(--ink-950);
+	border-color: var(--ink-950);
+	color: var(--paper);
+}
+
+.on-paper .btn--primary:hover {
+	background: transparent;
+	color: var(--ink-950);
+}
+
+.on-paper .btn--ghost {
+	border-color: var(--line-strong);
+	color: var(--ink-950);
+}
+
+.on-paper .btn--ghost:hover {
+	background: var(--ink-950);
+	color: var(--paper);
 }
 
 /* Text link with a drawn underline. */
@@ -67,11 +90,11 @@
 	align-items: center;
 	gap: 0.5rem;
 	padding-bottom: 0.2rem;
-	font-family: var(--font-mono);
-	font-size: var(--fs-mono);
-	letter-spacing: 0.12em;
+	font-family: var(--font-pixel);
+	font-size: 0.85rem;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	color: var(--paper);
+	color: currentColor;
 }
 
 .link-underline::after {
@@ -98,16 +121,26 @@
 .tag {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.35rem;
-	padding: 0.28rem 0.5rem;
-	border: 1px solid var(--line);
-	border-radius: 1px;
+	gap: 0.25rem;
 	color: var(--muted);
-	font-family: var(--font-mono);
-	font-size: 0.625rem;
+	font-family: var(--font-pixel);
+	font-size: 0.8rem;
+	font-weight: 450;
 	line-height: 1.2;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
+}
+
+.tag::before {
+	content: '[';
+}
+
+.tag::after {
+	content: ']';
+}
+
+.on-paper .tag {
+	color: var(--muted);
 }
 
 .status-dot {
@@ -115,24 +148,33 @@
 	display: inline-block;
 	width: 6px;
 	height: 6px;
-	border-radius: 50%;
-	background: var(--aurora);
-	box-shadow: 0 0 0 0 rgb(143 227 176 / 45%);
-	animation: status-pulse 2.6s var(--ease-in-out) infinite;
+	background: var(--paper);
+}
+
+.on-paper .status-dot {
+	background: var(--ink-950);
+}
+
+.status-dot::after {
+	position: absolute;
+	inset: -4px;
+	border: 1px solid var(--line-strong);
+	content: '';
+	animation: status-pulse 3.2s var(--ease-in-out) infinite;
 }
 
 @keyframes status-pulse {
 	0%,
 	100% {
-		box-shadow: 0 0 0 0 rgb(143 227 176 / 35%);
+		opacity: 0.6;
 	}
 	50% {
-		box-shadow: 0 0 0 6px rgb(143 227 176 / 0%);
+		opacity: 0;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.status-dot {
+	.status-dot::after {
 		animation: none;
 	}
 }
@@ -142,39 +184,40 @@
 .panel {
 	position: relative;
 	border: 1px solid var(--line);
-	background: linear-gradient(160deg, rgb(236 233 223 / 3%), transparent 45%), var(--ink-900);
+	background: transparent;
 }
 
-.panel::before,
-.panel::after {
+.panel::before {
 	position: absolute;
+	top: -1px;
+	left: -1px;
 	width: 7px;
 	height: 7px;
-	border-color: var(--line-strong);
-	border-style: solid;
+	border-top: 1px solid var(--line-strong);
+	border-left: 1px solid var(--line-strong);
 	content: '';
 	pointer-events: none;
 }
 
-.panel::before {
-	top: -1px;
-	left: -1px;
-	border-width: 1px 0 0 1px;
-}
-
 .panel::after {
+	position: absolute;
 	right: -1px;
 	bottom: -1px;
-	border-width: 0 1px 1px 0;
+	width: 7px;
+	height: 7px;
+	border-right: 1px solid var(--line-strong);
+	border-bottom: 1px solid var(--line-strong);
+	content: '';
+	pointer-events: none;
 }
 
-/* Floating labels / instrument read-outs ----------------------------------- */
+/* Instrument read-outs ----------------------------------------------------- */
 
 .coordinate {
 	color: var(--muted);
-	font-family: var(--font-mono);
+	font-family: var(--font-pixel);
 	font-size: var(--fs-mono);
-	letter-spacing: 0.16em;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
 }
 
@@ -182,7 +225,7 @@
 	border-top: 1px solid var(--line);
 }
 
-/* Generic form controls ---------------------------------------------------- */
+/* Form controls ------------------------------------------------------------ */
 
 .field {
 	display: grid;
@@ -192,9 +235,10 @@
 .field label,
 .field-label {
 	color: var(--muted);
-	font-family: var(--font-mono);
-	font-size: var(--fs-mono);
-	letter-spacing: 0.1em;
+	font-family: var(--font-pixel);
+	font-size: 0.8rem;
+	font-weight: 450;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 }
 
@@ -203,14 +247,16 @@
 .select {
 	width: 100%;
 	min-height: 3rem;
-	padding: 0.75rem 0;
+	padding: 0.65rem 0;
 	border: 0;
 	border-bottom: 1px solid var(--line-strong);
 	border-radius: 0;
 	background: transparent;
 	color: var(--paper);
-	font-family: var(--font-sans);
-	font-size: 1rem;
+	font-family: var(--font-pixel);
+	font-size: 1.1rem;
+	font-weight: 400;
+	letter-spacing: 0.01em;
 	outline: none;
 	transition: border-color var(--dur) var(--ease-out);
 }
@@ -223,19 +269,19 @@
 .input:focus,
 .textarea:focus,
 .select:focus {
-	border-color: var(--red-bright);
+	border-color: var(--paper);
 }
 
 .select {
 	appearance: none;
 	cursor: pointer;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238d9aa5'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ebe2d1'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;
 	background-position: right 0.2rem center;
 }
 
 .select option {
-	background: var(--ink-900);
+	background: var(--ink-950);
 	color: var(--paper);
 }
 
@@ -244,16 +290,16 @@
 	align-items: flex-start;
 	gap: 0.7rem;
 	color: var(--muted);
-	font-size: var(--fs-small);
-	line-height: 1.5;
+	font-size: 0.95rem;
+	line-height: 1.45;
 	cursor: pointer;
 }
 
 .checkbox input {
 	flex: none;
-	width: 1rem;
-	height: 1rem;
-	margin-top: 0.15rem;
+	width: 0.9rem;
+	height: 0.9rem;
+	margin-top: 0.2rem;
 	appearance: none;
 	border: 1px solid var(--line-strong);
 	background: transparent;
@@ -261,19 +307,72 @@
 }
 
 .checkbox input:checked {
-	border-color: var(--red);
-	background: var(--red);
-	box-shadow: inset 0 0 0 3px var(--ink-900);
+	border-color: var(--paper);
+	background: var(--paper);
+	box-shadow: inset 0 0 0 2px var(--ink-950);
 }
 
 .error {
-	color: var(--red-bright);
-	font-size: var(--fs-small);
+	color: var(--paper);
+	font-size: 0.95rem;
+	text-decoration: underline;
+	text-underline-offset: 3px;
 }
 
-/* Inputs on a dark surface need a visible autofill state. */
+/* Inverted form controls for cream panels. */
+.on-paper .input,
+.on-paper .textarea,
+.on-paper .select {
+	color: var(--ink-950);
+	border-bottom-color: var(--line-strong);
+}
+
+.on-paper .input:focus,
+.on-paper .textarea:focus,
+.on-paper .select:focus {
+	border-bottom-color: var(--ink-950);
+}
+
+.on-paper .select {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2312100d'/%3E%3C/svg%3E");
+}
+
+.on-paper .select option {
+	background: var(--paper);
+	color: var(--ink-950);
+}
+
+.on-paper .checkbox {
+	color: var(--muted);
+}
+
+.on-paper .checkbox input {
+	border-color: var(--line-strong);
+}
+
+.on-paper .checkbox input:checked {
+	border-color: var(--ink-950);
+	background: var(--ink-950);
+	box-shadow: inset 0 0 0 2px var(--paper);
+}
+
+.on-paper .field label,
+.on-paper .field-label {
+	color: var(--muted);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
 	-webkit-text-fill-color: var(--paper);
-	box-shadow: 0 0 0 1000px var(--ink-900) inset;
+	box-shadow: 0 0 0 1000px var(--ink-950) inset;
+}
+
+.on-paper .error {
+	color: var(--ink-950);
+}
+
+/* A panel that is also a paper surface must paint the paper over .panel's
+   transparent background. */
+.on-paper.panel {
+	background: var(--paper);
 }

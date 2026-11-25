@@ -15,7 +15,7 @@ html {
 	text-size-adjust: 100%;
 	color-scheme: dark;
 	scroll-behavior: smooth;
-	scrollbar-color: var(--ink-600) var(--ink-1000);
+	scrollbar-color: var(--ink-700) var(--ink-1000);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -28,21 +28,20 @@ body {
 	min-height: 100dvh;
 	background: var(--ink-950);
 	color: var(--paper);
-	font-family: var(--font-sans);
+	font-family: var(--font-pixel);
 	font-size: var(--fs-body);
 	font-weight: 400;
-	line-height: 1.65;
-	letter-spacing: 0.005em;
+	line-height: 1.55;
+	letter-spacing: 0.01em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 	overflow-x: clip;
 }
 
-body::selection,
 ::selection {
-	background: var(--red);
-	color: var(--paper-warm);
+	background: var(--paper);
+	color: var(--ink-950);
 }
 
 h1,
@@ -51,10 +50,10 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-display);
-	font-weight: 400;
-	line-height: 0.95;
-	letter-spacing: -0.025em;
+	font-family: var(--font-pixel);
+	font-weight: 500;
+	line-height: 1.02;
+	letter-spacing: 0.005em;
 	text-wrap: balance;
 }
 
@@ -73,6 +72,7 @@ textarea,
 select {
 	font: inherit;
 	color: inherit;
+	font-family: var(--font-pixel);
 }
 
 button {
@@ -101,9 +101,8 @@ hr {
 }
 
 :focus-visible {
-	outline: 1px solid var(--red-bright);
+	outline: 1px solid currentColor;
 	outline-offset: 4px;
-	border-radius: 1px;
 }
 
 ::placeholder {
@@ -132,8 +131,29 @@ hr {
 	padding-block: var(--section-y);
 }
 
+[id] {
+	scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
 .section--tight {
 	padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+/* Paper sections invert the whole system without an accent colour. */
+.on-paper {
+	--line: rgb(18 16 13 / 16%);
+	--line-strong: rgb(18 16 13 / 30%);
+	--line-faint: rgb(18 16 13 / 8%);
+	--paper: #ebe2d1;
+	--paper-dim: #433a2d;
+	--muted: #6f6453;
+	--muted-strong: #4e4537;
+	background: #ebe2d1;
+	color: var(--ink-950);
+}
+
+.on-paper .grain {
+	opacity: 0.02;
 }
 
 .rule {
@@ -145,33 +165,33 @@ hr {
 /* Typography utilities ----------------------------------------------------- */
 
 .mono {
-	font-family: var(--font-mono);
+	font-family: var(--font-pixel);
 	font-size: var(--fs-mono);
-	font-weight: 400;
-	line-height: 1.5;
-	letter-spacing: 0.14em;
+	font-weight: 450;
+	line-height: 1.35;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 }
 
 .display {
-	font-family: var(--font-display);
+	font-family: var(--font-pixel);
 	font-size: var(--fs-display);
-	font-weight: 400;
-	line-height: 0.86;
-	letter-spacing: -0.045em;
+	font-weight: 500;
+	line-height: 0.95;
+	letter-spacing: 0.01em;
 }
 
-.display em,
-.display-italic {
-	font-style: italic;
+.display-italic,
+.display em {
+	font-style: normal;
 	font-weight: 300;
 }
 
 .lead {
-	max-width: 40ch;
+	max-width: 42ch;
 	color: var(--paper-dim);
 	font-size: var(--fs-lead);
-	line-height: 1.55;
+	line-height: 1.5;
 }
 
 .muted {
@@ -179,15 +199,17 @@ hr {
 }
 
 .serif {
-	font-family: var(--font-display);
+	font-family: var(--font-pixel);
+	font-weight: 300;
 }
 
 .accent {
-	color: var(--red-bright);
+	color: var(--paper);
+	font-weight: 300;
 }
 
 .aurora {
-	color: var(--aurora);
+	color: var(--paper-dim);
 }
 
 /* Helpers ------------------------------------------------------------------ */
@@ -212,7 +234,7 @@ hr {
 	padding: 0.75rem 1rem;
 	background: var(--paper);
 	color: var(--ink-950);
-	font-family: var(--font-mono);
+	font-family: var(--font-pixel);
 	font-size: var(--fs-mono);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -225,14 +247,13 @@ hr {
 	outline-offset: 2px;
 }
 
-/* Decorative full-page film grain. Built from an inline SVG noise filter so it
-   costs no extra network request. */
+/* Decorative film grain — built from an inline SVG filter, no request. */
 .grain {
 	position: fixed;
 	inset: -50%;
 	z-index: var(--z-overlay);
 	pointer-events: none;
-	opacity: 0.035;
+	opacity: 0.03;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 	animation: grain-shift 8s steps(6) infinite;
 	will-change: transform;
@@ -243,27 +264,24 @@ hr {
 	100% {
 		transform: translate(0, 0);
 	}
-	20% {
-		transform: translate(-2%, 1%);
+	25% {
+		transform: translate(-1%, 1%);
 	}
-	40% {
-		transform: translate(1%, -2%);
+	50% {
+		transform: translate(1%, -1%);
 	}
-	60% {
-		transform: translate(-1%, 2%);
-	}
-	80% {
-		transform: translate(2%, 1%);
+	75% {
+		transform: translate(-1%, -1%);
 	}
 }
 
-/* Shared entrance animation driven by components/Reveal. */
+/* Shared entrance animation driven by components/ui/Reveal. */
 [data-reveal] {
 	opacity: 0;
-	transform: translateY(28px);
+	transform: translateY(18px);
 	transition:
-		opacity 900ms var(--ease-out),
-		transform 900ms var(--ease-out);
+		opacity 800ms var(--ease-out),
+		transform 800ms var(--ease-out);
 	transition-delay: var(--reveal-delay, 0ms);
 }
 

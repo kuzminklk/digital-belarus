@@ -1,6 +1,6 @@
 # 0004 — Pixel-art rushnyk as a component system
 
-Status: accepted
+Status: accepted; palette/typography superseded by [0008](0008-warm-two-tone-pixel-serif-redesign.md)
 Date: 2026-11-26
 
 ## Context

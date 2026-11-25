@@ -21,6 +21,7 @@ export default async function Why() {
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.why"
 					align="start"
 				/>
 
@@ -32,11 +33,8 @@ export default async function Why() {
 									<span className={`mono ${styles.num}`} aria-hidden="true">
 										{item.num}
 									</span>
-									<div className={styles.body}>
-										<h3 className={styles.title}>{item.title}</h3>
-										<p className={styles.text}>{item.text}</p>
-									</div>
-									<span className={styles.mark} aria-hidden="true" />
+									<h3 className={styles.title}>{item.title}</h3>
+									<p className={styles.text}>{item.text}</p>
 								</article>
 							</Reveal>
 						</li>

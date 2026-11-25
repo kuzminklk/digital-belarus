@@ -6,6 +6,7 @@ import {Link, usePathname} from '@/i18n/navigation';
 import {localeNames, routing, type Locale} from '@/i18n/routing';
 import {mainNav} from '@/lib/site';
 import PixelMark from '@/components/brand/PixelMark';
+import PixelType from '@/components/brand/PixelType';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import styles from './Header.module.css';
 
@@ -75,13 +76,14 @@ export default function Header() {
 		>
 			<div className={styles.inner}>
 				<Link href="/" className={styles.brand}>
-					<PixelMark size={32} tone="red" className={styles.mark} />
-					<span className={styles.brandText}>
-						<span className={styles.brandName}>{t('common.brand')}</span>
-						<span className={styles.brandMeta}>
-							{t('common.brandLatin')} · {t('common.minsk')}
-						</span>
-					</span>
+					<PixelMark size={36} tone="paper" className={styles.mark} />
+					<PixelType
+						locale={locale}
+						name="header.brand"
+						text={t('common.brand')}
+						maxWidth={240}
+						className={styles.brandType}
+					/>
 				</Link>
 
 				<nav className={styles.nav} aria-label={t('a11y.mainNav')}>

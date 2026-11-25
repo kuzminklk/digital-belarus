@@ -1,21 +1,34 @@
+/* Rushnyk — thin two-tone embroidered rule (v2).
+   The pattern inherits `currentColor`: cream on ink, ink on cream. Tone only
+   changes emphasis, never hue — v2 has exactly two colours. */
+
 .rushnyk {
 	display: block;
 	width: 100%;
 	pointer-events: none;
 	user-select: none;
+	color: inherit;
+}
+
+.paper {
+	opacity: 1;
+}
+
+.muted {
+	opacity: 0.55;
 }
 
 .animated {
-	animation: rushnyk-breathe 9s var(--ease-in-out) infinite;
+	animation: rushnyk-breathe 9s var(--ease-in-out, ease-in-out) infinite;
 }
 
 @keyframes rushnyk-breathe {
 	0%,
 	100% {
-		opacity: 0.55;
+		opacity: 0.45;
 	}
 	50% {
-		opacity: 0.95;
+		opacity: 0.85;
 	}
 }
 

@@ -21,7 +21,7 @@ export function generateStaticParams() {
 export const viewport: Viewport = {
 	width: 'device-width',
 	initialScale: 1,
-	themeColor: '#05080b',
+	themeColor: '#12100d',
 	colorScheme: 'dark',
 };
 
@@ -70,28 +70,14 @@ export default async function LocaleLayout({children, params}: LocaleLayoutProps
 			<head>
 				<link
 					rel="preload"
-					href="/fonts/cormorant-garamond-normal-cyrillic-300-700.woff2"
+					href="/fonts/handjet-normal-cyrillic-100-900.woff2"
 					as="font"
 					type="font/woff2"
 					crossOrigin="anonymous"
 				/>
 				<link
 					rel="preload"
-					href="/fonts/manrope-normal-cyrillic-400-800.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/fonts/cormorant-garamond-normal-latin-300-700.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/fonts/manrope-normal-latin-400-800.woff2"
+					href="/fonts/handjet-normal-latin-100-900.woff2"
 					as="font"
 					type="font/woff2"
 					crossOrigin="anonymous"

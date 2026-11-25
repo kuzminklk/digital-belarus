@@ -18,8 +18,8 @@ The site must be usable by keyboard users, screen-reader users and people who pr
 6. The mobile menu and case dialogs close with Escape, return focus to the opener, and lock background scroll for the menu.
 7. Case information is reachable by keyboard; dialogs have `aria-labelledby`/`aria-describedby`.
 8. The calculator result is announced via `aria-live="polite"`; form errors use `aria-invalid`, `aria-describedby` and `role="alert"`.
-9. Decorative SVG (ornament, star map, grain, marquee) is `aria-hidden` and not focusable.
-10. `prefers-reduced-motion: reduce` disables all non-essential animation, including the marquee, orbit rotation, reveal transitions and twinkles.
+9. Decorative SVG and generated pixel-type masks used for paint are `aria-hidden`; every heading keeps a real `.sr-only` text copy. The grain overlay and rushnyk rules are hidden from assistive tech.
+10. `prefers-reduced-motion: reduce` disables all non-essential animation, including reveals, the grain drift, the scroll cue and any opacity breathing on ornament components.
 11. Text remains readable at 200% zoom and with system fonts substituted.
 
 ## Acceptance criteria

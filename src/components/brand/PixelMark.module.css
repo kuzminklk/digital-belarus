@@ -1,0 +1,25 @@
+/* PixelMark — cream stamp with the ink pixel star (v2 two-tone identity).
+   Colour is reduced to the two brand tones; fallbacks keep the mark correct
+   even before the v2 tokens land. */
+
+.mark {
+	display: block;
+	flex: none;
+	color: var(--ink-950, #12100d);
+}
+
+.square {
+	fill: var(--paper, #ebe2d1);
+}
+
+.star {
+	fill: var(--ink-950, #12100d);
+}
+
+.mono {
+	color: currentColor;
+}
+
+.mono .star {
+	fill: currentColor;
+}

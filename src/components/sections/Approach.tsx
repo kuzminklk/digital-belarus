@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import {getTranslations} from 'next-intl/server';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
-import Rushnyk from '@/components/brand/Rushnyk';
 import styles from './Approach.module.css';
 
 type Principle = {
@@ -14,46 +14,33 @@ export default async function Approach() {
 	const principles = t.raw('principles') as Principle[];
 
 	return (
-		<section id="approach" className={`section ${styles.approach}`} aria-label={t('label')}>
-			<span className={styles.ghost} aria-hidden="true">
-				{t('index')}
-			</span>
-
-			<div className={`container ${styles.inner}`}>
+		<section
+			id="approach"
+			className={`section on-paper ${styles.approach}`}
+			aria-label={t('label')}
+		>
+			<div className="container">
 				<SectionHeading
 					index={t('index')}
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.approach"
 					intro={t('body')}
 				/>
 
 				<div className={styles.layout}>
-					<Reveal className={styles.quoteCol}>
-						<figure className={styles.quote}>
-							<figcaption className={`mono ${styles.quoteLabel}`}>
-								<span className={styles.quoteTick} aria-hidden="true" />
-								MANIFESTO / 01
-							</figcaption>
-							<blockquote className={styles.quoteText}>
-								<span className={styles.quoteMark} aria-hidden="true">
-									&ldquo;
-								</span>
-								{t('quote')}
-							</blockquote>
-							<div className={styles.quoteFoot} aria-hidden="true">
-								<span className={styles.quoteFootRule} />
-								<span className={`mono ${styles.quoteFootLabel}`}>
-									ORBITAL NOTE
-								</span>
-							</div>
+					<Reveal className={styles.quoteBlock}>
+						<figure className={styles.figure}>
+							<p className={`mono ${styles.quoteLabel}`}>MANIFESTO / 01</p>
+							<blockquote className={styles.quote}>{t('quote')}</blockquote>
 						</figure>
 					</Reveal>
 
 					<ol className={styles.principles}>
 						{principles.map((principle, index) => (
-							<li key={principle.title}>
-								<Reveal delay={index * 90}>
+							<li className={styles.principleRow} key={principle.title}>
+								<Reveal delay={index * 80}>
 									<article className={styles.principle}>
 										<span className={`mono ${styles.num}`} aria-hidden="true">
 											0{index + 1}
@@ -64,22 +51,35 @@ export default async function Approach() {
 											</h3>
 											<p className={styles.principleText}>{principle.text}</p>
 										</div>
-										<span
-											className={styles.corner}
-											data-corner="br"
-											aria-hidden="true"
-										/>
 									</article>
 								</Reveal>
 							</li>
 						))}
 					</ol>
 				</div>
-
-				<div className={styles.ornament} aria-hidden="true">
-					<Rushnyk variant="divider" tone="muted" height={20} />
-				</div>
 			</div>
+
+			<Reveal>
+				<figure className={styles.atlasFigure}>
+					<div className={styles.atlasFrame}>
+						<Image
+							src="/pixel/atlas.png"
+							alt=""
+							fill
+							unoptimized
+							sizes="100vw"
+							className={styles.atlas}
+						/>
+						<span className={`mono ${styles.atlasIndex}`} aria-hidden="true">
+							FIG. 01 / ATLAS
+						</span>
+					</div>
+					<figcaption className={`mono ${styles.atlasCaption}`}>
+						<span>ARCHIVE / STAR CHART · 53.9006°N 27.5590°E</span>
+						<span>BY · DIGITAL BELARUS</span>
+					</figcaption>
+				</figure>
+			</Reveal>
 		</section>
 	);
 }

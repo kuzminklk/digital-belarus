@@ -27,55 +27,50 @@ export default async function Services() {
 					label={t('label')}
 					title={t('title')}
 					accent={t('titleAccent')}
+					typeName="section.services"
 					intro={t('intro')}
 				/>
 
-				<ul className={styles.grid}>
+				<ul className={styles.list}>
 					{items.map((item, index) => (
 						<li className={styles.cell} key={item.id}>
-							<Reveal className={styles.reveal} delay={(index % 3) * 90}>
+							<Reveal delay={(index % 2) * 70}>
 								<article
 									id={item.id}
-									className={styles.card}
+									className={styles.item}
 									aria-labelledby={`service-${item.id}-title`}
 								>
-									<span className={styles.hoverLine} aria-hidden="true" />
-									<span className={styles.hoverArrow} aria-hidden="true">
-										<ArrowIcon size={16} />
-									</span>
-
-									<header className={styles.cardHead}>
-										<span className={styles.icon} aria-hidden="true">
-											<PixelIcon name={item.icon} size={22} />
-										</span>
+									<div className={styles.itemHead}>
 										<span className={`mono ${styles.index}`} aria-hidden="true">
 											{String(index + 1).padStart(2, '0')}
 										</span>
-									</header>
+										<span className={styles.icon} aria-hidden="true">
+											<PixelIcon name={item.icon} size={18} />
+										</span>
+										<h3
+											id={`service-${item.id}-title`}
+											className={styles.title}
+										>
+											{item.title}
+										</h3>
+										<span className={styles.price}>{item.price}</span>
+									</div>
 
-									<h3 id={`service-${item.id}-title`} className={styles.title}>
-										{item.title}
-									</h3>
 									<p className={styles.description}>{item.description}</p>
 
-									<ul className={styles.tags}>
-										{item.tags.map((tag) => (
-											<li className="tag" key={tag}>
-												{tag}
-											</li>
-										))}
-									</ul>
-
-									<dl className={styles.facts}>
-										<div className={styles.fact}>
-											<dt className="mono">PRICE</dt>
-											<dd className={styles.price}>{item.price}</dd>
-										</div>
-										<div className={`${styles.fact} ${styles.factTerm}`}>
-											<dt className="mono">TERM</dt>
-											<dd className={styles.term}>{item.term}</dd>
-										</div>
-									</dl>
+									<div className={styles.foot}>
+										<span className={`mono ${styles.term}`}>{item.term}</span>
+										<ul className={styles.tags}>
+											{item.tags.map((tag) => (
+												<li className="tag" key={tag}>
+													{tag}
+												</li>
+											))}
+										</ul>
+										<span className={styles.arrow} aria-hidden="true">
+											<ArrowIcon size={13} />
+										</span>
+									</div>
 								</article>
 							</Reveal>
 						</li>
@@ -84,13 +79,12 @@ export default async function Services() {
 
 				<Reveal>
 					<div className={styles.footer}>
-						<p className={styles.note}>
-							<span className={styles.noteTick} aria-hidden="true" />
-							{t('note')}
-						</p>
-						<a className={`link-underline ${styles.allLink}`} href="#pricing">
+						<p className={styles.note}>{t('note')}</p>
+						<a href="#pricing" className="link-underline">
 							{t('allLink')}
-							<ArrowIcon size={13} />
+							<span className={styles.bracket} aria-hidden="true">
+								<ArrowIcon size={12} />
+							</span>
 						</a>
 					</div>
 				</Reveal>

@@ -1,7 +1,6 @@
 import {getTranslations} from 'next-intl/server';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
-import PixelIcon from '@/components/brand/PixelIcon';
 import styles from './Process.module.css';
 
 type Step = {
@@ -23,34 +22,30 @@ export default async function Process() {
 					label={t('label')}
 					title={t('title')}
 					accent=""
+					typeName="section.process"
 					intro={t('intro')}
-					align="start"
 				/>
 
 				<ol className={styles.steps}>
 					{steps.map((step, index) => (
 						<li className={styles.step} key={step.num}>
-							<Reveal className={styles.reveal} delay={index * 110}>
-								<div className={styles.body}>
-									<p className={`mono ${styles.phaseLabel}`} aria-hidden="true">
-										PHASE / {step.num}
-									</p>
-									<span className={styles.num} aria-hidden="true">
-										{step.num}
-									</span>
+							<Reveal delay={index * 80}>
+								<div className={styles.stepInner}>
+									<div className={styles.stepTop}>
+										<span className={styles.num} aria-hidden="true">
+											{step.num}
+										</span>
+										<p className={styles.duration}>
+											<span className={`mono ${styles.durationLabel}`}>
+												DURATION
+											</span>
+											<span className={styles.durationValue}>
+												{step.duration}
+											</span>
+										</p>
+									</div>
 									<h3 className={styles.title}>{step.title}</h3>
-									<p className={styles.description}>{step.description}</p>
-									<p className={styles.duration}>
-										<span className={styles.clock} aria-hidden="true">
-											<PixelIcon name="clock" size={14} />
-										</span>
-										<span className={`mono ${styles.durationLabel}`}>
-											DURATION
-										</span>
-										<span className={styles.durationValue}>
-											{step.duration}
-										</span>
-									</p>
+									<p className={styles.text}>{step.description}</p>
 								</div>
 							</Reveal>
 						</li>

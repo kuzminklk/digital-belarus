@@ -1,0 +1,27 @@
+.mask {
+	display: block;
+	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	background-color: currentColor;
+	-webkit-mask-image: var(--type-src);
+	mask-image: var(--type-src);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: left top;
+	mask-position: left top;
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+	-webkit-mask-mode: alpha;
+	mask-mode: alpha;
+}
+
+.fallback {
+	display: block;
+	font-family: var(--font-pixel);
+	font-size: var(--fs-h2);
+	font-weight: 500;
+	line-height: 0.98;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+}

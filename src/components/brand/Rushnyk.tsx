@@ -18,18 +18,21 @@ const TILE_HEIGHT = 16;
 
 type Grid = {width: number; pixels: Array<[number, number]>};
 
-function diamond(target: Set<number>, cx: number, cy: number, radius: number, width: number) {
-	for (let dx = -radius; dx <= radius; dx += 1) {
-		for (let dy = -radius; dy <= radius; dy += 1) {
-			if (Math.abs(dx) + Math.abs(dy) === radius) {
-				const x = cx + dx;
-				const y = cy + dy;
-				if (x >= 0 && y >= 0) target.add(y * width + x);
-			}
+function diamond(cells: Set<number>, cx: number, cy: number, radius: number, width: number) {
+	for (let dy = -radius; dy <= radius; dy += 1) {
+		const dx = radius - Math.abs(dy);
+		for (const x of [cx - dx, cx + dx]) {
+			const y = cy + dy;
+			if (x >= 0 && y >= 0) cells.add(y * width + x);
 		}
 	}
 }
 
+/**
+ * v2 `border`: two hairline rails holding a chain of woven rhombi with single
+ * stitch dots between them. Thin enough to read as an embroidered rule rather
+ * than a decorative band.
+ */
 function buildBorder(): Grid {
 	const width = 48;
 	const cells = new Set<number>();
@@ -38,40 +41,11 @@ function buildBorder(): Grid {
 	};
 
 	for (let x = 0; x < width; x += 1) {
-		put(x, 1);
-		put(x, 14);
+		put(x, 2);
+		put(x, 13);
 	}
-
-	const star = (cx: number, cy: number, radius: number) => {
-		for (let i = 0; i <= radius; i += 1) {
-			put(cx, cy - i);
-			put(cx, cy + i);
-			put(cx - i, cy);
-			put(cx + i, cy);
-		}
-		for (let i = 1; i < radius - 1; i += 1) {
-			put(cx + i, cy + i);
-			put(cx - i, cy + i);
-			put(cx + i, cy - i);
-			put(cx - i, cy - i);
-		}
-		for (let dx = -2; dx <= 2; dx += 1) {
-			for (let dy = -2; dy <= 2; dy += 1) {
-				if (Math.abs(dx) + Math.abs(dy) === 2) put(cx + dx, cy + dy);
-			}
-		}
-	};
-
-	star(24, 8, 4);
-	diamond(cells, 8, 8, 3, width);
-	diamond(cells, 8, 8, 1, width);
-	diamond(cells, 40, 8, 3, width);
-	diamond(cells, 40, 8, 1, width);
-
-	for (const cx of [16, 32]) {
-		put(cx, 5);
-		put(cx, 11);
-	}
+	for (const cx of [8, 24, 40]) diamond(cells, cx, 8, 2, width);
+	for (const x of [16, 32]) put(x, 8);
 
 	return {
 		width,
@@ -79,6 +53,10 @@ function buildBorder(): Grid {
 	};
 }
 
+/**
+ * v2 `divider`: one central hairline interrupted by a single large woven
+ * rhombus, with two small side diamonds marking the tile rhythm.
+ */
 function buildDivider(): Grid {
 	const width = 64;
 	const cells = new Set<number>();
@@ -86,29 +64,12 @@ function buildDivider(): Grid {
 		if (x >= 0 && x < width && y >= 0 && y < TILE_HEIGHT) cells.add(y * width + x);
 	};
 
-	for (let x = 0; x < 23; x += 1) put(x, 8);
-	for (let x = 42; x < width; x += 1) put(x, 8);
-
-	const cx = 32;
-	const cy = 8;
-	const radius = 5;
-	for (let i = 0; i <= radius; i += 1) {
-		put(cx, cy - i);
-		put(cx, cy + i);
-		put(cx - i, cy);
-		put(cx + i, cy);
+	for (let x = 0; x < width; x += 1) {
+		if (x < 27 || x > 37) put(x, 7);
 	}
-	for (let i = 1; i < radius - 1; i += 1) {
-		put(cx + i, cy + i);
-		put(cx - i, cy + i);
-		put(cx + i, cy - i);
-		put(cx - i, cy - i);
-	}
-	for (let dx = -2; dx <= 2; dx += 1) {
-		for (let dy = -2; dy <= 2; dy += 1) {
-			if (Math.abs(dx) + Math.abs(dy) === 2) put(cx + dx, cy + dy);
-		}
-	}
+	diamond(cells, 32, 7, 3, width);
+	diamond(cells, 8, 7, 1, width);
+	diamond(cells, 56, 7, 1, width);
 
 	return {
 		width,
@@ -116,36 +77,18 @@ function buildDivider(): Grid {
 	};
 }
 
+/**
+ * v2 `wave`: a single stepped thread, two modules of amplitude, repeating every
+ * 16 modules. The endless line of rushnyk edges, reduced to one hairline.
+ */
 function buildWave(): Grid {
 	const width = 64;
 	const cells = new Set<number>();
-	const path: Array<[number, number]> = [];
-	const segment = (x1: number, y1: number, x2: number, y2: number) => {
-		if (x1 === x2) {
-			for (let y = Math.min(y1, y2); y <= Math.max(y1, y2); y += 1) path.push([x1, y]);
-		} else {
-			for (let x = Math.min(x1, x2); x <= Math.max(x1, x2); x += 1) path.push([x, y1]);
-		}
-	};
+	const sequence = [7, 7, 7, 8, 8, 8, 9, 9, 9, 8, 8, 8, 7, 7, 7, 6];
 
-	for (let k = 0; k < 4; k += 1) {
-		const x = k * 16;
-		segment(x, 12, x + 4, 12);
-		segment(x + 4, 12, x + 4, 4);
-		segment(x + 4, 4, x + 10, 4);
-		segment(x + 10, 4, x + 10, 12);
-		segment(x + 10, 12, x + 16, 12);
-	}
-
-	for (const [x, y] of path) {
-		for (const dy of [0, 1]) {
-			const py = y + dy;
-			if (x >= 0 && x < width && py >= 0 && py < TILE_HEIGHT) cells.add(py * width + x);
-		}
-	}
-
-	for (const cx of [4, 20, 36, 52]) {
-		diamond(cells, cx, 8, 2, width);
+	for (let x = 0; x < width; x += 1) {
+		const y = sequence[x % sequence.length];
+		cells.add(y * width + x);
 	}
 
 	return {
@@ -160,15 +103,16 @@ const TILES: Record<RushnykVariant, Grid> = {
 	wave: buildWave(),
 };
 
-const TONE_COLOR: Record<RushnykTone, string> = {
-	paper: 'var(--paper)',
-	red: 'var(--red)',
-	muted: 'var(--muted)',
+const TONE_CLASS: Record<RushnykTone, string> = {
+	paper: styles.paper,
+	red: styles.paper,
+	muted: styles.muted,
 };
 
 /**
- * A seamless pixel-rushnyk strip. Renders as an SVG <pattern> so it can stretch
- * across any container while staying on the pixel grid.
+ * Thin two-tone embroidered rule. The pattern is painted in `currentColor`, so
+ * it is cream on an ink surface and ink on a cream surface without any colour
+ * prop; the tone only controls emphasis. Decorative and never focusable.
  */
 export default function Rushnyk({
 	variant = 'border',
@@ -184,7 +128,9 @@ export default function Rushnyk({
 
 	return (
 		<svg
-			className={`${styles.rushnyk} ${animated ? styles.animated : ''} ${className ?? ''}`}
+			className={`${styles.rushnyk} ${TONE_CLASS[tone]} ${animated ? styles.animated : ''} ${
+				className ?? ''
+			}`}
 			width="100%"
 			height={height}
 			role="presentation"
@@ -206,7 +152,7 @@ export default function Rushnyk({
 							y={y * scale}
 							width={scale}
 							height={scale}
-							fill={TONE_COLOR[tone]}
+							fill="currentColor"
 						/>
 					))}
 				</pattern>

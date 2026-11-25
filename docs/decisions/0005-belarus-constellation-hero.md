@@ -1,6 +1,6 @@
 # 0005 — Belarus constellation hero map
 
-Status: accepted
+Status: superseded by [0008](0008-warm-two-tone-pixel-serif-redesign.md)
 Date: 2026-11-26
 
 ## Context
