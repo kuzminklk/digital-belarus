@@ -95,21 +95,26 @@ plus hidden real text.
 2. Renders Cormorant at a small logical font size derived from
    `height / block / cap-ratio`, wraps to the configured width, and advances
    roman/italic runs on the same baseline.
-3. Crops to the ink bounding box, thresholds at `> 100`, and upscales each pixel
+3. Crops to the ink bounding box, thresholds at `> 88`, and upscales each pixel
    by `block` with nearest-neighbour.
 4. Saves a transparent one-bit alpha PNG in `public/type/{locale}/{name}.png`
    and records `src`, `width`, `height`, `cssWidth` in
    [`src/content/pixel-type.json`](../../src/content/pixel-type.json).
+5. For editorial headings, also renders a **narrow-screen variant** with fewer
+   columns, more wrapped lines and the same 2 px grid, e.g.
+   `section.services-mobile.png`. This is the v2.1 readability fix: the same
+   Cormorant mask with a denser grid, bolder weight and slight tracking. Header,
+   hero and footer masks keep one variant.
 
 The current display set:
 
-| Manifest key                    | Height    | Block | Notes                                                  |
-| ------------------------------- | --------- | ----- | ------------------------------------------------------ |
-| `header.brand`                  | 16        | 2     | tiny pixel wordmark in the navigation                  |
-| `hero.line1` / `hero.line2`     | 118 / 104 | 5     | two-line hero statement, one roman + one italic accent |
-| `section.*`                     | 36–40     | 3     | all section statements, up to 2 lines                  |
-| `footer.brand`                  | 98        | 7     | oversized footer wordmark                              |
-| `page.privacy`, `page.notFound` | 48 / 60   | 3 / 4 | inner pages                                            |
+| Manifest key                    | Height    | Block | Notes                                                      |
+| ------------------------------- | --------- | ----- | ---------------------------------------------------------- |
+| `header.brand`                  | 24        | 2     | pixel wordmark, slightly tracked and bolder for legibility |
+| `hero.line1` / `hero.line2`     | 118 / 104 | 5     | two-line hero statement, one roman + one italic accent     |
+| `section.*`                     | 46        | 2     | all section statements, up to 2 lines; mobile variant 42/2 |
+| `footer.brand`                  | 98        | 7     | oversized footer wordmark                                  |
+| `page.privacy`, `page.notFound` | 52 / 58   | 2 / 3 | inner pages; narrower mobile variants                      |
 
 ### Rendering the mask
 
@@ -120,11 +125,14 @@ The current display set:
 ```
 
 - Renders `.sr-only` real text for assistive technology and search engines.
-- Renders an `aria-hidden` `<span>` whose `background-image` is the PNG mask,
-  painted with `currentColor` (so it is cream on ink and ink on `.on-paper`
-  sections without a second asset).
+- Renders one or two `aria-hidden` `<span>` masks (`mask-image`) painted with
+  `currentColor` — cream on ink and ink on `.on-paper` sections need no second
+  asset. When a mobile variant exists, CSS shows it below 700 px and the
+  desktop mask above.
 - Falls back to plain Handjet text if a manifest entry is missing.
 - `maxWidth` caps the rendered width; aspect-ratio comes from the manifest.
+- Generated masks are raster assets, so changing a heading requires both the
+  message catalogue and `scripts/generate-pixel-type.py` to be updated together.
 
 Rules: never render body copy as masks; never use masks for text that must be
 selected, translated at runtime or read by a crawler without the sr-only copy.

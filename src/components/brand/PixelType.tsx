@@ -2,11 +2,16 @@ import type {CSSProperties} from 'react';
 import manifest from '@/content/pixel-type.json';
 import styles from './PixelType.module.css';
 
-type TypeEntry = {
+type MaskEntry = {
 	src: string;
 	width: number;
 	height: number;
 	cssWidth: number;
+};
+
+type TypeEntry = MaskEntry & {
+	/** Optional narrow-screen mask generated for headings with a mobile variant. */
+	mobile?: MaskEntry;
 };
 
 type Manifest = Record<string, Record<string, TypeEntry>>;
@@ -35,20 +40,28 @@ export default function PixelType({locale, name, text, className, maxWidth}: Pix
 		return <span className={`${styles.fallback} ${className ?? ''}`}>{text}</span>;
 	}
 
+	const maskStyle = (mask: MaskEntry): CSSProperties =>
+		({
+			'--type-src': `url(${mask.src})`,
+			aspectRatio: `${mask.width} / ${mask.height}`,
+			maxWidth: `${maxWidth ?? mask.cssWidth}px`,
+		}) as CSSProperties;
+
 	return (
 		<>
 			<span className="sr-only">{text}</span>
 			<span
-				className={`${styles.mask} ${className ?? ''}`}
+				className={`${styles.mask} ${entry.mobile ? styles.desktop : ''} ${className ?? ''}`}
 				aria-hidden="true"
-				style={
-					{
-						'--type-src': `url(${entry.src})`,
-						aspectRatio: `${entry.width} / ${entry.height}`,
-						maxWidth: `${maxWidth ?? entry.cssWidth}px`,
-					} as CSSProperties
-				}
+				style={maskStyle(entry)}
 			/>
+			{entry.mobile ? (
+				<span
+					className={`${styles.mask} ${styles.mobile} ${className ?? ''}`}
+					aria-hidden="true"
+					style={maskStyle(entry.mobile)}
+				/>
+			) : null}
 		</>
 	);
 }

@@ -41,7 +41,7 @@
 }
 
 .brandType {
-	width: clamp(150px, 16vw, 235px);
+	width: clamp(190px, 18vw, 258px);
 }
 
 .nav {
@@ -239,6 +239,10 @@
 		display: none;
 	}
 
+	.brandType {
+		display: none;
+	}
+
 	.toggle {
 		display: grid;
 	}
@@ -283,12 +287,6 @@
 	}
 
 	.actions .cta {
-		display: none;
-	}
-}
-
-@media (max-width: 420px) {
-	.brandType {
 		display: none;
 	}
 }
