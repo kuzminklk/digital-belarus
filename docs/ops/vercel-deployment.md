@@ -13,7 +13,7 @@ secret values** — credentials live outside the repository (see [Authentication
   root directory is the repository root (`./`). The parent monorepo path
   `web/digital-belarus` is _not_ used as a Vercel root directory (see
   [Root directory](#root-directory)).
-- **Status (2026-11-26): Launched (v2 design).** `main` is pushed (HEAD `77bb5ba`), the Vercel project
+- **Status (2026-11-27): Launched (v2.1 multi-page).** `main` is pushed (HEAD `489567f`), the Vercel project
   `digital-belarus` (`prj_jua02NLjr9ebxOy1y25nY52QdavS`, framework Next.js) was created in
   team `kuzminklk-projects`, the GitHub repository is connected as the project's Git source
   (production branch `main`), and production deployment `dpl_BD4JnUfyfWDyqNafYC1Bv84ftUqa`
@@ -130,7 +130,7 @@ Production has been deployed and verified (2026-11-26).
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Project             | `digital-belarus` — `prj_jua02NLjr9ebxOy1y25nY52QdavS`, team `kuzminklk-projects`                                                                                                                                      |
 | Deployment          | `dpl_BD4JnUfyfWDyqNafYC1Bv84ftUqa` — **READY**, target `production`, source `git` (triggered through the `production-main` deploy hook, which builds the latest commit of `main` from the connected GitHub repository) |
-| Deployed commit     | `77bb5ba` — "feat(design): warm two-tone pixel-serif v2 redesign" (`main`); previous deployment `77cd0aa`                                                                                                              |
+| Deployed commit     | `489567f` — "feat(routes): expand the site into a full multi-page structure" (`main`); previous deployments `30ccb72`, `77bb5ba`                                                                                       |
 | Canonical URL       | **<https://digital-belarus.vercel.app>** (project production domain)                                                                                                                                                   |
 | All aliases         | `digital-belarus.vercel.app`, `digital-belarus-kuzminklk-projects.vercel.app`, `digital-belarus-git-main-kuzminklk-projects.vercel.app`                                                                                |
 | Immutable build URL | `digital-belarus-qykf5vq4k-kuzminklk-projects.vercel.app`                                                                                                                                                              |
@@ -161,7 +161,7 @@ fresh environments.
 
 ### Option A — GitHub integration + push (recommended, token-free)
 
-1. Ensure `main` is pushed (done for this project; HEAD `77bb5ba`):
+1. Ensure `main` is pushed (done for this project; HEAD `489567f`):
 
     ```bash
     cd web/digital-belarus

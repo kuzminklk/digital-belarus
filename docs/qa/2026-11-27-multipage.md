@@ -51,6 +51,14 @@ All masks were regenerated for ru/be/en (33 entries per locale) with `python3 sc
 - Page metadata is localized for all hubs and every generated detail page; titles follow `Page — Digital Belarus` / `Старонка — Цыфровая Беларусь`.
 - Case and service H1s use generated masks from the same catalogue strings, so text and mask cannot drift apart.
 
-## 4. Production
+## 4. Production verification
 
-To be recorded after the v2.1 deployment (see the launch QA for the previous deployment baseline).
+- Deployed from `main` as Vercel production commit **`489567f`** (automatic Git deployment); project `digital-belarus`, URL https://digital-belarus.vercel.app.
+- All 19 paths return 200 for ru/be/en (57 URLs); unknown service/case slugs return the localized 404.
+- Live canonical/hreflang verification on sampled hub and detail pages: one canonical and three `hreflang` alternates per page, pointing at the production domain.
+- Live axe-core WCAG 2.1 AA: **0 violations** on 11 sampled routes across ru/be/en.
+- Live functional pass: case dialog opens; header routes and case-dialog case page link navigate correctly; mobile menu is 844 px tall (full viewport); no console errors; no horizontal overflow.
+- **Lighthouse production (`/ru`): Performance 86, Accessibility 100, Best Practices 100, SEO 100.** FCP 2.7 s, LCP 3.0 s, TBT 210 ms, CLS 0, 401 KiB transfer.
+- Security headers unchanged and verified in the previous deployment report.
+
+The previous v2 production baseline is recorded in [2026-11-26-launch.md](2026-11-26-launch.md).
