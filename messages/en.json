@@ -238,12 +238,12 @@
 				"category": "Website · Culture",
 				"year": "2025",
 				"kind": "live",
-				"liveUrl": "https://github.com/kuzminklk/fairy-tail",
+				"liveUrl": "https://fairy-tail.vercel.app",
 				"summary": "A cinematic photo story: seventeen photographs, ten chapters and a build with zero dependencies.",
 				"challenge": "Tell a photo story as a single journey rather than a gallery with buttons — and keep it fast, readable and accessible on a phone.",
 				"solution": "Photographs are pinned to the stage, chapters switch on scroll, and images load in stages: preview first, then full resolution. Without JavaScript the page remains readable.",
 				"stack": ["HTML", "CSS", "JavaScript", "Python"],
-				"result": "Seventeen full-screen photographs, ten chapters, LQIP placeholders and staged loading. A live project on GitHub.",
+				"result": "Seventeen full-screen photographs, ten chapters, LQIP placeholders and staged loading. A live project.",
 				"metric": "17 photos · 10 chapters"
 			},
 			{
