@@ -2,6 +2,7 @@
 
 import {useId, useState, type FormEvent} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import {
 	calculateEstimate,
@@ -227,10 +228,10 @@ export default function CalculatorSheet() {
 				<p className={styles.disclaimer}>{t('disclaimer')}</p>
 
 				<div className={styles.actions}>
-					<a href="#contact" className={`btn btn--primary ${styles.resultCta}`}>
+					<Link href="/contact" className={`btn btn--primary ${styles.resultCta}`}>
 						{t('cta')}
 						<ArrowIcon size={13} />
-					</a>
+					</Link>
 					<button type="button" className={styles.reset} onClick={reset}>
 						{t('reset')}
 					</button>

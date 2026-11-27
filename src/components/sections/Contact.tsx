@@ -15,7 +15,9 @@ type Channel = {
 	href?: string;
 };
 
-export default async function Contact() {
+type ContactProps = {showHeading?: boolean};
+
+export default async function Contact({showHeading = true}: ContactProps = {}) {
 	const t = await getTranslations('contact');
 
 	const channels: Channel[] = [
@@ -50,14 +52,16 @@ export default async function Contact() {
 	return (
 		<section id="contact" className={`section ${styles.contact}`}>
 			<div className="container">
-				<SectionHeading
-					index={t('index')}
-					label={t('label')}
-					title={t('title')}
-					accent={t('titleAccent')}
-					typeName="section.contact"
-					intro={t('intro')}
-				/>
+				{showHeading ? (
+					<SectionHeading
+						index={t('index')}
+						label={t('label')}
+						title={t('title')}
+						accent={t('titleAccent')}
+						typeName="section.contact"
+						intro={t('intro')}
+					/>
+				) : null}
 
 				<div className={styles.grid}>
 					<div className={styles.side}>

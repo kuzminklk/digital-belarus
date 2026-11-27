@@ -138,6 +138,210 @@
 				"cssWidth": 360
 			}
 		},
+		"page.services": {
+			"src": "/type/ru/page-services.png",
+			"width": 324,
+			"height": 96,
+			"cssWidth": 324,
+			"mobile": {
+				"src": "/type/ru/page-services-mobile.png",
+				"width": 244,
+				"height": 76,
+				"cssWidth": 244
+			}
+		},
+		"page.cases": {
+			"src": "/type/ru/page-cases.png",
+			"width": 424,
+			"height": 96,
+			"cssWidth": 424,
+			"mobile": {
+				"src": "/type/ru/page-cases-mobile.png",
+				"width": 320,
+				"height": 76,
+				"cssWidth": 320
+			}
+		},
+		"page.pricing": {
+			"src": "/type/ru/page-pricing.png",
+			"width": 386,
+			"height": 108,
+			"cssWidth": 386,
+			"mobile": {
+				"src": "/type/ru/page-pricing-mobile.png",
+				"width": 292,
+				"height": 86,
+				"cssWidth": 292
+			}
+		},
+		"page.calculator": {
+			"src": "/type/ru/page-calculator.png",
+			"width": 588,
+			"height": 96,
+			"cssWidth": 588,
+			"mobile": {
+				"src": "/type/ru/page-calculator-mobile.png",
+				"width": 364,
+				"height": 64,
+				"cssWidth": 364
+			}
+		},
+		"page.about": {
+			"src": "/type/ru/page-about.png",
+			"width": 332,
+			"height": 98,
+			"cssWidth": 332,
+			"mobile": {
+				"src": "/type/ru/page-about-mobile.png",
+				"width": 250,
+				"height": 78,
+				"cssWidth": 250
+			}
+		},
+		"page.faq": {
+			"src": "/type/ru/page-faq.png",
+			"width": 418,
+			"height": 96,
+			"cssWidth": 418,
+			"mobile": {
+				"src": "/type/ru/page-faq-mobile.png",
+				"width": 316,
+				"height": 76,
+				"cssWidth": 316
+			}
+		},
+		"page.contact": {
+			"src": "/type/ru/page-contact.png",
+			"width": 466,
+			"height": 74,
+			"cssWidth": 466,
+			"mobile": {
+				"src": "/type/ru/page-contact-mobile.png",
+				"width": 352,
+				"height": 56,
+				"cssWidth": 352
+			}
+		},
+		"service.websites": {
+			"src": "/type/ru/service-websites.png",
+			"width": 662,
+			"height": 78,
+			"cssWidth": 662,
+			"mobile": {
+				"src": "/type/ru/service-websites-mobile.png",
+				"width": 340,
+				"height": 130,
+				"cssWidth": 340
+			}
+		},
+		"service.bots": {
+			"src": "/type/ru/service-bots.png",
+			"width": 606,
+			"height": 94,
+			"cssWidth": 606,
+			"mobile": {
+				"src": "/type/ru/service-bots-mobile.png",
+				"width": 382,
+				"height": 64,
+				"cssWidth": 382
+			}
+		},
+		"service.ai": {
+			"src": "/type/ru/service-ai.png",
+			"width": 744,
+			"height": 86,
+			"cssWidth": 744,
+			"mobile": {
+				"src": "/type/ru/service-ai-mobile.png",
+				"width": 380,
+				"height": 46,
+				"cssWidth": 380
+			}
+		},
+		"service.automation": {
+			"src": "/type/ru/service-automation.png",
+			"width": 942,
+			"height": 78,
+			"cssWidth": 942,
+			"mobile": {
+				"src": "/type/ru/service-automation-mobile.png",
+				"width": 358,
+				"height": 96,
+				"cssWidth": 358
+			}
+		},
+		"service.commerce": {
+			"src": "/type/ru/service-commerce.png",
+			"width": 812,
+			"height": 86,
+			"cssWidth": 812,
+			"mobile": {
+				"src": "/type/ru/service-commerce-mobile.png",
+				"width": 382,
+				"height": 44,
+				"cssWidth": 382
+			}
+		},
+		"service.analytics": {
+			"src": "/type/ru/service-analytics.png",
+			"width": 964,
+			"height": 94,
+			"cssWidth": 964,
+			"mobile": {
+				"src": "/type/ru/service-analytics-mobile.png",
+				"width": 388,
+				"height": 148,
+				"cssWidth": 388
+			}
+		},
+		"case.yasna": {
+			"src": "/type/ru/case-yasna.png",
+			"width": 200,
+			"height": 64,
+			"cssWidth": 200,
+			"mobile": {
+				"src": "/type/ru/case-yasna-mobile.png",
+				"width": 156,
+				"height": 50,
+				"cssWidth": 156
+			}
+		},
+		"case.central-park": {
+			"src": "/type/ru/case-central-park.png",
+			"width": 504,
+			"height": 74,
+			"cssWidth": 504,
+			"mobile": {
+				"src": "/type/ru/case-central-park-mobile.png",
+				"width": 350,
+				"height": 52,
+				"cssWidth": 350
+			}
+		},
+		"case.spadchyna": {
+			"src": "/type/ru/case-spadchyna.png",
+			"width": 408,
+			"height": 78,
+			"cssWidth": 408,
+			"mobile": {
+				"src": "/type/ru/case-spadchyna-mobile.png",
+				"width": 320,
+				"height": 62,
+				"cssWidth": 320
+			}
+		},
+		"case.prabot": {
+			"src": "/type/ru/case-prabot.png",
+			"width": 310,
+			"height": 84,
+			"cssWidth": 310,
+			"mobile": {
+				"src": "/type/ru/case-prabot-mobile.png",
+				"width": 240,
+				"height": 68,
+				"cssWidth": 240
+			}
+		},
 		"footer.brand": {
 			"src": "/type/ru/footer-brand.png",
 			"width": 1239,
@@ -308,6 +512,210 @@
 				"cssWidth": 360
 			}
 		},
+		"page.services": {
+			"src": "/type/be/page-services.png",
+			"width": 354,
+			"height": 96,
+			"cssWidth": 354,
+			"mobile": {
+				"src": "/type/be/page-services-mobile.png",
+				"width": 268,
+				"height": 76,
+				"cssWidth": 268
+			}
+		},
+		"page.cases": {
+			"src": "/type/be/page-cases.png",
+			"width": 416,
+			"height": 96,
+			"cssWidth": 416,
+			"mobile": {
+				"src": "/type/be/page-cases-mobile.png",
+				"width": 314,
+				"height": 76,
+				"cssWidth": 314
+			}
+		},
+		"page.pricing": {
+			"src": "/type/be/page-pricing.png",
+			"width": 404,
+			"height": 108,
+			"cssWidth": 404,
+			"mobile": {
+				"src": "/type/be/page-pricing-mobile.png",
+				"width": 306,
+				"height": 86,
+				"cssWidth": 306
+			}
+		},
+		"page.calculator": {
+			"src": "/type/be/page-calculator.png",
+			"width": 582,
+			"height": 96,
+			"cssWidth": 582,
+			"mobile": {
+				"src": "/type/be/page-calculator-mobile.png",
+				"width": 360,
+				"height": 64,
+				"cssWidth": 360
+			}
+		},
+		"page.about": {
+			"src": "/type/be/page-about.png",
+			"width": 350,
+			"height": 98,
+			"cssWidth": 350,
+			"mobile": {
+				"src": "/type/be/page-about-mobile.png",
+				"width": 264,
+				"height": 78,
+				"cssWidth": 264
+			}
+		},
+		"page.faq": {
+			"src": "/type/be/page-faq.png",
+			"width": 408,
+			"height": 74,
+			"cssWidth": 408,
+			"mobile": {
+				"src": "/type/be/page-faq-mobile.png",
+				"width": 308,
+				"height": 56,
+				"cssWidth": 308
+			}
+		},
+		"page.contact": {
+			"src": "/type/be/page-contact.png",
+			"width": 460,
+			"height": 74,
+			"cssWidth": 460,
+			"mobile": {
+				"src": "/type/be/page-contact-mobile.png",
+				"width": 346,
+				"height": 56,
+				"cssWidth": 346
+			}
+		},
+		"service.websites": {
+			"src": "/type/be/service-websites.png",
+			"width": 656,
+			"height": 78,
+			"cssWidth": 656,
+			"mobile": {
+				"src": "/type/be/service-websites-mobile.png",
+				"width": 336,
+				"height": 130,
+				"cssWidth": 336
+			}
+		},
+		"service.bots": {
+			"src": "/type/be/service-bots.png",
+			"width": 606,
+			"height": 94,
+			"cssWidth": 606,
+			"mobile": {
+				"src": "/type/be/service-bots-mobile.png",
+				"width": 382,
+				"height": 64,
+				"cssWidth": 382
+			}
+		},
+		"service.ai": {
+			"src": "/type/be/service-ai.png",
+			"width": 724,
+			"height": 84,
+			"cssWidth": 724,
+			"mobile": {
+				"src": "/type/be/service-ai-mobile.png",
+				"width": 370,
+				"height": 46,
+				"cssWidth": 370
+			}
+		},
+		"service.automation": {
+			"src": "/type/be/service-automation.png",
+			"width": 940,
+			"height": 86,
+			"cssWidth": 940,
+			"mobile": {
+				"src": "/type/be/service-automation-mobile.png",
+				"width": 370,
+				"height": 96,
+				"cssWidth": 370
+			}
+		},
+		"service.commerce": {
+			"src": "/type/be/service-commerce.png",
+			"width": 652,
+			"height": 84,
+			"cssWidth": 652,
+			"mobile": {
+				"src": "/type/be/service-commerce-mobile.png",
+				"width": 372,
+				"height": 52,
+				"cssWidth": 372
+			}
+		},
+		"service.analytics": {
+			"src": "/type/be/service-analytics.png",
+			"width": 930,
+			"height": 94,
+			"cssWidth": 930,
+			"mobile": {
+				"src": "/type/be/service-analytics-mobile.png",
+				"width": 376,
+				"height": 148,
+				"cssWidth": 376
+			}
+		},
+		"case.yasna": {
+			"src": "/type/be/case-yasna.png",
+			"width": 200,
+			"height": 64,
+			"cssWidth": 200,
+			"mobile": {
+				"src": "/type/be/case-yasna-mobile.png",
+				"width": 156,
+				"height": 50,
+				"cssWidth": 156
+			}
+		},
+		"case.central-park": {
+			"src": "/type/be/case-central-park.png",
+			"width": 504,
+			"height": 74,
+			"cssWidth": 504,
+			"mobile": {
+				"src": "/type/be/case-central-park-mobile.png",
+				"width": 350,
+				"height": 52,
+				"cssWidth": 350
+			}
+		},
+		"case.spadchyna": {
+			"src": "/type/be/case-spadchyna.png",
+			"width": 408,
+			"height": 78,
+			"cssWidth": 408,
+			"mobile": {
+				"src": "/type/be/case-spadchyna-mobile.png",
+				"width": 320,
+				"height": 62,
+				"cssWidth": 320
+			}
+		},
+		"case.prabot": {
+			"src": "/type/be/case-prabot.png",
+			"width": 310,
+			"height": 84,
+			"cssWidth": 310,
+			"mobile": {
+				"src": "/type/be/case-prabot-mobile.png",
+				"width": 240,
+				"height": 68,
+				"cssWidth": 240
+			}
+		},
 		"footer.brand": {
 			"src": "/type/be/footer-brand.png",
 			"width": 1260,
@@ -476,6 +884,210 @@
 				"width": 372,
 				"height": 130,
 				"cssWidth": 372
+			}
+		},
+		"page.services": {
+			"src": "/type/en/page-services.png",
+			"width": 358,
+			"height": 76,
+			"cssWidth": 358,
+			"mobile": {
+				"src": "/type/en/page-services-mobile.png",
+				"width": 268,
+				"height": 58,
+				"cssWidth": 268
+			}
+		},
+		"page.cases": {
+			"src": "/type/en/page-cases.png",
+			"width": 264,
+			"height": 86,
+			"cssWidth": 264,
+			"mobile": {
+				"src": "/type/en/page-cases-mobile.png",
+				"width": 198,
+				"height": 66,
+				"cssWidth": 198
+			}
+		},
+		"page.pricing": {
+			"src": "/type/en/page-pricing.png",
+			"width": 326,
+			"height": 96,
+			"cssWidth": 326,
+			"mobile": {
+				"src": "/type/en/page-pricing-mobile.png",
+				"width": 246,
+				"height": 76,
+				"cssWidth": 246
+			}
+		},
+		"page.calculator": {
+			"src": "/type/en/page-calculator.png",
+			"width": 480,
+			"height": 86,
+			"cssWidth": 480,
+			"mobile": {
+				"src": "/type/en/page-calculator-mobile.png",
+				"width": 360,
+				"height": 66,
+				"cssWidth": 360
+			}
+		},
+		"page.about": {
+			"src": "/type/en/page-about.png",
+			"width": 290,
+			"height": 86,
+			"cssWidth": 290,
+			"mobile": {
+				"src": "/type/en/page-about-mobile.png",
+				"width": 220,
+				"height": 66,
+				"cssWidth": 220
+			}
+		},
+		"page.faq": {
+			"src": "/type/en/page-faq.png",
+			"width": 226,
+			"height": 98,
+			"cssWidth": 226,
+			"mobile": {
+				"src": "/type/en/page-faq-mobile.png",
+				"width": 172,
+				"height": 74,
+				"cssWidth": 172
+			}
+		},
+		"page.contact": {
+			"src": "/type/en/page-contact.png",
+			"width": 366,
+			"height": 76,
+			"cssWidth": 366,
+			"mobile": {
+				"src": "/type/en/page-contact-mobile.png",
+				"width": 276,
+				"height": 58,
+				"cssWidth": 276
+			}
+		},
+		"service.websites": {
+			"src": "/type/en/service-websites.png",
+			"width": 684,
+			"height": 94,
+			"cssWidth": 684,
+			"mobile": {
+				"src": "/type/en/service-websites-mobile.png",
+				"width": 264,
+				"height": 136,
+				"cssWidth": 264
+			}
+		},
+		"service.bots": {
+			"src": "/type/en/service-bots.png",
+			"width": 558,
+			"height": 94,
+			"cssWidth": 558,
+			"mobile": {
+				"src": "/type/en/service-bots-mobile.png",
+				"width": 288,
+				"height": 136,
+				"cssWidth": 288
+			}
+		},
+		"service.ai": {
+			"src": "/type/en/service-ai.png",
+			"width": 492,
+			"height": 66,
+			"cssWidth": 492,
+			"mobile": {
+				"src": "/type/en/service-ai-mobile.png",
+				"width": 382,
+				"height": 52,
+				"cssWidth": 382
+			}
+		},
+		"service.automation": {
+			"src": "/type/en/service-automation.png",
+			"width": 894,
+			"height": 74,
+			"cssWidth": 894,
+			"mobile": {
+				"src": "/type/en/service-automation-mobile.png",
+				"width": 376,
+				"height": 130,
+				"cssWidth": 376
+			}
+		},
+		"service.commerce": {
+			"src": "/type/en/service-commerce.png",
+			"width": 508,
+			"height": 94,
+			"cssWidth": 508,
+			"mobile": {
+				"src": "/type/en/service-commerce-mobile.png",
+				"width": 210,
+				"height": 154,
+				"cssWidth": 210
+			}
+		},
+		"service.analytics": {
+			"src": "/type/en/service-analytics.png",
+			"width": 1002,
+			"height": 94,
+			"cssWidth": 1002,
+			"mobile": {
+				"src": "/type/en/service-analytics-mobile.png",
+				"width": 376,
+				"height": 122,
+				"cssWidth": 376
+			}
+		},
+		"case.yasna": {
+			"src": "/type/en/case-yasna.png",
+			"width": 230,
+			"height": 64,
+			"cssWidth": 230,
+			"mobile": {
+				"src": "/type/en/case-yasna-mobile.png",
+				"width": 180,
+				"height": 50,
+				"cssWidth": 180
+			}
+		},
+		"case.central-park": {
+			"src": "/type/en/case-central-park.png",
+			"width": 504,
+			"height": 74,
+			"cssWidth": 504,
+			"mobile": {
+				"src": "/type/en/case-central-park-mobile.png",
+				"width": 350,
+				"height": 52,
+				"cssWidth": 350
+			}
+		},
+		"case.spadchyna": {
+			"src": "/type/en/case-spadchyna.png",
+			"width": 418,
+			"height": 94,
+			"cssWidth": 418,
+			"mobile": {
+				"src": "/type/en/case-spadchyna-mobile.png",
+				"width": 326,
+				"height": 76,
+				"cssWidth": 326
+			}
+		},
+		"case.prabot": {
+			"src": "/type/en/case-prabot.png",
+			"width": 270,
+			"height": 64,
+			"cssWidth": 270,
+			"mobile": {
+				"src": "/type/en/case-prabot-mobile.png",
+				"width": 210,
+				"height": 50,
+				"cssWidth": 210
 			}
 		},
 		"footer.brand": {

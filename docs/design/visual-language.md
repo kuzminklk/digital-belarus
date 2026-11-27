@@ -107,7 +107,11 @@ clamp(1.25rem, 3.6vw, 4rem)`, header `4.5rem`.
   media queries.
 - **Section surfaces:** alternate ink and cream. Cream (`.on-paper`) sections:
   Approach, Pricing, Studio, calculator result and the contact form panel; ink
-  sections: Hero, Services, Process, Cases, FAQ, Contact, Footer. The
+  sections: Hero, Services, Process, Cases, FAQ, Contact, Footer. Hub pages
+  add a `PageHero` — breadcrumb, instrument kicker, one large pixel-serif h1,
+  intro and a bordered aside — followed by a reused home section. Detail pages
+  open with the same PageHero, a full-bleed dithered cover and hairline story
+  blocks. The
   `.on-paper` wrapper flips component primitives and grain opacity; text colour
   switches to ink automatically.
 - **Bleed:** the lunar band, atlas engraving, portrait and case covers are

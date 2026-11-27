@@ -2,7 +2,7 @@
 
 ## Goal
 
-Maintain and extend «Цифровая Беларусь» — a trilingual (ru, be, en) marketing site for a digital services studio in Minsk. The site sells websites, Telegram bots, AI assistants, e-commerce and automation. It is a single landing page plus a privacy page, statically rendered, with no backend or customer data storage.
+Maintain and extend «Цифровая Беларусь» — a trilingual (ru, be, en) marketing site for a digital services studio in Minsk. It sells websites, Telegram bots, AI assistants, e-commerce and automation. It is a statically rendered multi-page site: home, services hub + six service pages, cases hub + four case pages, pricing, calculator, studio, FAQ, contact and privacy. No backend or customer data storage.
 
 ## Stack
 
@@ -40,6 +40,8 @@ python3 scripts/generate-brand-assets.py  # regenerate favicon/app icons
 
 **Structure and styling.** One section per file in `src/components/sections/`, one CSS Module next to it. Compose shared primitives from `src/styles/components.css` (`.btn`, `.panel`, `.tag`, `.field`, `.mono`, `.container`, `.section`, `.on-paper`). Reference design tokens from `src/styles/tokens.css`; never hardcode colours, type sizes, spacing or motion durations.
 
+**Pages.** Hub pages live at `src/app/[locale]/{services,cases,pricing,calculator,about,faq,contact}/page.tsx`. They use the shared `PageHero` (breadcrumb, mask title, intro, aside) and `CtaBand`. Detail routes are `services/[slug]` and `cases/[slug]`, statically generated from `SERVICE_SLUGS` / `CASE_SLUGS` in `src/content/pages.ts`; add the slug to that file before adding a page. Reused home sections accept `showHeading={false}` when a page hero already provides the h1. Every page exports localized metadata through `pageMetadata()` and appears in `src/app/sitemap.ts`. Dynamic slugs are validated and return the localized 404 for unknown values.
+
 **Design rules — v2 warm two-tone.**
 
 - Exactly two colours: warm ink `#12100d` and cream `#ebe2d1`. **No red, green, gold, blue or grey-blue accents.** Hierarchy comes from scale, inversion, texture and hairlines.
@@ -54,7 +56,7 @@ python3 scripts/generate-brand-assets.py  # regenerate favicon/app icons
 
 **Performance.** No new runtime libraries for effects; use CSS and small client components. Preload only the Cyrillic and Latin Handjet subsets. Avoid external requests: no CDN fonts, no analytics, no third-party scripts. Pixel masks/images are static and cacheable.
 
-**i18n.** Locale routing uses `localePrefix: 'always'`, default locale `ru`. Add a key to all three catalogues at once and run `pnpm check:i18n`. Preserve ICU placeholders and array lengths across locales. Metadata must be locale-specific and include canonical + hreflang alternates. If a heading changes, regenerate the pixel-type manifest.
+**i18n.** Locale routing uses `localePrefix: 'always'`, default locale `ru`. Add a key to all three catalogues at once and run `pnpm check:i18n`. Preserve ICU placeholders and array lengths across locales. Metadata must be locale-specific and include canonical + hreflang alternates. If a heading changes, regenerate the pixel-type manifest. Route slugs live in `src/content/pages.ts` (language-independent); page copy lives under `pages.*` and `servicePages.*` in the catalogs.
 
 **Security and privacy.** No cookies, analytics or storage besides the language in the URL. The brief form builds a message in the browser, copies it and opens Telegram; it never posts data to a server. Never commit secrets; deployment credentials live outside the repository.
 

@@ -3,9 +3,11 @@
 import {useEffect, useRef, useState, type MouseEvent} from 'react';
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import PixelIcon from '@/components/brand/PixelIcon';
 import type {CaseItem} from './Cases';
+import {CASE_SLUGS} from '@/content/pages';
 import styles from './Cases.module.css';
 
 type CaseGalleryProps = {
@@ -210,6 +212,14 @@ export default function CaseGallery({items}: CaseGalleryProps) {
 						</div>
 
 						<footer className={styles.dialogFoot}>
+							<Link
+								href={`/cases/${CASE_SLUGS[active]}`}
+								className="link-underline"
+								onClick={closeDialog}
+							>
+								{t('openPage')}
+								<ArrowIcon size={12} />
+							</Link>
 							{activeCase.kind === 'live' && activeCase.liveUrl ? (
 								<a
 									className="btn btn--primary btn--small"

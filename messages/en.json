@@ -180,7 +180,9 @@
 				"term": "1–2 weeks",
 				"tags": ["Metrica", "Dashboard", "Reports"]
 			}
-		]
+		],
+		"openPage": "More about the service",
+		"otherServices": "Other services"
 	},
 	"process": {
 		"index": "03",
@@ -283,7 +285,9 @@
 				"result": "Concept: dialogue, quote calculation, booking and notifications in the admin chat.",
 				"metric": "24/7 · 3 flows"
 			}
-		]
+		],
+		"openPage": "Open the case study",
+		"otherCases": "Other projects"
 	},
 	"pricing": {
 		"index": "05",
@@ -614,5 +618,106 @@
 		"title": "Signal lost",
 		"description": "This page wasn’t found, or it has drifted into another galaxy. Head back home — everything there is on its proper orbit.",
 		"cta": "Back to home"
+	},
+	"pages": {
+		"home": "Home",
+		"services": {
+			"title": "Services",
+			"intro": "Six directions: from a website and an online shop to bots, AI assistants and automation. Start with one job — we’ll add the rest when you’re ready."
+		},
+		"cases": {
+			"title": "Work",
+			"intro": "Live projects and concepts: interfaces, code and measurable results. Open a case study to see the challenge, the solution and the stack."
+		},
+		"pricing": {
+			"title": "Pricing",
+			"intro": "Transparent packages in Belarusian roubles: from a quick launch to a turnkey system. Each includes a month of edits and handover of all access."
+		},
+		"calculator": {
+			"title": "Calculator",
+			"intro": "Build an indicative quote in a minute: product type, extras and support. We’ll fix the exact price after the brief."
+		},
+		"about": {
+			"title": "Studio",
+			"intro": "An independent studio in Minsk: design, development, bots and AI. We work directly, without middlemen or extra mark-ups."
+		},
+		"faq": {
+			"title": "FAQ",
+			"intro": "In short: timelines, money, the contract and what stays with you after launch. If your question isn’t on the list, write to us directly."
+		},
+		"contact": {
+			"title": "Contact",
+			"intro": "Tell us about the job on Telegram or through the form: we reply within the hour during business hours and send a quote."
+		},
+		"serviceEyebrow": "Service",
+		"caseEyebrow": "Project",
+		"included": "What’s included",
+		"otherServices": "Other services",
+		"otherCases": "Other projects",
+		"allServices": "All services",
+		"allCases": "All projects",
+		"startProject": "Tell us about your project",
+		"ctaIntro": "We reply within the hour; after a short brief we’ll send a quote and fix it before we start.",
+		"openCase": "Open the case study",
+		"openService": "More about the service",
+		"priceFrom": "Price",
+		"termLabel": "Timeline",
+		"whatNext": "What happens next"
+	},
+	"servicePages": {
+		"websites": {
+			"intro": "A website that explains why you matter and leads to an enquiry. We handle structure, design, copy, front-end build and launch on your domain.",
+			"includes": [
+				"Structure and prototype built around the business job",
+				"Design in the studio’s editorial style",
+				"Responsive front-end build on Next.js and fast loading",
+				"Domain, hosting, analytics and handover of access"
+			]
+		},
+		"bots": {
+			"intro": "A Telegram bot instead of messaging by hand: it takes enquiries, books appointments, shows a catalogue and reminds clients. Behind it is a clear admin panel.",
+			"includes": [
+				"Conversation flows built around your process",
+				"Enquiries, booking and notifications",
+				"Payments, a catalogue or a Mini App",
+				"Admin panel and documentation for the team"
+			]
+		},
+		"ai": {
+			"intro": "An AI assistant trained on your services, prices and documents. It answers clients around the clock and hands complex questions to a human.",
+			"includes": [
+				"A knowledge base built from your materials",
+				"Response flows and the brand voice",
+				"Hand-off of the conversation to a manager",
+				"Quality tests and team training"
+			]
+		},
+		"automation": {
+			"intro": "We take the manual grind away: enquiries land in the CRM, reminders go out to clients, reports build themselves.",
+			"includes": [
+				"An audit of current processes",
+				"Integrations with the CRM and messengers",
+				"Automatic reminders and statuses",
+				"A dashboard and playbooks for the team"
+			]
+		},
+		"commerce": {
+			"intro": "An online shop with a catalogue, payments and delivery — easy to buy from and easy to manage.",
+			"includes": [
+				"Catalogue and product pages",
+				"Cart, payments and delivery",
+				"Order and stock management",
+				"SEO and sales analytics"
+			]
+		},
+		"analytics": {
+			"intro": "We bring the numbers together in one place: where enquiries come from, what works and where money is lost.",
+			"includes": [
+				"Goals and events in analytics",
+				"A dashboard of key metrics",
+				"Reports by channel and enquiries",
+				"Regular reviews of the numbers with the team"
+			]
+		}
 	}
 }

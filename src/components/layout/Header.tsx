@@ -21,6 +21,9 @@ export default function Header() {
 	const [progress, setProgress] = useState(0);
 	const toggleRef = useRef<HTMLButtonElement>(null);
 
+	const isActive = (href: string) =>
+		!href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`));
+
 	useEffect(() => {
 		let frame = 0;
 
@@ -88,7 +91,13 @@ export default function Header() {
 
 				<nav className={styles.nav} aria-label={t('a11y.mainNav')}>
 					{mainNav.map((item) => (
-						<Link key={item.id} href={`/#${item.id}`} className={styles.navLink}>
+						<Link
+							key={item.key}
+							href={item.href}
+							className={styles.navLink}
+							data-active={isActive(item.href) ? 'true' : 'false'}
+							aria-current={isActive(item.href) ? 'page' : undefined}
+						>
 							{t(`nav.${item.key}`)}
 						</Link>
 					))}
@@ -111,7 +120,7 @@ export default function Header() {
 						))}
 					</nav>
 
-					<Link href="/#contact" className={`${styles.cta} btn btn--primary btn--small`}>
+					<Link href="/contact" className={`${styles.cta} btn btn--primary btn--small`}>
 						{t('common.ctaDiscuss')}
 						<ArrowIcon size={12} />
 					</Link>
@@ -138,8 +147,8 @@ export default function Header() {
 					<nav className={styles.mobileNav} aria-label={t('a11y.mainNav')}>
 						{mainNav.map((item, index) => (
 							<Link
-								key={item.id}
-								href={`/#${item.id}`}
+								key={item.key}
+								href={item.href}
 								className={styles.mobileLink}
 								onClick={() => setOpen(false)}
 							>
@@ -149,11 +158,19 @@ export default function Header() {
 								{t(`nav.${item.key}`)}
 							</Link>
 						))}
+						<Link
+							href="/contact"
+							className={styles.mobileLink}
+							onClick={() => setOpen(false)}
+						>
+							<span className={styles.mobileIndex}>07</span>
+							{t('nav.contact')}
+						</Link>
 					</nav>
 
 					<div className={styles.panelFoot}>
 						<Link
-							href="/#contact"
+							href="/contact"
 							className="btn btn--primary"
 							onClick={() => setOpen(false)}
 						>

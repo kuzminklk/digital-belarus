@@ -28,11 +28,14 @@ export const sectionIds = {
 	contact: 'contact',
 } as const;
 
+/** Main navigation: page routes plus one in-page process anchor. */
 export const mainNav = [
-	{id: sectionIds.services, key: 'services'},
-	{id: sectionIds.process, key: 'process'},
-	{id: sectionIds.cases, key: 'cases'},
-	{id: sectionIds.pricing, key: 'pricing'},
-	{id: sectionIds.studio, key: 'studio'},
-	{id: sectionIds.faq, key: 'faq'},
+	{key: 'services', href: '/services'},
+	{key: 'process', href: '/#process'},
+	{key: 'cases', href: '/cases'},
+	{key: 'pricing', href: '/pricing'},
+	{key: 'studio', href: '/about'},
+	{key: 'faq', href: '/faq'},
 ] as const;
+
+export const contactHref = '/contact';

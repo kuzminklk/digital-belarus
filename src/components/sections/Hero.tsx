@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {getLocale, getTranslations} from 'next-intl/server';
+import {Link} from '@/i18n/navigation';
 import PixelType from '@/components/brand/PixelType';
 import ArrowIcon from '@/components/ui/ArrowIcon';
 import styles from './Hero.module.css';
@@ -49,13 +50,13 @@ export default async function Hero() {
 					<div className={styles.underTitle}>
 						<p className={styles.description}>{t('description')}</p>
 						<div className={styles.ctas}>
-							<a href="#contact" className="btn btn--primary">
+							<Link href="/contact" className="btn btn--primary">
 								{t('primaryCta')}
 								<ArrowIcon />
-							</a>
-							<a href="#services" className="btn btn--ghost">
+							</Link>
+							<Link href="/services" className="btn btn--ghost">
 								{t('secondaryCta')}
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

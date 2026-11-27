@@ -76,6 +76,15 @@
 	transition: transform var(--dur) var(--ease-out);
 }
 
+.navLink[data-active='true'] {
+	color: var(--paper);
+}
+
+.navLink[data-active='true']::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
 .navLink:hover {
 	color: var(--paper);
 }

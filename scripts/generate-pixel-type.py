@@ -90,6 +90,23 @@ DISPLAY: dict[str, dict] = {
 	"section.studio": {"height": 46, "block": 2, "max": 760, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 42, "block": 2, "max": 390, "maxLines": 3}, "runs": [("studio.title", "roman"), ("raw: ", "roman"), ("studio.titleAccent", "italic")]},
 	"section.faq": {"height": 46, "block": 2, "max": 760, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 42, "block": 2, "max": 390, "maxLines": 3}, "runs": [("faq.title", "roman"), ("raw: ", "roman"), ("faq.titleAccent", "italic")]},
 	"section.contact": {"height": 46, "block": 2, "max": 760, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 42, "block": 2, "max": 390, "maxLines": 3}, "runs": [("contact.title", "roman"), ("raw: ", "roman"), ("contact.titleAccent", "italic")]},
+	"page.services": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.services.title", "roman")]},
+	"page.cases": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.cases.title", "roman")]},
+	"page.pricing": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.pricing.title", "roman")]},
+	"page.calculator": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.calculator.title", "roman")]},
+	"page.about": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.about.title", "roman")]},
+	"page.faq": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.faq.title", "roman")]},
+	"page.contact": {"height": 72, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 54, "block": 2, "max": 390, "maxLines": 2}, "runs": [("pages.contact.title", "roman")]},
+	"service.websites": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[0].title", "roman")]},
+	"service.bots": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[1].title", "roman")]},
+	"service.ai": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[2].title", "roman")]},
+	"service.automation": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[3].title", "roman")]},
+	"service.commerce": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[4].title", "roman")]},
+	"service.analytics": {"height": 62, "block": 2, "max": 1000, "maxLines": 2, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 2}, "runs": [("services.items[5].title", "roman")]},
+	"case.yasna": {"height": 62, "block": 2, "max": 1000, "maxLines": 1, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 1}, "runs": [("cases.items[0].name", "roman")]},
+	"case.central-park": {"height": 62, "block": 2, "max": 1000, "maxLines": 1, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 1}, "runs": [("cases.items[1].name", "roman")]},
+	"case.spadchyna": {"height": 62, "block": 2, "max": 1000, "maxLines": 1, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 1}, "runs": [("cases.items[2].name", "roman")]},
+	"case.prabot": {"height": 62, "block": 2, "max": 1000, "maxLines": 1, "tracking": 0.008, "weight": 600, "mobile": {"height": 48, "block": 2, "max": 390, "maxLines": 1}, "runs": [("cases.items[3].name", "roman")]},
 	"footer.brand": {
 		"height": 98,
 		"block": 7,
@@ -121,7 +138,7 @@ DISPLAY: dict[str, dict] = {
 	},
 }
 
-LOCALES = ["ru", "be", "en"]
+LOCALES = [locale.strip() for locale in os.environ.get("PIXEL_TYPE_LOCALES", "ru,be,en").split(",") if locale.strip()]
 
 
 def ensure_fonts() -> dict[str, Path]:
@@ -140,9 +157,14 @@ def ensure_fonts() -> dict[str, Path]:
 def resolve(messages: dict, dotted: str) -> str:
 	value: object = messages
 	for part in dotted.split("."):
+		name, _, index = part.partition("[")
 		if not isinstance(value, dict):
 			raise KeyError(dotted)
-		value = value[part]
+		value = value[name]
+		if index:
+			if not isinstance(value, list):
+				raise KeyError(dotted)
+			value = value[int(index.rstrip("]"))]
 	if not isinstance(value, str):
 		raise KeyError(dotted)
 	return value

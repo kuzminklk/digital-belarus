@@ -1,4 +1,5 @@
 import {getTranslations} from 'next-intl/server';
+import {Link} from '@/i18n/navigation';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
 import ArrowIcon from '@/components/ui/ArrowIcon';
@@ -9,21 +10,25 @@ type FaqItem = {
 	answer: string;
 };
 
-export default async function FAQ() {
+type FaqProps = {showHeading?: boolean};
+
+export default async function FAQ({showHeading = true}: FaqProps = {}) {
 	const t = await getTranslations('faq');
 	const items = t.raw('items') as FaqItem[];
 
 	return (
 		<section id="faq" className={`section ${styles.faq}`} aria-label={t('label')}>
 			<div className={`container ${styles.layout}`}>
-				<SectionHeading
-					index={t('index')}
-					label={t('label')}
-					title={t('title')}
-					accent={t('titleAccent')}
-					typeName="section.faq"
-					align="start"
-				/>
+				{showHeading ? (
+					<SectionHeading
+						index={t('index')}
+						label={t('label')}
+						title={t('title')}
+						accent={t('titleAccent')}
+						typeName="section.faq"
+						align="start"
+					/>
+				) : null}
 
 				<ol className={styles.items}>
 					{items.map((item, index) => (
@@ -52,10 +57,10 @@ export default async function FAQ() {
 				<Reveal>
 					<div className={styles.more}>
 						<p className={styles.moreText}>{t('more')}</p>
-						<a href="#contact" className="link-underline">
+						<Link href="/contact" className="link-underline">
 							{t('moreLink')}
 							<ArrowIcon size={12} />
-						</a>
+						</Link>
 					</div>
 				</Reveal>
 			</div>

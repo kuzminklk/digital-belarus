@@ -173,3 +173,12 @@
 		transition: none;
 	}
 }
+
+.itemLink {
+	display: block;
+	color: inherit;
+}
+
+.itemLink:focus-visible {
+	outline-offset: 6px;
+}

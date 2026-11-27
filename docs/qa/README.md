@@ -2,9 +2,10 @@
 
 Visual, functional and accessibility verification of «Цифровая Беларусь».
 
-| Report                                       | Scope                                                                                       |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [2026-11-26-launch.md](2026-11-26-launch.md) | Pre-launch audit of all locales, responsive layouts, accessibility, interactions and assets |
+| Report                                             | Scope                                                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [2026-11-26-launch.md](2026-11-26-launch.md)       | Pre-launch audit of all locales, responsive layouts, accessibility, interactions and assets |
+| [2026-11-27-multipage.md](2026-11-27-multipage.md) | Cyrillic pixel-serif legibility fix and multi-page route verification                       |
 
 Automated commands that back these reports:
 

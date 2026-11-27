@@ -1,6 +1,6 @@
 # Translation notes — «Цифровая Беларусь»
 
-Status: complete (first full pass)
+Status: complete (landing page + multi-page routes)
 Owner: content
 Related: [i18n spec](../specs/i18n.md) | [ADR 0002](../decisions/0002-next-intl-three-locales.md) | [ADR 0003](../decisions/0003-message-catalogs-as-content.md)
 
@@ -22,7 +22,9 @@ Rules:
 1. **Russian is the source catalogue.** Every key is authored in `ru.json` first; `be` and `en`
    are complete translations — no partial locales, no runtime fallback, no untranslated strings.
 2. **Every locale is first-class.** A visitor must be able to read the entire site (landing page,
-   case dialogs, calculator, form errors, privacy page, 404) in their language without losing meaning.
+   services hub and the six service pages, work hub and the four case pages, pricing, calculator,
+   studio, FAQ, contact, case dialogs, form errors, privacy page, 404) in their language without
+   losing meaning.
 3. **Translations are adaptations.** Belarusian and English copy must read as if written natively for
    the studio: same facts, same promises, same level of detail, but natural syntax and rhythm.
    Do not shorten away meaningful detail; do not add claims that are not in `ru.json`.
@@ -40,17 +42,29 @@ Rules:
 4. Re-read the changed string in context; a one-word Russian edit can change the grammar of a
    Belarusian or English sentence.
 
-The current catalogues were synchronised after the Lead added the form keys
-`contact.form.requestTitle`, `contact.form.successNoteFallback` and `contact.form.sendAnother`
-on 26 November 2026. If `ru.json` changes again, repeat the workflow above.
+Sync history:
+
+- **26 November 2026** — form keys `contact.form.requestTitle`,
+  `contact.form.successNoteFallback` and `contact.form.sendAnother` were added.
+- **27 November 2026** — multi-page routes were added: `pages.*` (hub titles/intros and shared
+  labels) and `servicePages.*` (intro + `includes` array per service), plus the hub link labels
+  `services.openPage`, `services.otherServices`, `cases.openPage`, `cases.otherCases`. That update
+  also fixed the three Russian copy issues recorded in §11.
+
+If `ru.json` changes again, repeat the workflow above.
 
 ## 2. Structural contract
 
 The three files are **structurally identical** and must stay that way:
 
 - identical key paths, in the same nesting; no extra or missing keys;
-- identical array lengths and order (services, cases, tiers, calculator types/options/jurisdictions,
-  FAQ items, principles, steps, hero metrics, form option lists, privacy sections);
+- identical array lengths and order (services items, service-page `includes` lists, cases items,
+  tiers and their `features`, calculator types/options/support options, FAQ items, principles, steps,
+  hero metrics, marquee items, form option lists, privacy sections);
+- identical `pages.*` and `servicePages.*` vocabulary: every route has a title/intro pair, and the
+  shared labels (`openCase`, `openService`, `otherServices`, `otherCases`, `allServices`, `allCases`,
+  `included`, `priceFrom`, `termLabel`, `whatNext`, `startProject`, `ctaIntro`, eyebrow labels) are
+  reused across pages rather than duplicated;
 - identical values for language-independent data:
     - `id`, `icon`, `kind`, `year`, `index`, `num`, `code`;
     - `liveUrl`, `telegram`, `telegramUrl`, `githubUrl`, `personalUrl`, `coordinates`;
@@ -161,77 +175,96 @@ meaning and tone when adapting.
 Core terms used by the site. Use these translations consistently; if a new string uses a synonym,
 check this table first.
 
-| Russian (source)    | Belarusian           | English                     | Notes                                                            |
-| ------------------- | -------------------- | --------------------------- | ---------------------------------------------------------------- |
-| сайт                | сайт                 | website / site              | "сайт" is the normal Belarusian word                             |
-| заявка              | заяўка               | enquiry                     | British "enquiry"; never "inquiry"                               |
-| смета               | каштарыс             | quote                       | "смета" is a Russianism in be; calculator output uses "estimate" |
-| фиксированная смета | фіксаваны каштарыс   | fixed quote                 | Key selling point, keep the wording stable                       |
-| тариф               | тарыф                | plan                        | Pricing tier name                                                |
-| бот / Telegram-бот  | бот / Telegram-бот   | bot / Telegram bot          | Product name kept in Latin script                                |
-| ИИ                  | ШІ (штучны інтэлект) | AI                          | "ШІ" is the Belarusian abbreviation                              |
-| нейросеть           | нейронная сетка      | neural network              | Used in the FAQ answer about AI                                  |
-| под ключ            | пад ключ             | turnkey                     | Tier name «Под ключ» → «Пад ключ» → "Turnkey"                    |
-| студия              | студыя               | studio                      | «студия» in be is «студыя»                                       |
-| запуск              | запуск               | launch                      | "launch" also for going live                                     |
-| поддержка           | падтрымка            | support                     | Post-launch support                                              |
-| сопровождение       | суправаджэнне        | ongoing support             | Unlike one-off "падтрымка"                                       |
-| договор             | дагавор              | contract                    | "by contract" / "under contract"                                 |
-| каталог             | каталог              | catalogue                   | British spelling in en                                           |
-| воронка             | варонка              | funnel                      | Reserved for future copy; not in current catalogue               |
-| вёрстка             | вёрстка              | front-end build / markup    | "build" in case copy, "markup" if precise                        |
-| правки              | праўкі               | edits                       | "a month of edits"                                               |
-| сдача (проекта)     | здача                | handover                    | "after handover"                                                 |
-| доработки           | дапрацоўкі           | refinements                 | "edits and refinements"                                          |
-| бриф                | брыф                 | brief                       | Short intake conversation                                        |
-| прототип            | прататып             | prototype                   | Structure prototype                                              |
-| ориентир            | арыенцір             | indication / starting point | Prices are "starting points"                                     |
-| дашборд             | дашборд              | dashboard                   | Kept as-is                                                       |
-| интеграция          | інтэграцыя           | integration                 |                                                                  |
-| автоматизация       | аўтаматызацыя        | automation                  |                                                                  |
-| консультант (ИИ-)   | кансультант (ШІ-)    | assistant (AI)              | "AI assistant"                                                   |
-| живой проект        | жывы праект          | live project                | Case label                                                       |
-| концепт             | канцэпт              | concept                     | Case label; see §9                                               |
-| кейс                | кейс                 | case study                  | "View case study"                                                |
-| стек                | стэк                 | stack                       |                                                                  |
-| домен               | дамен                | domain                      |                                                                  |
-| хостинг             | хостынг              | hosting                     | Attested Belarusian form (hosting providers use it)              |
-| доступы             | доступы              | access                      |                                                                  |
-| исходники           | зыходнікі            | source code                 |                                                                  |
-| оплата              | аплата               | payment                     |                                                                  |
-| заказ               | замова               | order                       | "замовіць" = to order; "заказ" avoided                           |
-| корзина             | кошык                | cart                        |                                                                  |
-| доставка            | дастаўка             | delivery                    |                                                                  |
-| отзыв               | водгук               | review                      |                                                                  |
-| отчёт               | справаздача          | report                      |                                                                  |
-| цель                | мэта                 | goal                        | "analytics and goals"                                            |
-| звонок              | званок               | call                        |                                                                  |
-| встреча             | сустрэча             | meeting                     |                                                                  |
-| менеджер            | менеджар             | manager                     | Also "middleman" in `менеджеры-посредники`                       |
-| разработчик         | распрацоўшчык        | developer                   |                                                                  |
-| дизайнер            | дызайнер             | designer                    |                                                                  |
-| команда             | каманда              | team                        |                                                                  |
-| клиент              | кліент               | client                      |                                                                  |
-| лендинг             | лендынг              | landing page                |                                                                  |
-| интернет-магазин    | інтэрнэт-крама       | online shop                 | "shop" = «крама»                                                 |
-| корпоративный сайт  | карпаратыўны сайт    | corporate website           |                                                                  |
-| аналитика           | аналітыка            | analytics                   |                                                                  |
-| дизайн-система      | дызайн-сістэма       | design system               |                                                                  |
-| маркетплейс         | маркетплейс          | marketplace                 |                                                                  |
-| ТЗ                  | тэхнічнае заданне    | specification               | "no forty-page specifications"                                   |
-| оферта              | аферта               | offer                       | "not an offer"                                                   |
-| вилка (цен)         | дыяпазон кошту       | range                       | Literal «відэльца» rejected as a false friend                    |
-| вывеска / шильда    | шыльда               | sign                        | "the sign above the door"                                        |
-| наценка             | нацэнка              | mark-up                     | "agency mark-up"                                                 |
-| чёрный ящик         | чорная скрыня        | black box                   | «скрыня» is feminine in be                                       |
-| обсерватория        | абсерваторыя         | observatory                 | Brand metaphor                                                   |
-| созвездие           | сузор’е              | constellation               | Apostrophe: «сузор’е»                                            |
-| орбита              | арбіта               | orbit                       |                                                                  |
-| пиксельная вышивка  | піксельная вышыўка   | pixel embroidery            | Ornament identity                                                |
-| страница            | старонка             | page                        |                                                                  |
-| фото                | фота                 | photo                       | «фотаздымак» = photograph                                        |
-| удалённо            | аддалена             | remote                      |                                                                  |
-| подвал (сайта)      | футар                | footer                      | Web jargon is acceptable in be                                   |
+| Russian (source)       | Belarusian              | English                     | Notes                                                             |
+| ---------------------- | ----------------------- | --------------------------- | ----------------------------------------------------------------- |
+| сайт                   | сайт                    | website / site              | "сайт" is the normal Belarusian word                              |
+| заявка                 | заяўка                  | enquiry                     | British "enquiry"; never "inquiry"                                |
+| смета                  | каштарыс                | quote                       | "смета" is a Russianism in be; calculator output uses "estimate"  |
+| фиксированная смета    | фіксаваны каштарыс      | fixed quote                 | Key selling point, keep the wording stable                        |
+| тариф                  | тарыф                   | plan                        | Pricing tier name                                                 |
+| бот / Telegram-бот     | бот / Telegram-бот      | bot / Telegram bot          | Product name kept in Latin script                                 |
+| ИИ                     | ШІ (штучны інтэлект)    | AI                          | "ШІ" is the Belarusian abbreviation                               |
+| нейросеть              | нейронная сетка         | neural network              | Used in the FAQ answer about AI                                   |
+| под ключ               | пад ключ                | turnkey                     | Tier name «Под ключ» → «Пад ключ» → "Turnkey"                     |
+| студия                 | студыя                  | studio                      | «студия» in be is «студыя»                                        |
+| запуск                 | запуск                  | launch                      | "launch" also for going live                                      |
+| поддержка              | падтрымка               | support                     | Post-launch support                                               |
+| сопровождение          | суправаджэнне           | ongoing support             | Unlike one-off "падтрымка"                                        |
+| договор                | дагавор                 | contract                    | "by contract" / "under contract"                                  |
+| каталог                | каталог                 | catalogue                   | British spelling in en                                            |
+| воронка                | варонка                 | funnel                      | Reserved for future copy; not in current catalogue                |
+| вёрстка                | вёрстка                 | front-end build / markup    | "build" in case copy, "markup" if precise                         |
+| правки                 | праўкі                  | edits                       | "a month of edits"                                                |
+| сдача (проекта)        | здача                   | handover                    | "after handover"                                                  |
+| доработки              | дапрацоўкі              | refinements                 | "edits and refinements"                                           |
+| бриф                   | брыф                    | brief                       | Short intake conversation                                         |
+| прототип               | прататып                | prototype                   | Structure prototype                                               |
+| ориентир               | арыенцір                | indication / starting point | Prices are "starting points"                                      |
+| дашборд                | дашборд                 | dashboard                   | Kept as-is                                                        |
+| интеграция             | інтэграцыя              | integration                 |                                                                   |
+| автоматизация          | аўтаматызацыя           | automation                  |                                                                   |
+| консультант (ИИ-)      | кансультант (ШІ-)       | assistant (AI)              | "AI assistant"                                                    |
+| живой проект           | жывы праект             | live project                | Case label                                                        |
+| концепт                | канцэпт                 | concept                     | Case label; see §9                                                |
+| кейс                   | кейс                    | case study                  | "View case study"                                                 |
+| стек                   | стэк                    | stack                       |                                                                   |
+| домен                  | дамен                   | domain                      |                                                                   |
+| хостинг                | хостынг                 | hosting                     | Attested Belarusian form (hosting providers use it)               |
+| доступы                | доступы                 | access                      |                                                                   |
+| исходники              | зыходнікі               | source code                 |                                                                   |
+| оплата                 | аплата                  | payment                     |                                                                   |
+| заказ                  | замова                  | order                       | "замовіць" = to order; "заказ" avoided                            |
+| корзина                | кошык                   | cart                        |                                                                   |
+| доставка               | дастаўка                | delivery                    |                                                                   |
+| отзыв                  | водгук                  | review                      |                                                                   |
+| отчёт                  | справаздача             | report                      |                                                                   |
+| цель                   | мэта                    | goal                        | "analytics and goals"                                             |
+| звонок                 | званок                  | call                        |                                                                   |
+| встреча                | сустрэча                | meeting                     |                                                                   |
+| менеджер               | менеджар                | manager                     | Also "middleman" in `менеджеры-посредники`                        |
+| разработчик            | распрацоўшчык           | developer                   |                                                                   |
+| дизайнер               | дызайнер                | designer                    |                                                                   |
+| команда                | каманда                 | team                        |                                                                   |
+| клиент                 | кліент                  | client                      |                                                                   |
+| лендинг                | лендынг                 | landing page                |                                                                   |
+| интернет-магазин       | інтэрнэт-крама          | online shop                 | "shop" = «крама»                                                  |
+| корпоративный сайт     | карпаратыўны сайт       | corporate website           |                                                                   |
+| аналитика              | аналітыка               | analytics                   |                                                                   |
+| дизайн-система         | дызайн-сістэма          | design system               |                                                                   |
+| маркетплейс            | маркетплейс             | marketplace                 |                                                                   |
+| ТЗ                     | тэхнічнае заданне       | specification               | "no forty-page specifications"                                    |
+| оферта                 | аферта                  | offer                       | "not an offer"                                                    |
+| вилка (цен)            | дыяпазон кошту          | range                       | Literal «відэльца» rejected as a false friend                     |
+| вывеска / шильда       | шыльда                  | sign                        | "the sign above the door"                                         |
+| наценка                | нацэнка                 | mark-up                     | "agency mark-up"                                                  |
+| чёрный ящик            | чорная скрыня           | black box                   | «скрыня» is feminine in be                                        |
+| обсерватория           | абсерваторыя            | observatory                 | Brand metaphor                                                    |
+| созвездие              | сузор’е                 | constellation               | Apostrophe: «сузор’е»                                             |
+| орбита                 | арбіта                  | orbit                       |                                                                   |
+| пиксельная вышивка     | піксельная вышыўка      | pixel embroidery            | Ornament identity                                                 |
+| страница               | старонка                | page                        |                                                                   |
+| фото                   | фота                    | photo                       | «фотаздымак» = photograph                                         |
+| удалённо               | аддалена                | remote                      |                                                                   |
+| подвал (сайта)         | футар                   | footer                      | Web jargon is acceptable in be                                    |
+| услуга                 | паслуга                 | service                     | Nav item and detail-page eyebrow «Паслуга» / "Service"            |
+| страница услуги        | старонка паслугі        | service page                | Hub → detail navigation                                           |
+| раздел / хаб           | раздзел / хаб           | hub / section               | Services and Work hub pages; «хаб» is acceptable web jargon in be |
+| страница кейса         | старонка кейса          | case page / case study page | `pages.openCase`, `cases.openPage`                                |
+| подробнее об услуге    | падрабязней пра паслугу | more about the service      | CTA link to a service page                                        |
+| открыть страницу кейса | адкрыць старонку кейса  | open the case study         | CTA link to a case page                                           |
+| тарифы                 | тарыфы                  | pricing                     | Nav item and hub title; singular «тариф» = plan                   |
+| калькулятор            | калькулятар             | calculator                  | Nav item and hub title                                            |
+| что входит             | што ўваходзіць          | what’s included             | Service-page `includes` heading                                   |
+| стоимость              | кошт                    | price                       | Label above a service-page price (`pages.priceFrom`)              |
+| срок                   | тэрмін                  | timeline                    | Service-page label (`pages.termLabel`)                            |
+| что дальше             | што далей               | what happens next           | CTA-band heading                                                  |
+| другие услуги          | іншыя паслугі           | other services              | Cross-link label                                                  |
+| другие проекты         | іншыя праекты           | other projects              | Cross-link label                                                  |
+| все услуги             | усе паслугі             | all services                | Hub link                                                          |
+| все проекты            | усе праекты             | all projects                | Hub link                                                          |
+| главная                | галоўная                | home                        | Breadcrumb/page label                                             |
+| расскажите о задаче    | раскажыце пра задачу    | tell us about your project  | CTA button; EN uses "project", not a literal "job"                |
+| проект / проекты       | праект / праекты        | project / work              | Nav «Проекты» renders as "Work" in en for tone                    |
 
 ## 6. Technical names kept untranslated
 
@@ -331,6 +364,23 @@ Additional rules:
 20. **Form message title** (`contact.form.requestTitle`) is the first line of the composed Telegram
     message, not visible UI; keep the brand and the phrase "Заявка с сайта / Enquiry from the …
     website".
+21. **Multi-page vocabulary.** `pages.*` holds hub titles/intros and the labels shared by detail
+    pages and CTA bands. Page titles mirror the navigation vocabulary in each locale: ru «Проекты» /
+    «Тарифы» / «Студия», be «Праекты» / «Тарыфы» / «Студыя», en "Work" / "Pricing" / "Studio" — do
+    not introduce a second synonym for the same route.
+22. **`pages.startProject`** is the primary CTA band button, so English uses "Tell us about your
+    project" rather than a literal "job"; elsewhere "job" and "project" are used according to
+    context, as in the existing copy.
+23. **Eyebrow labels are singular**: «Паслуга» / "Service" and «Праект» / "Project" sit above a
+    detail-page H1. Do not pluralise them in the catalogue; the surrounding page provides the count.
+24. **Service-page `includes` lists** are sentence-case fragments without trailing periods in be/en
+    (they render as a checklist). Keep them parallel: noun phrases, no "мы робім" / "we do" prefixes.
+25. **`pages.priceFrom`** is «Кошт» / "Price" — a label above the price value, not a "from" phrase;
+    the `from` prefix comes from `common.from` or a tier's `pricePrefix`.
+26. **Route headings are generated assets.** Display headings are rendered as pixel-serif masks by
+    `scripts/generate-pixel-type.py`. Content owns the strings; after any heading copy change the
+    masks/manifest must be regenerated for ru, be and en (outside the content scope — flag it to the
+    owner of the design assets).
 
 ## 10. Quality gates
 
@@ -349,7 +399,9 @@ Before marking a content change done:
 5. Human review: read the changed string in all three languages next to each other; check the
    rendering context (heading accent, button width, card height).
 
-First-pass verification results (26 November 2026):
+Verification results:
+
+**Pass 1 — landing page (26 November 2026):**
 
 - 491 string leaves in each catalogue; `node scripts/check-i18n.mjs` → “i18n catalogs are in sync
   (ru, be, en; 491 strings)”.
@@ -361,27 +413,50 @@ First-pass verification results (26 November 2026):
   tokens in `be.json` are the technical names listed in §6.
 - No straight quotes or apostrophes in any catalogue.
 
+**Pass 2 — multi-page routes (27 November 2026):**
+
+- Source diff against the committed `ru.json`: 69 new structure paths (63 strings), 0 changed and 0
+  removed old strings — existing translations stayed valid.
+- 554 string leaves in each catalogue; `node scripts/check-i18n.mjs` → “i18n catalogs are in sync
+  (ru, be, en; 554 strings)”.
+- 0 problems and 0 warnings from the deep-parity check; new `pages.*`/`servicePages.*` key order,
+  types and array lengths match `ru.json` (`includes` arrays are 4 items in every locale) and no
+  existing translation changed.
+- ICU parse/format: 1 662 strings across the three catalogues, 0 errors; plural outputs unchanged and
+  correct for ru/be/en.
+- `git diff` reviewed: only additions plus the two required trailing-comma lines; no formatting churn
+  in existing content.
+- BE pass includes the ў/ў preposition audit, Russian-only letter scan, Latin-token allowlist and
+  straight-apostrophe scan on the new copy; EN pass includes the British-spelling scan.
+
 ## 11. Source-copy issues reported to the Lead
 
-These are problems in `messages/ru.json` found during translation. `ru.json` is the Lead's file and
-was **not** edited by content; the translations use the corrected forms.
+These problems in `messages/ru.json` were found during the landing-page pass. `ru.json` is the
+Lead's file and was **not** edited by content; the translations use the corrected forms. All three
+copy issues were fixed by the Lead in the 27 November 2026 source update — the list is kept for the
+record. The multi-page copy added in that update introduced no new source issues.
 
-1. FAQ item 9: «Русский, **беларуский** и английский» — should be «белорусский». Fixed in
-   be/en as «беларуская» / "Belarusian".
+1. FAQ item 9: «Русский, **беларуский** и английский» — should be «белорусский». **Fixed in
+   `ru.json`**; be/en use «беларуская» / "Belarusian".
 2. FAQ item 2: «**Копирайт** и подбор изображений» — in context this means copywriting, but
-   «копирайт» strictly means copyright. Suggested «Копирайтинг». Translated as
+   «копирайт» strictly means copyright. Suggested «Копирайтинг». **Fixed in `ru.json`**; be/en use
    «Капірайтынг» / "Copywriting".
 3. Why item 02: «за одну-две недели» — typographically an en dash is preferable
-   («одну–две»), as the copy uses en dashes for ranges elsewhere.
-4. Minor: `messages/ru.json` is not Prettier-clean (short arrays are expanded); the be/en files are
-   Prettier-clean. Run `pnpm format` when convenient so `format:check` passes for all three.
+   («одну–две»), as the copy uses en dashes for ranges elsewhere. **Fixed in `ru.json`**.
+4. Minor: `messages/ru.json` is not Prettier-clean at the time of writing (short arrays are expanded
+   in places); the be/en files are Prettier-clean. Run `pnpm format` when convenient so
+   `format:check` passes for all three.
 
 ## 12. Open items
 
 - Native-speaker proofread of `be.json` is recommended before launch. The catalogue follows official
   Belarusian orthography (ў/і/ё, apostrophe) and avoids known Russianisms, but a native editor should
-  still read it once end-to-end.
-- If the Lead fixes the three Russian issues above, no change is needed in be/en (they already use the
-  corrected wording); only `ru.json` needs the edit.
+  still read it once end-to-end — the multi-page pass added ~60 new strings, including two hub intros
+  and six service-page intros/lists.
+- **Pixel-type assets:** new route headings (services hub, work hub, pricing, calculator, studio, FAQ,
+  contact, service pages, case pages, CTA bands) need their pixel-serif masks/`pixel-type.json`
+  regenerated for all three locales with `python3 scripts/generate-pixel-type.py`; this is outside the
+  content scope and must happen before the routes ship.
 - If project names or case URLs change, update all three catalogues' `name`/`summary`/`liveUrl` together
-  (URLs must stay identical across locales).
+  (URLs must stay identical across locales). Route slugs live in code, not in the catalogues, so a slug
+  change does not require translation edits.

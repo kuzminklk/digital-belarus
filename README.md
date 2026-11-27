@@ -2,7 +2,7 @@
 
 ### Description
 
-«Цифровая Беларусь» is the website of an independent digital studio in Minsk. It sells websites, Telegram bots, AI assistants and automation to Belarusian businesses: a single, fast landing page in Russian, Belarusian and English with a transparent pricing calculator and a brief that is handed off to Telegram.
+«Цифровая Беларусь» is the website of an independent digital studio in Minsk. It sells websites, Telegram bots, AI assistants and automation to Belarusian businesses: a fast multi-page site in Russian, Belarusian and English with a transparent pricing calculator and a brief that is handed off to Telegram.
 
 The visual language is a warm two-colour observatory: near-black ink and archival cream paper, a pixel-serif display face generated from Cormorant Garamond, a pixel mono (Handjet) for the interface and body, and 1-bit dithered imagery (NASA lunar photography, archival star charts, Belarusian craft, a pixel-art bot interface). Sections alternate full ink and full cream surfaces; there is no accent hue anywhere. Belarus is still present through the pixel rushnyk mark, ornament rules and the Minsk/53.9006°N read-outs.
 
@@ -43,6 +43,22 @@ Built with DeepSeek Harness and an Agent Team (lead, designer, frontend, content
 5. Added SEO (per-locale metadata, hreflang, sitemap, OG images), accessibility and reduced-motion support
 6. Documented the architecture, design system, content policy and deployment
 7. Published the repository on GitHub and launched production on Vercel with automatic deploys from `main`
+
+### Pages
+
+| Route                                                                 | Contents                                                                                |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `/{locale}`                                                           | Home: hero, manifesto, services, process, cases, pricing, reasons, studio, FAQ, contact |
+| `/{locale}/services`                                                  | Services hub                                                                            |
+| `/{locale}/services/{websites,bots,ai,automation,commerce,analytics}` | Six service detail pages                                                                |
+| `/{locale}/cases`                                                     | Projects hub                                                                            |
+| `/{locale}/cases/{yasna,central-park,spadchyna,prabot}`               | Four case-study pages                                                                   |
+| `/{locale}/pricing`                                                   | Pricing and calculator                                                                  |
+| `/{locale}/calculator`                                                | Standalone calculator                                                                   |
+| `/{locale}/about`                                                     | Studio, approach, principles and founder                                                |
+| `/{locale}/faq`                                                       | All questions                                                                           |
+| `/{locale}/contact`                                                   | Contact channels and brief form                                                         |
+| `/{locale}/privacy`                                                   | Data policy                                                                             |
 
 ### To-dos
 
@@ -118,7 +134,8 @@ public/
   og/                per-locale Open Graph images
   brand/             mark source
 scripts/             i18n check, pixel type generator, image/OG/icon generators
-src/app/[locale]/    locale layout, landing page, privacy policy, 404
+src/app/[locale]/    locale layout; home, services, cases, pricing, calculator,
+                     about, faq, contact, privacy and 404 routes
 src/components/
   brand/             pixel mark, pixel type, rushnyk, icons
   layout/            header, footer, grain
@@ -126,7 +143,8 @@ src/components/
   ui/                section heading, reveal, arrows
 src/content/         language-independent data (Belarus outline, type manifest)
 src/i18n/            routing, request config, navigation helpers
-src/lib/             site constants, SEO helpers, pricing calculator logic
+src/lib/             site constants, navigation, SEO helpers, pricing calculator logic
+src/content/pages.ts route slugs, case-image mapping and hub path list
 src/styles/          fonts, design tokens, base layer, shared primitives
 tests/               unit tests for pure logic
 docs/                specs, decisions, design, content, qa, ops

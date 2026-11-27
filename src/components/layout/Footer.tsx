@@ -12,6 +12,7 @@ type ServiceItem = {id: string; title: string};
 export default async function Footer() {
 	const t = await getTranslations();
 	const services = await getTranslations('services');
+	const pages = await getTranslations('pages');
 	const locale = (await getLocale()) as Locale;
 	const serviceItems = services.raw('items') as ServiceItem[];
 	const year = new Date().getFullYear();
@@ -43,10 +44,13 @@ export default async function Footer() {
 						<p className={`mono ${styles.columnTitle}`}>{t('footer.navLabel')}</p>
 						<ul>
 							{mainNav.map((item) => (
-								<li key={item.id}>
-									<Link href={`/#${item.id}`}>{t(`nav.${item.key}`)}</Link>
+								<li key={item.key}>
+									<Link href={item.href}>{t(`nav.${item.key}`)}</Link>
 								</li>
 							))}
+							<li>
+								<Link href="/contact">{t('nav.contact')}</Link>
+							</li>
 						</ul>
 					</nav>
 
@@ -55,9 +59,12 @@ export default async function Footer() {
 						<ul>
 							{serviceItems.slice(0, 5).map((item) => (
 								<li key={item.id}>
-									<Link href={`/#${item.id}`}>{item.title}</Link>
+									<Link href={`/services/${item.id}`}>{item.title}</Link>
 								</li>
 							))}
+							<li>
+								<Link href="/services">{pages('allServices')}</Link>
+							</li>
 						</ul>
 					</nav>
 
@@ -83,6 +90,9 @@ export default async function Footer() {
 						</ul>
 
 						<ul className={styles.legalList}>
+							<li>
+								<Link href="/cases">{pages('allCases')}</Link>
+							</li>
 							<li>
 								<Link href="/privacy">{t('footer.privacyLink')}</Link>
 							</li>

@@ -1,4 +1,5 @@
 import {getTranslations} from 'next-intl/server';
+import {Link} from '@/i18n/navigation';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
 import ArrowIcon from '@/components/ui/ArrowIcon';
@@ -16,7 +17,9 @@ type Tier = {
 	cta: string;
 };
 
-export default async function Pricing() {
+type PricingProps = {showHeading?: boolean};
+
+export default async function Pricing({showHeading = true}: PricingProps = {}) {
 	const t = await getTranslations('pricing');
 	const tiers = t.raw('tiers') as Tier[];
 
@@ -27,14 +30,16 @@ export default async function Pricing() {
 			aria-label={t('label')}
 		>
 			<div className="container">
-				<SectionHeading
-					index={t('index')}
-					label={t('label')}
-					title={t('title')}
-					accent={t('titleAccent')}
-					typeName="section.pricing"
-					intro={t('intro')}
-				/>
+				{showHeading ? (
+					<SectionHeading
+						index={t('index')}
+						label={t('label')}
+						title={t('title')}
+						accent={t('titleAccent')}
+						typeName="section.pricing"
+						intro={t('intro')}
+					/>
+				) : null}
 
 				<ul className={styles.grid}>
 					{tiers.map((tier, index) => (
@@ -88,10 +93,10 @@ export default async function Pricing() {
 										))}
 									</ul>
 
-									<a href="#contact" className={styles.cta}>
+									<Link href="/contact" className={styles.cta}>
 										{tier.cta}
 										<ArrowIcon size={13} />
-									</a>
+									</Link>
 								</article>
 							</Reveal>
 						</li>

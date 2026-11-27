@@ -20,21 +20,25 @@ export type CaseItem = {
 	metric: string;
 };
 
-export default async function Cases() {
+type CasesProps = {showHeading?: boolean};
+
+export default async function Cases({showHeading = true}: CasesProps = {}) {
 	const t = await getTranslations('cases');
 	const items = t.raw('items') as CaseItem[];
 
 	return (
 		<section id="cases" className={`section ${styles.cases}`} aria-label={t('label')}>
 			<div className="container">
-				<SectionHeading
-					index={t('index')}
-					label={t('label')}
-					title={t('title')}
-					accent={t('titleAccent')}
-					typeName="section.cases"
-					intro={t('intro')}
-				/>
+				{showHeading ? (
+					<SectionHeading
+						index={t('index')}
+						label={t('label')}
+						title={t('title')}
+						accent={t('titleAccent')}
+						typeName="section.cases"
+						intro={t('intro')}
+					/>
+				) : null}
 
 				<CaseGallery items={items} />
 
